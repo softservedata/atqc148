@@ -1,6 +1,6 @@
-package com.softserve.edu.tests;
+package com.softserve.edu.dao.order;
 
-public class OrderToCompare {
+public class OrderFromUI {
 
 	String orderName;
 	double totalPrice;
@@ -10,12 +10,12 @@ public class OrderToCompare {
 	String assigne;
 	String role;
 
-	OrderToCompare() {
+	OrderFromUI() {
 
 	}
 
 	// effective java book constructors with multiple parameters
-	public OrderToCompare(String orderName, double totalPrice, int maxDiscount,
+	public OrderFromUI(String orderName, double totalPrice, int maxDiscount,
 			String deliveryDate, String status, String assigne, String role) {
 		this.orderName = orderName;
 		this.totalPrice = totalPrice;
@@ -41,9 +41,9 @@ public class OrderToCompare {
 	public boolean equals(Object o) {
 		if (o == this)
 			return true;
-		if (!(o instanceof OrderToCompare))
+		if (!(o instanceof OrderFromUI))
 			return false;
-		OrderToCompare ord = (OrderToCompare) o;
+		OrderFromUI ord = (OrderFromUI) o;
 		boolean name = ord.orderName.equals(orderName);
 		boolean price = ord.totalPrice == totalPrice;
 		boolean discount = ord.maxDiscount == maxDiscount;

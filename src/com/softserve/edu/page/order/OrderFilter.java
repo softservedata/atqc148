@@ -1,5 +1,5 @@
 package com.softserve.edu.page.order;
 
-public class Filter {
+public class OrderFilter {
 
 }

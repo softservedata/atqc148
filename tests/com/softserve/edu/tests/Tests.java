@@ -11,34 +11,40 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.j256.ormlite.support.ConnectionSource;
 import com.softserve.edu.dao.order.Order;
+import com.softserve.edu.dao.order.OrderFromUI;
+import com.softserve.edu.db.DbConnector;
 import com.softserve.edu.db.DbProcessor;
 import com.softserve.edu.page.login.LoginPage;
 
 public class Tests {
 	private WebDriver driver;
-	DbProcessor dbProc;
+	private DbConnector connector;
+	private ConnectionSource connection;
 
 	@Before
 	public void setUp() throws Exception {
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		dbProc = new DbProcessor();
+		connector = new DbConnector();
+		connection = connector.getConnection();
 		new LoginPage(driver).logIn("login1", "qwerty", "Customer");
 	}
 
 	@Test
 	public void testTableData() throws Exception {
 
-		List<Order> ordersFromDB = dbProc.getDataFromDB();
+		List<Order> ordersFromDB = new DbProcessor(connection).getDataFromDB();
+		connector.close();
 		System.out.println("Number of orders: " + ordersFromDB.size());
-		List<OrderToCompare> compareOrd = new ArrayList<OrderToCompare>();
+		List<OrderFromUI> compareOrd = new ArrayList<OrderFromUI>();
 		for (Order order : ordersFromDB) {
 			compareOrd.add(order.toOrderToCompare());
 		}
 
-		List<OrderToCompare> orderList = new ArrayList<OrderToCompare>();
+		List<OrderFromUI> orderList = new ArrayList<OrderFromUI>();
 		driver.get("http://localhost:8080/OMS/order.htm");
 		// size/2 coz we got 2 rows per table
 		for (int i = 0; i < ordersFromDB.size() / 2; i++) {
@@ -63,7 +69,7 @@ public class Tests {
 			}
 
 			for (List<String> cellsStr : cellsStrList) {
-				orderList.add(new OrderToCompare(cellsStr.get(0), Double
+				orderList.add(new OrderFromUI(cellsStr.get(0), Double
 						.parseDouble(cellsStr.get(1)), Integer
 						.parseInt(cellsStr.get(2)), cellsStr.get(3), cellsStr
 						.get(4), cellsStr.get(5), cellsStr.get(6)));
@@ -74,8 +80,8 @@ public class Tests {
 		}
 
 		int count = 0;
-		for (OrderToCompare orderFromUI : orderList) {
-			for (OrderToCompare orderFromDB : compareOrd) {
+		for (OrderFromUI orderFromUI : orderList) {
+			for (OrderFromUI orderFromDB : compareOrd) {
 				if (orderFromDB.equals(orderFromUI)) {
 					count++;
 				}

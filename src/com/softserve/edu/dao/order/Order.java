@@ -7,7 +7,6 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.softserve.edu.dao.orderstatus.OrderStatus;
 import com.softserve.edu.dao.user.User;
-import com.softserve.edu.tests.OrderToCompare;
 
 @DatabaseTable(tableName = "Orders", daoClass = OrderDaoImpl.class)
 public class Order {
@@ -156,8 +155,8 @@ public class Order {
 				+ this.orderStatusRef.getOrderStatusName());
 	}
 
-	public OrderToCompare toOrderToCompare() {
-		return new OrderToCompare(getOrderName(), this.totalPrice,
+	public OrderFromUI toOrderToCompare() {
+		return new OrderFromUI(getOrderName(), this.totalPrice,
 				this.maxDiscount, dateToString(),
 				this.orderStatusRef.getOrderStatusName(),
 				this.assigne.getLogin(), this.assigne.getRole().getRoleName());

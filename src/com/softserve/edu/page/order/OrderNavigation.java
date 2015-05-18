@@ -1,5 +1,5 @@
 package com.softserve.edu.page.order;
 
-public class Table {
+public class OrderNavigation {
 
 }

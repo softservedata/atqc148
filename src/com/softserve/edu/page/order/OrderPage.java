@@ -9,4 +9,8 @@ public class OrderPage {
 		this.driver = driver;
 	}
 
+	public void getOrderPage() {
+		driver.get("http://localhost:8080/OMS/order.htm");
+	}
+
 }

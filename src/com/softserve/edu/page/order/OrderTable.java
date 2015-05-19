@@ -2,6 +2,7 @@ package com.softserve.edu.page.order;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.softserve.edu.dao.order.OrderFromUI;
@@ -18,4 +19,5 @@ public class OrderTable {
 		new OrderPage(driver).getOrderPage();
 		return null;
 	}
+
 }

@@ -37,7 +37,6 @@ public class Tests {
 	public void testTableData() throws Exception {
 
 		List<Order> ordersFromDB = new DbProcessor(connection).getDataFromDB();
-		connector.close();
 		System.out.println("Number of orders: " + ordersFromDB.size());
 		List<OrderFromUI> compareOrd = new ArrayList<OrderFromUI>();
 		for (Order order : ordersFromDB) {

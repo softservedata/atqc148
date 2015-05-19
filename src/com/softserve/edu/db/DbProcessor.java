@@ -22,6 +22,7 @@ public class DbProcessor {
 		}
 		// System.out.println("-----------------------------");
 		// System.out.println("Table size:" + orders.size());
+		connectionSource.close();
 		return orders;
 	}
 

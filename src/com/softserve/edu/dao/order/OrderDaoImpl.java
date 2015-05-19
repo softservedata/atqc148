@@ -9,7 +9,6 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.softserve.edu.dao.orderstatus.OrderStatusDaoImpl;
 import com.softserve.edu.dao.user.UserDaoImpl;
 import com.softserve.edu.dao.userroles.UserRoleDaoImpl;
-import com.softserve.edu.db.DbConnector;
 
 public class OrderDaoImpl extends BaseDaoImpl<Order, Integer> implements
 		OrderDao, AutoCloseable {

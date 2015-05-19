@@ -10,7 +10,7 @@ public class OrderNavigation {
 		this.driver = driver;
 	}
 
-	public void toNextPage() {
+	public void nextPage() {
 		driver.get("http://localhost:8080/OMS/orderNextPage.htm");
 		if (driver.getPageSource().contains("404")) {
 			driver.navigate().back();
@@ -18,7 +18,7 @@ public class OrderNavigation {
 		}
 	}
 
-	public void toPrevPage() {
+	public void prevPage() {
 		driver.get("http://localhost:8080/OMS/orderPreviousPage.htm");
 		if (driver.getPageSource().contains("404")) {
 			driver.navigate().back();
@@ -26,7 +26,7 @@ public class OrderNavigation {
 		}
 	}
 
-	public void toFirstPage() {
+	public void firstPage() {
 		driver.get("http://localhost:8080/OMS/orderFirstPage.htm");
 		if (driver.getPageSource().contains("404")) {
 			driver.navigate().back();
@@ -34,7 +34,7 @@ public class OrderNavigation {
 		}
 	}
 
-	public void toLastPage() {
+	public void lastPage() {
 		driver.get("http://localhost:8080/OMS/orderLastPage.htm");
 		if (driver.getPageSource().contains("404")) {
 			driver.navigate().back();

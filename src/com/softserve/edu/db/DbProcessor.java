@@ -14,14 +14,10 @@ public class DbProcessor {
 	}
 
 	public List<Order> getDataFromDB() throws Exception {
-		// handle exceptions
+		// TODO handle exceptions
 		OrderDaoImpl orderProc = new OrderDaoImpl(this.connectionSource);
 		List<Order> orders = orderProc.getAllFromOrders();
-		for (Order order : orders) {
-			// order.print();
-		}
-		// System.out.println("-----------------------------");
-		// System.out.println("Table size:" + orders.size());
+		orderProc.close();
 		connectionSource.close();
 		return orders;
 	}

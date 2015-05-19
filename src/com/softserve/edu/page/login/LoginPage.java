@@ -25,6 +25,7 @@ public class LoginPage {
 				driver.findElement(
 						By.xpath("//div[@id='content']/div/fieldset/table/tbody/tr[4]/td[2]"))
 						.getText());
+		// return new userpage(driver); or orderpage(driver); can be good idea
 
 	}
 

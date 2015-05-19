@@ -1,7 +1,9 @@
 package com.softserve.edu.dao.order;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -155,10 +157,18 @@ public class Order {
 				+ this.orderStatusRef.getOrderStatusName());
 	}
 
-	public OrderFromUI toOrderToCompare() {
+	public OrderFromUI toOrderFromUI() {
 		return new OrderFromUI(getOrderName(), this.totalPrice,
 				this.maxDiscount, dateToString(),
 				this.orderStatusRef.getOrderStatusName(),
 				this.assigne.getLogin(), this.assigne.getRole().getRoleName());
+	}
+
+	public static List<OrderFromUI> toOrdersFromUI(List<Order> orders) {
+		List<OrderFromUI> ordersFromUI = new ArrayList<OrderFromUI>();
+		for (Order order : orders) {
+			ordersFromUI.add(order.toOrderFromUI());
+		}
+		return ordersFromUI;
 	}
 }

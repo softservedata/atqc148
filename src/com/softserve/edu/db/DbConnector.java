@@ -1,9 +1,10 @@
 package com.softserve.edu.db;
+
 import java.sql.SQLException;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 
-public class DbConnector implements AutoCloseable {
+public class DbConnector {
 	JdbcConnectionSource connectionSource;
 	private String url = "jdbc:mysql://localhost:3306/oms";
 	private String username = "xdr";
@@ -20,7 +21,6 @@ public class DbConnector implements AutoCloseable {
 		return connectionSource;
 	}
 
-	@Override
 	public void close() throws Exception {
 		System.out.println("Closing the connection.");
 		if (connectionSource != null)

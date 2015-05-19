@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.dao.order.Order;
 import com.softserve.edu.dao.order.OrderFromUI;
 
 public class OrderTable {
@@ -74,6 +75,34 @@ public class OrderTable {
 			rowString.add(cell.getText());
 		}
 		return rowString;
+	}
+
+	public OrderFromUI getOrderByNumber(int num) {
+		new OrderPage(driver).getOrderPage();
+		WebElement table = getOrdersTable();
+		WebElement row = null;
+		int pageNum = 1;
+		int rowsSize = table.findElements(By.tagName("tr")).size() - 1;
+		boolean elementFound = false;
+		while (!elementFound) {
+			List<WebElement> rows = table.findElements(By.tagName("tr"));
+			if (rowsSize >= num) {
+				row = rows.get(num / pageNum);
+				elementFound = true;
+			} else {
+				new OrderNavigation(driver).nextPage();
+				table = getOrdersTable();
+				pageNum++;
+				rowsSize *= pageNum;
+			}
+		}
+		List<String> rowStr = getDataFromRow(row);
+		OrderFromUI ord = new OrderFromUI(rowStr.get(0),
+				Double.parseDouble(rowStr.get(1)), Integer.parseInt(rowStr
+						.get(2)), rowStr.get(3), rowStr.get(4), rowStr.get(5),
+				rowStr.get(6));
+		ord.print();
+		return ord;
 	}
 
 }

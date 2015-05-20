@@ -7,19 +7,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.dao.order.Order;
 import com.softserve.edu.dao.order.OrderFromUI;
 
 public class OrderTable {
 
-	WebDriver driver;
+	private WebDriver driver;
 
-	public OrderTable(WebDriver driver) {
+	private OrderTable(WebDriver driver) {
 		this.driver = driver;
 	}
 
+	public static OrderTable setDriver(WebDriver driver) {
+		return new OrderTable(driver);
+	}
+
 	public List<OrderFromUI> getAllOrdersFromTable() {
-		new OrderPage(driver).getOrderPage();
+		OrderPage.getOrderPage(driver);
 		List<OrderFromUI> orders = new ArrayList<OrderFromUI>();
 
 		// 1.get orders from table page
@@ -28,7 +31,7 @@ public class OrderTable {
 			for (OrderFromUI order : ordersFromTable) {
 				orders.add(order);
 			}
-			new OrderNavigation(driver).nextPage();
+			OrderNavigation.setDriver(driver).nextPage();
 		}
 		// 2.compare
 		// TODO refactor hard code here
@@ -40,7 +43,7 @@ public class OrderTable {
 			for (OrderFromUI ord : ordersFromTable) {
 				orders.add(ord);
 			}
-			new OrderNavigation(driver).nextPage();
+			OrderNavigation.setDriver(driver).nextPage();
 		}
 		return orders;
 	}
@@ -78,7 +81,7 @@ public class OrderTable {
 	}
 
 	public OrderFromUI getOrderByNumber(int num) {
-		new OrderPage(driver).getOrderPage();
+		OrderPage.getOrderPage(driver);
 		WebElement table = getOrdersTable();
 		WebElement row = null;
 		int pageNum = 1;
@@ -90,7 +93,7 @@ public class OrderTable {
 				row = rows.get(num / pageNum);
 				elementFound = true;
 			} else {
-				new OrderNavigation(driver).nextPage();
+				OrderNavigation.setDriver(driver).nextPage();
 				table = getOrdersTable();
 				pageNum++;
 				rowsSize *= pageNum;

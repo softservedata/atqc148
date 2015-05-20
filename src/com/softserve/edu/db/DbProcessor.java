@@ -10,8 +10,12 @@ import com.softserve.edu.dao.order.OrderDaoImpl;
 public class DbProcessor {
 	private ConnectionSource connectionSource;
 
-	public DbProcessor(ConnectionSource connectionSource) {
+	private DbProcessor(ConnectionSource connectionSource) {
 		this.connectionSource = connectionSource;
+	}
+	
+	public static DbProcessor setConnection(ConnectionSource connectionSource){
+		return new DbProcessor(connectionSource);
 	}
 
 	public List<Order> getDataFromDB() throws Exception {

@@ -2,13 +2,13 @@ package com.softserve.edu.dao.order;
 
 public class OrderFromUI {
 
-	String orderName;
-	double totalPrice;
-	int maxDiscount;
-	String deliveryDate;
-	String status;
-	String assigne;
-	String role;
+	private String orderName;
+	private double totalPrice;
+	private int maxDiscount;
+	private String deliveryDate;
+	private String status;
+	private String assigne;
+	private String role;
 
 	OrderFromUI() {
 

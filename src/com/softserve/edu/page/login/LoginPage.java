@@ -9,8 +9,12 @@ public class LoginPage {
 
 	private WebDriver driver;
 
-	public LoginPage(WebDriver driver) {
+	private LoginPage(WebDriver driver) {
 		this.driver = driver;
+	}
+
+	public static LoginPage setDriver(WebDriver driver) {
+		return new LoginPage(driver);
 	}
 
 	public void logIn(String login, String password, String role) {
@@ -25,8 +29,20 @@ public class LoginPage {
 				driver.findElement(
 						By.xpath("//div[@id='content']/div/fieldset/table/tbody/tr[4]/td[2]"))
 						.getText());
-		// return new userpage(driver); or orderpage(driver); can be good idea
+	}
 
+	public void logIn(User user) {
+		driver.get("http://localhost:8080/OMS/");
+		driver.findElement(By.name("j_username")).clear();
+		driver.findElement(By.name("j_username")).sendKeys(user.getLogin());
+		driver.findElement(By.name("j_password")).clear();
+		driver.findElement(By.name("j_password")).sendKeys(user.getPassword());
+		driver.findElement(By.name("submit")).click();
+		assertEquals(
+				user.getRole(),
+				driver.findElement(
+						By.xpath("//div[@id='content']/div/fieldset/table/tbody/tr[4]/td[2]"))
+						.getText());
 	}
 
 	public void logOut() {

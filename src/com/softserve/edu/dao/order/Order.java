@@ -57,24 +57,6 @@ public class Order {
 
 	}
 
-	// public Order(int id, Date deliveryDate, boolean isGift, int maxDiscount,
-	// Date orderDate, String orderName, int orderNumber,
-	// Date preferableDeliveryDate, double totalPrice, int assigne,
-	// int customer, int orderStatusRef) {
-	// this.id = id;
-	// this.deliveryDate = deliveryDate;
-	// this.isGift = isGift;
-	// this.maxDiscount = maxDiscount;
-	// this.orderDate = orderDate;
-	// this.orderName = orderName;
-	// this.orderNumber = orderNumber;
-	// this.preferableDeliveryDate = preferableDeliveryDate;
-	// this.totalPrice = totalPrice;
-	// this.assigne = assigne;
-	// this.customer = customer;
-	// this.orderStatusRef = orderStatusRef;
-	// }
-
 	public int getId() {
 		return this.id;
 	}

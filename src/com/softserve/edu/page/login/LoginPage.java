@@ -46,7 +46,11 @@ public class LoginPage {
 	}
 
 	public void logOut() {
-		driver.findElement(By.cssSelector("img[alt=\"logout\"]")).click();
+		driver.get("http://localhost:8080/OMS/logout.htm");
+		if (driver.getPageSource().contains("HTTP Status 404")) {
+			driver.navigate().back();
+			driver.findElement(By.cssSelector("img[alt=\"logout\"]")).click();
+		}
 	}
 
 }

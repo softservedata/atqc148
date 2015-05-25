@@ -6,7 +6,6 @@
       <class name="com.softserve.edu.tests.OrdersPageTest">
         <methods>
           <include name="logIn"/>
-          <include name="tearDown"/>
           <include name="selectTest"/>
           <include name="logOut"/>
           <include name="setUp"/>

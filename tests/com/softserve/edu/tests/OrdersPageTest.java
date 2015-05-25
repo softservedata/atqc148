@@ -3,6 +3,7 @@ package com.softserve.edu.tests;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -42,7 +43,7 @@ public class OrdersPageTest {
 		driver.manage().window().maximize();
 	}
 
-	@BeforeTest(groups = { "filter" })
+	@BeforeTest(groups = { "filter", "database" })
 	public void logIn() {
 		LoginPage.setDriver(driver).logIn(User.CUSTOMER);
 		OrderPage.navigateToOrderPage(driver);
@@ -55,7 +56,8 @@ public class OrdersPageTest {
 	// }
 
 	@Test(groups = { "filter" })
-	public void selectTest() throws Exception {
+	public void filterByStatusTest() throws Exception {
+		OrderTable orderTable = OrderTable.setDriver(driver);
 		OrderFilter filter = OrderFilter.setDriver(driver);
 		List<String> filterValues = filter
 				.readValuesForField(FilterValues.Status.getName());
@@ -65,30 +67,16 @@ public class OrdersPageTest {
 		iter.next();
 		while (iter.hasNext()) {
 			String crit = iter.next();
-			// for (String crit : filterValues) {
 			statusValue = OrderStatuses.valueOf(crit);
-
 			filter.orderBy(FilterValues.Status.getName(), statusValue.getName());
 			filter.apply();
-
 			List<OrderFromUI> ordersDB = DbHelper.readOrdersByField(
 					FilterValues.Status, statusValue);
+			List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
 
-			for (OrderFromUI order : ordersDB) {
-				System.out.println("_______________________");
-				order.print();
-			}
-
-			// 1. just compare sizes of both tables
-
-			// get values from table
-//			System.out.println("ui table size: "
-//					+ OrderTable.setDriver(driver).getTableSize());
-//			System.out.println("db table size: " + ordersDB.size());
-
-			// get values with filter by "status" and value from table
+			// method compares sizes, then compares each by each
+			assertTrue(orderTable.isListEqual(ordersUI, ordersDB));
 		}
-
 	}
 
 	// @Test(priority = 2, groups = { "navigation" })
@@ -217,7 +205,8 @@ public class OrdersPageTest {
 		}
 	}
 
-	// @Test(priority = 1, enabled = false, groups={"database","navigation"})
+	// @Test(priority = 1, enabled = true, groups = { "database", "navigation"
+	// })
 	// test runs slow
 	public void testTableData() throws Exception {
 		OrderTable orderTable = OrderTable.setDriver(driver);
@@ -226,16 +215,15 @@ public class OrdersPageTest {
 		List<Order> ordersFromDB = DbProcessor.setConnection(connection)
 				.getDataFromDB();
 		List<OrderFromUI> compareOrd = Order.toOrdersFromUI(ordersFromDB);
-		int equalOrdersNumber = 0;
-		for (OrderFromUI orderFromUI : orderList) {
-			for (OrderFromUI orderFromDB : compareOrd) {
-				if (orderFromDB.equals(orderFromUI)) {
-					equalOrdersNumber++;
-				}
-			}
-		}
-		System.out.println("Number of equal orders: " + equalOrdersNumber);
-		assertEquals(ordersFromDB.size(), equalOrdersNumber);
+		// int equalOrdersNumber = 0;
+		// for (OrderFromUI orderFromUI : orderList) {
+		// for (OrderFromUI orderFromDB : compareOrd) {
+		// if (orderFromDB.equals(orderFromUI)) {
+		// equalOrdersNumber++;
+		// }
+		// }
+		// }
+		assertTrue(orderTable.isListEqual(orderList, compareOrd));
 
 	}
 

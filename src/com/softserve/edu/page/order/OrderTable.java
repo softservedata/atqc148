@@ -1,6 +1,7 @@
 package com.softserve.edu.page.order;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,42 +25,64 @@ public class OrderTable {
 
 	public int getTableSize() {
 		OrderPage.navigateToOrderPage(driver);
-		List<OrderFromUI> ordersFromTable = getOrdersFromTablePage(getOrdersTable());
+		WebElement ordersTable = getOrdersTable();
+		List<OrderFromUI> ordersFromTable = getOrdersFromTablePage(ordersTable);
 		int size = ordersFromTable.size();
 		OrderNavigation.setDriver(driver).navigateToNextPage();
+		ordersTable = getOrdersTable();
 		while (!ordersFromTable.get(0).equals(
-				getOrdersFromTablePage(getOrdersTable()).get(0))) {
-			size += 2;
-			ordersFromTable = getOrdersFromTablePage(getOrdersTable());
-			OrderNavigation.setDriver(driver).navigateToNextPage();
+				getOrdersFromTablePage(ordersTable).get(0))) {
+
+			if (!ordersFromTable.get(ordersFromTable.size() - 1).equals(
+					getOrdersFromTablePage(ordersTable).get(0))) {
+				size += 2;
+				ordersFromTable = getOrdersFromTablePage(ordersTable);
+				OrderNavigation.setDriver(driver).navigateToNextPage();
+				ordersTable = getOrdersTable();
+			} else {
+				size += 1;
+				ordersFromTable = getOrdersFromTablePage(ordersTable);
+				OrderNavigation.setDriver(driver).navigateToNextPage();
+				ordersTable = getOrdersTable();
+			}
 		}
 		return size;
 	}
 
 	public List<OrderFromUI> getAllOrdersFromTable() {
 		OrderPage.navigateToOrderPage(driver);
+		WebElement ordersTable = getOrdersTable();
 		List<OrderFromUI> orders = new ArrayList<OrderFromUI>();
 
 		// 1.get orders from table page
 		if (orders.size() == 0) {
-			List<OrderFromUI> ordersFromTable = getOrdersFromTablePage(getOrdersTable());
+			List<OrderFromUI> ordersFromTable = getOrdersFromTablePage(ordersTable);
 			for (OrderFromUI order : ordersFromTable) {
 				orders.add(order);
 			}
 			OrderNavigation.setDriver(driver).navigateToNextPage();
+			ordersTable = getOrdersTable();
 		}
 		// 2.compare
 		// TODO refactor hard code here
-		while (!orders
-				.get(orders.size()
-						- getOrdersFromTablePage(getOrdersTable()).size())
-				.equals(getOrdersFromTablePage(getOrdersTable()).get(0))) {
-			List<OrderFromUI> ordersFromTable = getOrdersFromTablePage(getOrdersTable());
-			for (OrderFromUI ord : ordersFromTable) {
-				orders.add(ord);
+		// TODO problem here. if orders count in ui isn't odd, on last 2 pages
+		// theres order duplicate *(look comment below)
+		while (!orders.get(
+				orders.size() - getOrdersFromTablePage(ordersTable).size())
+				.equals(getOrdersFromTablePage(ordersTable).get(0))) {
+			List<OrderFromUI> ordersFromTable = getOrdersFromTablePage(ordersTable);
+			Iterator<OrderFromUI> iter = ordersFromTable.iterator();
+			while (iter.hasNext()) {
+				OrderFromUI order = iter.next();
+				// added check for duplicates
+				if (!orders.get(orders.size() - 1).equals(order)) {
+					orders.add(order);
+				}
 			}
 			OrderNavigation.setDriver(driver).navigateToNextPage();
+			ordersTable = getOrdersTable();
 		}
+
 		return orders;
 	}
 
@@ -68,9 +91,9 @@ public class OrderTable {
 	}
 
 	public List<OrderFromUI> getOrdersFromTablePage(WebElement table) {
-		List<OrderFromUI> orderList = new LinkedList<OrderFromUI>();
+		List<OrderFromUI> orderList = new ArrayList<OrderFromUI>();
 		List<WebElement> rowWebElements = table.findElements(By.tagName("tr"));
-		List<List<String>> rows = new LinkedList<List<String>>();
+		List<List<String>> rows = new ArrayList<List<String>>();
 		for (WebElement row : rowWebElements) {
 			List<String> rowCells = getDataFromRow(row);
 			if (!rowCells.isEmpty())
@@ -85,7 +108,7 @@ public class OrderTable {
 	}
 
 	public static List<String> getDataFromRow(WebElement row) {
-		List<String> rowString = new LinkedList<String>();
+		List<String> rowString = new ArrayList<String>();
 		List<WebElement> cells = row.findElements(By.tagName("td"));
 		for (WebElement cell : cells) {
 			rowString.add(cell.getText());
@@ -118,6 +141,27 @@ public class OrderTable {
 				rowStr.get(6));
 		ord.print();
 		return ord;
+	}
+
+	public boolean isListEqual(List<OrderFromUI> fromDB,
+			List<OrderFromUI> fromUI) {
+
+		// 1. compare sizes
+		if (fromDB.size() != fromUI.size()) {
+			return false;
+		}
+		// 2.if sizes are equal, compare each by each
+		int equalOrdersNumber = 0;
+		for (OrderFromUI orderFromUI : fromUI) {
+			for (OrderFromUI orderFromDB : fromDB) {
+				if (orderFromDB.equals(orderFromUI)) {
+					equalOrdersNumber++;
+				}
+			}
+		}
+		System.out.println("Number of equal orders: " + equalOrdersNumber);
+		// if all orders are equal, result will be true
+		return (equalOrdersNumber == fromDB.size());
 	}
 
 }

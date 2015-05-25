@@ -26,6 +26,7 @@ import com.softserve.edu.db.DbProcessor;
 import com.softserve.edu.helpers.DbHelper;
 import com.softserve.edu.helpers.FilterValues;
 import com.softserve.edu.helpers.OrderStatuses;
+import com.softserve.edu.helpers.UserRoles;
 import com.softserve.edu.page.login.LoginPage;
 import com.softserve.edu.page.login.User;
 import com.softserve.edu.page.order.OrderFilter;
@@ -55,7 +56,7 @@ public class OrdersPageTest {
 	// OrderPage.navigateToOrderPage(driver);
 	// }
 
-	@Test(groups = { "filter" })
+//	@Test(groups = { "filter" })
 	public void filterByStatusTest() throws Exception {
 		OrderTable orderTable = OrderTable.setDriver(driver);
 		OrderFilter filter = OrderFilter.setDriver(driver);
@@ -78,6 +79,33 @@ public class OrdersPageTest {
 			assertTrue(orderTable.isListEqual(ordersUI, ordersDB));
 		}
 	}
+	
+	
+	@Test(groups = { "filter" })
+	public void filterByRoleTest() throws Exception {
+		OrderTable orderTable = OrderTable.setDriver(driver);
+		OrderFilter filter = OrderFilter.setDriver(driver);
+		List<String> filterValues = filter
+				.readValuesForField(FilterValues.Role.getName());
+		UserRoles roleValue;
+
+		Iterator<String> iter = filterValues.iterator();
+		iter.next();
+		while (iter.hasNext()) {
+			String crit = iter.next();
+			roleValue = UserRoles.valueOf(crit);
+			filter.orderBy(FilterValues.Role.getName(), roleValue.getName());
+			filter.apply();
+			List<OrderFromUI> ordersDB = DbHelper.readOrdersByField(
+					FilterValues.Role, roleValue);
+			List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
+
+			// method compares sizes, then compares each by each
+			assertTrue(orderTable.isListEqual(ordersUI, ordersDB));
+		}
+	}
+	
+	
 
 	// @Test(priority = 2, groups = { "navigation" })
 	public void checkIfFirstButtonIsDisabled() {

@@ -13,8 +13,19 @@ public class DbHelper {
 			OrderStatuses status) throws Exception {
 		ConnectionSource connection = DbConnector.getConnection();
 		List<OrderFromUI> odrderList = DbProcessor.setConnection(connection)
-				.getOrdersFromDbBy(filter.getDbName(), status.getId());
+				.getOrdersFromDbByStatus(filter.getDbName(), status.getId());
 		return odrderList;
 	}
-
+	
+	
+	public static List<OrderFromUI> readOrdersByField(FilterValues filter,
+			UserRoles role) throws Exception {
+		ConnectionSource connection = DbConnector.getConnection();
+		List<OrderFromUI> odrderList = DbProcessor.setConnection(connection)
+				.getOrdersFromDbByRole(filter.getDbName(), role.getId());
+		return odrderList;
+	}
+	
+	
+	
 }

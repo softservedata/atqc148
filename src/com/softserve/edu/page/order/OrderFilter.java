@@ -53,6 +53,11 @@ public class OrderFilter {
 	public List<String> readValuesForField(String field) {
 		List<String> result = new ArrayList<String>();
 		fieldSelect.selectByVisibleText(field);
+
+		// need to apply coz theres bug with role
+		apply();
+		refreshFilterSelectors();
+
 		Iterator<WebElement> iter = criterionSelect.getOptions().iterator();
 		while (iter.hasNext()) {
 			result.add(iter.next().getText());

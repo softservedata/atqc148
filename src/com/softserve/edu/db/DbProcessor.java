@@ -10,6 +10,7 @@ import com.softserve.edu.dao.order.Order;
 import com.softserve.edu.dao.order.OrderDaoImpl;
 import com.softserve.edu.dao.order.OrderFromUI;
 import com.softserve.edu.dao.orderstatus.OrderStatusDaoImpl;
+import com.softserve.edu.dao.user.User;
 import com.softserve.edu.dao.user.UserDao;
 import com.softserve.edu.dao.user.UserDaoImpl;
 import com.softserve.edu.dao.userroles.UserRoleDaoImpl;
@@ -25,7 +26,7 @@ public class DbProcessor {
 		return new DbProcessor(connectionSource);
 	}
 
-	public List<OrderFromUI> getOrdersFromDbBy(String filed, int fieldValue)
+	public List<OrderFromUI> getOrdersFromDbByStatus(String filed, int fieldValue)
 			throws Exception {
 		OrderDaoImpl orderProc = new OrderDaoImpl(this.connectionSource);
 		UserDaoImpl userDao = new UserDaoImpl(this.connectionSource);
@@ -55,6 +56,56 @@ public class DbProcessor {
 		}
 		return Order.toOrdersFromUI(orderList);
 	}
+	
+	
+	
+	
+	
+	public List<OrderFromUI> getOrdersFromDbByRole(String filed, int fieldValue)
+			throws Exception {
+		OrderDaoImpl orderProc = new OrderDaoImpl(this.connectionSource);
+		UserDaoImpl userDao = new UserDaoImpl(this.connectionSource);
+		OrderStatusDaoImpl orderStatusDao = new OrderStatusDaoImpl(
+				this.connectionSource);
+		UserRoleDaoImpl roleDao = new UserRoleDaoImpl(this.connectionSource);
+		
+		
+		List<Order> orderList = null;
+		
+		
+		try {
+			
+			QueryBuilder<User, Integer> userQb = userDao.queryBuilder();
+			userQb.where().eq(filed, fieldValue);
+
+			
+			QueryBuilder<Order, Integer> orderQb = orderProc
+					.queryBuilder();
+			orderQb.join(userQb);
+			
+			PreparedQuery<Order> preparedQuery = orderQb.prepare();
+			
+			orderList = orderProc.query(preparedQuery);
+
+			for (Order order : orderList) {
+				userDao.refresh(order.getAssigne());
+				roleDao.refresh(order.getAssigne().getRole());
+				orderStatusDao.refresh(order.getOrderStatusRef());
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			orderProc.close();
+			userDao.close();
+			orderStatusDao.close();
+			roleDao.close();
+		}
+		return Order.toOrdersFromUI(orderList);
+	}
+	
+	
+	
+	
 
 	public List<Order> getDataFromDB() throws Exception {
 		// TODO: handle exceptions

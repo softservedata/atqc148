@@ -2,7 +2,6 @@ package com.softserve.edu.page.order;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -50,13 +49,16 @@ public class OrderTable {
 	}
 
 	public List<OrderFromUI> getAllOrdersFromTable() {
-		OrderPage.navigateToOrderPage(driver);
+//		OrderPage.navigateToOrderPage(driver);
 		WebElement ordersTable = getOrdersTable();
 		List<OrderFromUI> orders = new ArrayList<OrderFromUI>();
 
 		// 1.get orders from table page
 		if (orders.size() == 0) {
 			List<OrderFromUI> ordersFromTable = getOrdersFromTablePage(ordersTable);
+			if (ordersFromTable.size() == 0) {
+				return orders;
+			}
 			for (OrderFromUI order : ordersFromTable) {
 				orders.add(order);
 			}
@@ -66,7 +68,7 @@ public class OrderTable {
 		// 2.compare
 		// TODO refactor hard code here
 		// TODO problem here. if orders count in ui isn't odd, on last 2 pages
-		// theres order duplicate *(look comment below)
+		// there's order duplicate *(look comment below)
 		while (!orders.get(
 				orders.size() - getOrdersFromTablePage(ordersTable).size())
 				.equals(getOrdersFromTablePage(ordersTable).get(0))) {
@@ -149,6 +151,10 @@ public class OrderTable {
 		// 1. compare sizes
 		if (fromDB.size() != fromUI.size()) {
 			return false;
+			
+//			2. if they are empty then they are equal
+		} else if (fromDB.size() == 0 && fromUI.size() == 0) {
+			return true;
 		}
 		// 2.if sizes are equal, compare each by each
 		int equalOrdersNumber = 0;

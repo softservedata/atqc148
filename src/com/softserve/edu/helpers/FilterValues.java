@@ -2,8 +2,9 @@ package com.softserve.edu.helpers;
 
 public enum FilterValues {
 
-	Status ("Status", "OrderStatusRef");
-
+	Status ("Status", "OrderStatusRef"),
+	Role("Role", "RoleRef");
+	
     private final String name;
     private final String dbName;
 

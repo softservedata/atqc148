@@ -1,6 +1,7 @@
 package com.softserve.edu.page.order;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -21,8 +22,22 @@ public class OrderTable {
 		return new OrderTable(driver);
 	}
 
+	public int getTableSize() {
+		OrderPage.navigateToOrderPage(driver);
+		List<OrderFromUI> ordersFromTable = getOrdersFromTablePage(getOrdersTable());
+		int size = ordersFromTable.size();
+		OrderNavigation.setDriver(driver).navigateToNextPage();
+		while (!ordersFromTable.get(0).equals(
+				getOrdersFromTablePage(getOrdersTable()).get(0))) {
+			size += 2;
+			ordersFromTable = getOrdersFromTablePage(getOrdersTable());
+			OrderNavigation.setDriver(driver).navigateToNextPage();
+		}
+		return size;
+	}
+
 	public List<OrderFromUI> getAllOrdersFromTable() {
-		OrderPage.getOrderPage(driver);
+		OrderPage.navigateToOrderPage(driver);
 		List<OrderFromUI> orders = new ArrayList<OrderFromUI>();
 
 		// 1.get orders from table page
@@ -31,7 +46,7 @@ public class OrderTable {
 			for (OrderFromUI order : ordersFromTable) {
 				orders.add(order);
 			}
-			OrderNavigation.setDriver(driver).nextPage();
+			OrderNavigation.setDriver(driver).navigateToNextPage();
 		}
 		// 2.compare
 		// TODO refactor hard code here
@@ -43,7 +58,7 @@ public class OrderTable {
 			for (OrderFromUI ord : ordersFromTable) {
 				orders.add(ord);
 			}
-			OrderNavigation.setDriver(driver).nextPage();
+			OrderNavigation.setDriver(driver).navigateToNextPage();
 		}
 		return orders;
 	}
@@ -53,26 +68,24 @@ public class OrderTable {
 	}
 
 	public List<OrderFromUI> getOrdersFromTablePage(WebElement table) {
-		List<OrderFromUI> orderList = new ArrayList<OrderFromUI>();
-		List<WebElement> rowWebElements = new ArrayList<WebElement>();
-		rowWebElements = table.findElements(By.tagName("tr"));
-		List<List<String>> rows = new ArrayList<List<String>>();
+		List<OrderFromUI> orderList = new LinkedList<OrderFromUI>();
+		List<WebElement> rowWebElements = table.findElements(By.tagName("tr"));
+		List<List<String>> rows = new LinkedList<List<String>>();
 		for (WebElement row : rowWebElements) {
 			List<String> rowCells = getDataFromRow(row);
 			if (!rowCells.isEmpty())
 				rows.add(rowCells);
 		}
 		for (List<String> cellsStr : rows) {
-			orderList.add(new OrderFromUI(cellsStr.get(0), Double
-					.parseDouble(cellsStr.get(1)), Integer.parseInt(cellsStr
-					.get(2)), cellsStr.get(3), cellsStr.get(4),
-					cellsStr.get(5), cellsStr.get(6)));
+			orderList.add(new OrderFromUI(cellsStr.get(0), cellsStr.get(1),
+					cellsStr.get(2), cellsStr.get(3), cellsStr.get(4), cellsStr
+							.get(5), cellsStr.get(6)));
 		}
 		return orderList;
 	}
 
 	public static List<String> getDataFromRow(WebElement row) {
-		List<String> rowString = new ArrayList<String>();
+		List<String> rowString = new LinkedList<String>();
 		List<WebElement> cells = row.findElements(By.tagName("td"));
 		for (WebElement cell : cells) {
 			rowString.add(cell.getText());
@@ -81,7 +94,7 @@ public class OrderTable {
 	}
 
 	public OrderFromUI getOrderByNumber(int num) {
-		OrderPage.getOrderPage(driver);
+		OrderPage.navigateToOrderPage(driver);
 		WebElement table = getOrdersTable();
 		WebElement row = null;
 		int pageNum = 1;
@@ -93,16 +106,15 @@ public class OrderTable {
 				row = rows.get(num / pageNum);
 				elementFound = true;
 			} else {
-				OrderNavigation.setDriver(driver).nextPage();
+				OrderNavigation.setDriver(driver).navigateToNextPage();
 				table = getOrdersTable();
 				pageNum++;
 				rowsSize *= pageNum;
 			}
 		}
 		List<String> rowStr = getDataFromRow(row);
-		OrderFromUI ord = new OrderFromUI(rowStr.get(0),
-				Double.parseDouble(rowStr.get(1)), Integer.parseInt(rowStr
-						.get(2)), rowStr.get(3), rowStr.get(4), rowStr.get(5),
+		OrderFromUI ord = new OrderFromUI(rowStr.get(0), rowStr.get(1),
+				rowStr.get(2), rowStr.get(3), rowStr.get(4), rowStr.get(5),
 				rowStr.get(6));
 		ord.print();
 		return ord;

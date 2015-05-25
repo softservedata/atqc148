@@ -1,10 +1,13 @@
 package com.softserve.edu.dao.order;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class OrderFromUI {
 
 	private String orderName;
-	private double totalPrice;
-	private int maxDiscount;
+	private String totalPrice;
+	private String maxDiscount;
 	private String deliveryDate;
 	private String status;
 	private String assigne;
@@ -14,8 +17,12 @@ public class OrderFromUI {
 
 	}
 
+	public static OrderFromUI applyFilterByStatus() {
+		return new OrderFromUI();
+	}
+
 	// effective java book constructors with multiple parameters
-	public OrderFromUI(String orderName, double totalPrice, int maxDiscount,
+	public OrderFromUI(String orderName, String totalPrice, String maxDiscount,
 			String deliveryDate, String status, String assigne, String role) {
 		this.orderName = orderName;
 		this.totalPrice = totalPrice;
@@ -25,6 +32,17 @@ public class OrderFromUI {
 		this.status = status;
 		this.assigne = assigne;
 		this.role = role;
+	}
+
+	public List<OrderFromUI> filterByStatus(List<OrderFromUI> list,
+			String filter) {
+		List<OrderFromUI> filteredOrders = new LinkedList<OrderFromUI>();
+		for (OrderFromUI o : list) {
+			if (o.status == filter) {
+				filteredOrders.add(o);
+			}
+		}
+		return filteredOrders;
 	}
 
 	public void print() {
@@ -45,8 +63,8 @@ public class OrderFromUI {
 			return false;
 		OrderFromUI ord = (OrderFromUI) o;
 		boolean name = ord.orderName.equals(orderName);
-		boolean price = ord.totalPrice == totalPrice;
-		boolean discount = ord.maxDiscount == maxDiscount;
+		boolean price = ord.totalPrice.equals(totalPrice);
+		boolean discount = ord.maxDiscount.equals(maxDiscount);
 		boolean date = deliveryDate.equals(deliveryDate);
 		boolean stat = status.equals(status);
 		boolean assign = ord.assigne.equals(assigne);

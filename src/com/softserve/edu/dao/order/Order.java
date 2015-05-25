@@ -140,8 +140,9 @@ public class Order {
 	}
 
 	public OrderFromUI toOrderFromUI() {
-		return new OrderFromUI(getOrderName(), this.totalPrice,
-				this.maxDiscount, dateToString(),
+		return new OrderFromUI(getOrderName(),
+				Double.toString(this.totalPrice),
+				Integer.toString(this.maxDiscount), dateToString(),
 				this.orderStatusRef.getOrderStatusName(),
 				this.assigne.getLogin(), this.assigne.getRole().getRoleName());
 	}

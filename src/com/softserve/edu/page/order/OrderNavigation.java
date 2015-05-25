@@ -2,63 +2,63 @@ package com.softserve.edu.page.order;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class OrderNavigation {
 	private WebDriver driver;
+	private WebElement nextBtn;
+	private WebElement prevBtn;
+	private WebElement firstBtn;
+	private WebElement lastBtn;
 
 	private OrderNavigation(WebDriver driver) {
 		this.driver = driver;
+		nextBtn = driver.findElement(By.name("nextPage"));
+		prevBtn = driver.findElement(By.name("previousPage"));
+		firstBtn = driver.findElement(By.name("firstPage"));
+		lastBtn = driver.findElement(By.name("lastPage"));
+	}
+
+	public void refreshReferences() {
+		nextBtn = driver.findElement(By.name("nextPage"));
+		prevBtn = driver.findElement(By.name("previousPage"));
+		firstBtn = driver.findElement(By.name("firstPage"));
+		lastBtn = driver.findElement(By.name("lastPage"));
 	}
 
 	public static OrderNavigation setDriver(WebDriver driver) {
 		return new OrderNavigation(driver);
 	}
 
-	public void nextPage() {
-		driver.get("http://localhost:8080/OMS/orderNextPage.htm");
-		if (driver.getPageSource().contains("HTTP Status 404")) {
-			driver.navigate().back();
-			driver.findElement(By.name("nextPage")).click();
-		}
+	public void navigateToNextPage() {
+		nextBtn.click();
 	}
 
-	public void prevPage() {
-		driver.get("http://localhost:8080/OMS/orderPreviousPage.htm");
-		if (driver.getPageSource().contains("HTTP Status 404")) {
-			driver.navigate().back();
-			driver.findElement(By.name("previoustPage")).click();
-		}
+	public void navigateToPrevPage() {
+		prevBtn.click();
 	}
 
-	public void firstPage() {
-		driver.get("http://localhost:8080/OMS/orderFirstPage.htm");
-		if (driver.getPageSource().contains("HTTP Status 404")) {
-			driver.navigate().back();
-			driver.findElement(By.name("firstPage")).click();
-		}
+	public void navigateToFirstPage() {
+		firstBtn.click();
 	}
 
-	public void lastPage() {
-		driver.get("http://localhost:8080/OMS/orderLastPage.htm");
-		if (driver.getPageSource().contains("HTTP Status 404")) {
-			driver.navigate().back();
-			driver.findElement(By.name("lastPage")).click();
-		}
+	public void navigateToLastPage() {
+		lastBtn.click();
 	}
 
 	public boolean isNextBtnDisabled() {
-		return !driver.findElement(By.name("nextPage")).isEnabled();
+		return !nextBtn.isEnabled();
 	}
 
 	public boolean isPrevBtnDisabled() {
-		return !driver.findElement(By.name("previousPage")).isEnabled();
+		return !prevBtn.isEnabled();
 	}
 
 	public boolean isFirstBtnDisabled() {
-		return !driver.findElement(By.name("firstPage")).isEnabled();
+		return !firstBtn.isEnabled();
 	}
 
 	public boolean isLastBtnDisabled() {
-		return !driver.findElement(By.name("lastPage")).isEnabled();
+		return !lastBtn.isEnabled();
 	}
 }

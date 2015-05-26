@@ -31,7 +31,7 @@ public class LoginPage {
 						.getText());
 	}
 
-	public void logIn(User user) {
+	public void logIn(UserEnum user) {
 		driver.get("http://localhost:8080/OMS/");
 		driver.findElement(By.name("j_username")).clear();
 		driver.findElement(By.name("j_username")).sendKeys(user.getLogin());

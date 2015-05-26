@@ -2,11 +2,16 @@ package com.softserve.edu.page.order;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang3.time.StopWatch;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.softserve.edu.dao.order.OrderFromUI;
 
@@ -49,7 +54,7 @@ public class OrderTable {
 	}
 
 	public List<OrderFromUI> getAllOrdersFromTable() {
-//		OrderPage.navigateToOrderPage(driver);
+		// OrderPage.navigateToOrderPage(driver);
 		WebElement ordersTable = getOrdersTable();
 		List<OrderFromUI> orders = new ArrayList<OrderFromUI>();
 
@@ -69,11 +74,12 @@ public class OrderTable {
 		// TODO refactor hard code here
 		// TODO problem here. if orders count in ui isn't odd, on last 2 pages
 		// there's order duplicate *(look comment below)
-		while (!orders.get(
-				orders.size() - getOrdersFromTablePage(ordersTable).size())
-				.equals(getOrdersFromTablePage(ordersTable).get(0))) {
-			List<OrderFromUI> ordersFromTable = getOrdersFromTablePage(ordersTable);
-			Iterator<OrderFromUI> iter = ordersFromTable.iterator();
+		List<OrderFromUI> ordersUi = getOrdersFromTablePage(ordersTable);
+		while (!orders.get(orders.size() - ordersUi.size()).equals(
+				ordersUi.get(0))) {
+			// List<OrderFromUI> ordersFromTable =
+			// getOrdersFromTablePage(ordersTable);
+			Iterator<OrderFromUI> iter = ordersUi.iterator();
 			while (iter.hasNext()) {
 				OrderFromUI order = iter.next();
 				// added check for duplicates
@@ -83,6 +89,7 @@ public class OrderTable {
 			}
 			OrderNavigation.setDriver(driver).navigateToNextPage();
 			ordersTable = getOrdersTable();
+			ordersUi = getOrdersFromTablePage(ordersTable);
 		}
 
 		return orders;
@@ -110,7 +117,11 @@ public class OrderTable {
 	}
 
 	public static List<String> getDataFromRow(WebElement row) {
-		List<String> rowString = new ArrayList<String>();
+
+		List<String> rowString = new LinkedList<String>();
+		// try to make driver explicitly wait
+		// cos it runs slow implisitly waits amount of seconds from
+		// driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		List<WebElement> cells = row.findElements(By.tagName("td"));
 		for (WebElement cell : cells) {
 			rowString.add(cell.getText());
@@ -145,29 +156,29 @@ public class OrderTable {
 		return ord;
 	}
 
-	public boolean isListEqual(List<OrderFromUI> fromDB,
-			List<OrderFromUI> fromUI) {
+	public boolean listsEqual(List<OrderFromUI> listOne,
+			List<OrderFromUI> listTwo) {
 
 		// 1. compare sizes
-		if (fromDB.size() != fromUI.size()) {
+		if (listOne.size() != listTwo.size()) {
 			return false;
-			
-//			2. if they are empty then they are equal
-		} else if (fromDB.size() == 0 && fromUI.size() == 0) {
+
+			// 2. if they are empty then they are equal
+		} else if (listOne.size() == 0 && listTwo.size() == 0) {
 			return true;
 		}
 		// 2.if sizes are equal, compare each by each
-		int equalOrdersNumber = 0;
-		for (OrderFromUI orderFromUI : fromUI) {
-			for (OrderFromUI orderFromDB : fromDB) {
-				if (orderFromDB.equals(orderFromUI)) {
-					equalOrdersNumber++;
+		int equalFieldsNumber = 0;
+		for (OrderFromUI elementFromFirst : listOne) {
+			for (OrderFromUI elementFromSecond : listTwo) {
+				if (elementFromFirst.equals(elementFromSecond)) {
+					equalFieldsNumber++;
 				}
 			}
 		}
-		System.out.println("Number of equal orders: " + equalOrdersNumber);
+		System.out.println("Number of equal orders: " + equalFieldsNumber);
 		// if all orders are equal, result will be true
-		return (equalOrdersNumber == fromDB.size());
+		return (equalFieldsNumber == listOne.size());
 	}
 
 }

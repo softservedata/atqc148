@@ -7,9 +7,12 @@
         <methods>
           <include name="logIn"/>
           <include name="tearDown"/>
-          <include name="filterByRoleTest"/>
+          <include name="checkIfNextButtonIsDisabled"/>
+          <include name="checkIfFirstButtonIsDisabled"/>
           <include name="logOut"/>
+          <include name="checkIfPreviousButtonIsDisabled"/>
           <include name="setUp"/>
+          <include name="checkIfLastButtonIsDisabled"/>
         </methods>
       </class> <!-- com.softserve.edu.tests.OrdersPageTest -->
     </classes>

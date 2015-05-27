@@ -7,16 +7,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.j256.ormlite.support.ConnectionSource;
@@ -29,7 +25,7 @@ import com.softserve.edu.helpers.FilterValues;
 import com.softserve.edu.helpers.OrderStatuses;
 import com.softserve.edu.helpers.UserRoles;
 import com.softserve.edu.page.login.LoginPage;
-import com.softserve.edu.page.login.UserEnum;
+import com.softserve.edu.page.login.Users;
 import com.softserve.edu.page.order.OrderFilter;
 import com.softserve.edu.page.order.OrderNavigation;
 import com.softserve.edu.page.order.OrderPage;
@@ -47,11 +43,11 @@ public class OrdersPageTest {
 
 	@BeforeMethod(groups = { "testGroup" })
 	public void logIn() {
-		LoginPage.setDriver(driver).logIn(UserEnum.CUSTOMER);
+		LoginPage.setDriver(driver).getLoginFields().logIn(Users.getCustomerUser());
 		OrderPage.navigateToOrderPage(driver);
 	}
 
-	 @Test(groups = { "testGroup" })
+	@Test(groups = { "testGroup" })
 	public void filterByStatusTest() throws Exception {
 		OrderTable orderTable = OrderTable.setDriver(driver);
 		OrderFilter filter = OrderFilter.setDriver(driver);
@@ -74,7 +70,7 @@ public class OrdersPageTest {
 		}
 	}
 
-	 @Test(groups = { "testGroup" })
+	@Test(groups = { "testGroup" })
 	public void filterByRoleTest() throws Exception {
 		OrderTable orderTable = OrderTable.setDriver(driver);
 		OrderFilter filter = OrderFilter.setDriver(driver);
@@ -98,17 +94,17 @@ public class OrdersPageTest {
 		}
 	}
 
-	 @Test(priority = 2, groups = { "testGroup" })
+	@Test(priority = 2, groups = { "testGroup" })
 	public void checkIfFirstButtonIsDisabled() {
 		assertTrue(OrderNavigation.setDriver(driver).isFirstBtnDisabled());
 	}
 
-	 @Test(priority = 2, groups = { "testGroup" })
+	@Test(priority = 2, groups = { "testGroup" })
 	public void checkIfPreviousButtonIsDisabled() {
 		assertTrue(OrderNavigation.setDriver(driver).isPrevBtnDisabled());
 	}
 
-	 @Test(priority = 2, groups = { "testGroup" })
+	@Test(priority = 2, groups = { "testGroup" })
 	public void checkIfNextButtonIsDisabled() {
 		OrderNavigation navigation = OrderNavigation.setDriver(driver);
 		navigation.navigateToLastPage();
@@ -116,7 +112,7 @@ public class OrdersPageTest {
 		assertTrue(navigation.isNextBtnDisabled());
 	}
 
-	 @Test(priority = 2, groups = { "testGroup" })
+	@Test(priority = 2, groups = { "testGroup" })
 	public void checkIfLastButtonIsDisabled() {
 		OrderNavigation navigation = OrderNavigation.setDriver(driver);
 		navigation.navigateToLastPage();
@@ -124,79 +120,143 @@ public class OrdersPageTest {
 		assertTrue(navigation.isLastBtnDisabled());
 	}
 
-	 @Test(priority = 2, groups = { "testGroup" })
+	@Test(priority = 2, groups = { "testGroup" })
 	public void checkFirstButton() {
+		// hardcoding test data
+		List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
+		// testDataList.add(new OrderFromUI("", "31.0", "0", "", "Created",
+		// "login2", "Merchandiser"));
+		// testDataList.add(new OrderFromUI("", "9.0", "0",
+		// "2015-05-21 00:00:00.0", "Pending", "login2", "Merchandiser"));
+		testDataList.add(OrderFromUI.get().setOrderName("")
+				.setTotalPrice("31.0").setMaxDiscount("0").setDeliveryDate("")
+				.setStatus("Created").setAssigne("login2")
+				.setRole("Merchandiser").build());
+
+		testDataList.add(OrderFromUI.get().setOrderName("")
+				.setTotalPrice("9.0").setMaxDiscount("0")
+				.setDeliveryDate("2015-05-21 00:00:00.0").setStatus("Pending")
+				.setAssigne("login2").setRole("Merchandiser").build());
+
 		OrderTable orderTable = OrderTable.setDriver(driver);
 		OrderNavigation navigation = OrderNavigation.setDriver(driver);
 		navigation.navigateToNextPage();
 		navigation.refreshReferences();
 		navigation.navigateToFirstPage();
 		navigation.refreshReferences();
-		List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
-		testDataList.add(new OrderFromUI("", "31.0", "0", "", "Created", "login2",
-				"Merchandiser"));
-		testDataList.add(new OrderFromUI("", "9.0", "0", "2015-05-21 00:00:00.0",
-				"Pending", "login2", "Merchandiser"));
-		List<OrderFromUI> ordersList = orderTable.getOrdersFromTablePage(orderTable
-				.getOrdersTable());
+		List<OrderFromUI> ordersList = orderTable
+				.getOrdersFromTablePage(orderTable.getOrdersTable());
 		assertTrue(orderTable.listsEqual(testDataList, ordersList));
 	}
 
-	 @Test(priority = 2, groups = { "testGroup" })
-	public void checkNextButton() {
-		OrderTable orderTable = OrderTable.setDriver(driver);
-		OrderNavigation navigation = OrderNavigation.setDriver(driver);
-		navigation.navigateToFirstPage();
-		navigation.refreshReferences();
-		navigation.navigateToNextPage();
-		navigation.refreshReferences();
-		List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
-		testDataList.add(new OrderFromUI("", "47.0", "0", "", "Ordered", "login2",
-				"Merchandiser"));
-		testDataList.add(new OrderFromUI("", "220.0", "0", "", "Ordered", "login2",
-				"Merchandiser"));
-		List<OrderFromUI> ordersList = orderTable.getOrdersFromTablePage(orderTable
-				.getOrdersTable());
-		assertTrue(orderTable.listsEqual(testDataList, ordersList));
-	}
-
-	 @Test(priority = 2, groups = { "testGroup" })
-	public void checkLastButton() {
-		OrderTable orderTable = OrderTable.setDriver(driver);
-		OrderNavigation navigation = OrderNavigation.setDriver(driver);
-		navigation.navigateToLastPage();
-		navigation.refreshReferences();
-		List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
-		// OrderName2 120.0 12 2012-12-02 00:00:00.0 Ordered marko Administrator
-		testDataList.add(new OrderFromUI("OrderName2", "120.0", "12",
-				"2012-12-02 00:00:00.0", "Ordered", "marko", "Administrator"));
-		// OrderName4 0.0 14 2012-12-02 00:00:00.0 Created vitalik Administrator
-		testDataList.add(new OrderFromUI("OrderName4", "0.0", "14",
-				"2012-12-02 00:00:00.0", "Created", "vitalik", "Administrator"));
-		List<OrderFromUI> ordersList = orderTable.getOrdersFromTablePage(orderTable
-				.getOrdersTable());
-		assertTrue(orderTable.listsEqual(testDataList, ordersList));
-	}
-
-	 @Test(priority = 2, groups = { "testGroup" })
+	@Test(priority = 2, groups = { "testGroup" })
 	public void checkPreviousButton() {
+		// hardcoding test data
+		List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
+		// OrderName5 0.0 15 2012-12-02 00:00:00.0 Delivered myroslav
+		// Administrator
+//		testDataList.add(new OrderFromUI("OrderName5", "0.0", "15",
+//				"2012-12-02 00:00:00.0", "Delivered", "myroslav",
+//				"Administrator"));
+
+		testDataList.add(OrderFromUI.get().setOrderName("OrderName5")
+				.setTotalPrice("0.0").setMaxDiscount("15")
+				.setDeliveryDate("2012-12-02 00:00:00.0")
+				.setStatus("Delivered").setAssigne("myroslav")
+				.setRole("Administrator"));
+
+		// OrderName3 0.0 13 2012-12-02 00:00:00.0 Pending romanS Administrator
+//		testDataList.add(new OrderFromUI("OrderName3", "0.0", "13",
+//				"2012-12-02 00:00:00.0", "Pending", "romanS", "Administrator"));
+		
+		testDataList.add(OrderFromUI.get().setOrderName("OrderName3")
+				.setTotalPrice("0.0").setMaxDiscount("13")
+				.setDeliveryDate("2012-12-02 00:00:00.0")
+				.setStatus("Pending").setAssigne("romanS")
+				.setRole("Administrator"));
+
 		OrderTable orderTable = OrderTable.setDriver(driver);
 		OrderNavigation navigation = OrderNavigation.setDriver(driver);
 		navigation.navigateToLastPage();
 		navigation.refreshReferences();
 		navigation.navigateToPrevPage();
 		navigation.refreshReferences();
+		List<OrderFromUI> ordersList = orderTable
+				.getOrdersFromTablePage(orderTable.getOrdersTable());
+		assertTrue(orderTable.listsEqual(testDataList, ordersList));
+	}
+
+	@Test(priority = 2, groups = { "testGroup" })
+	public void checkNextButton() {
+		// hardcoding test data
 		List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
-		// OrderName5 0.0 15 2012-12-02 00:00:00.0 Delivered myroslav
-		// Administrator
-		testDataList.add(new OrderFromUI("OrderName5", "0.0", "15",
-				"2012-12-02 00:00:00.0", "Delivered", "myroslav",
-				"Administrator"));
-		// OrderName3 0.0 13 2012-12-02 00:00:00.0 Pending romanS Administrator
-		testDataList.add(new OrderFromUI("OrderName3", "0.0", "13",
-				"2012-12-02 00:00:00.0", "Pending", "romanS", "Administrator"));
-		List<OrderFromUI> ordersList = orderTable.getOrdersFromTablePage(orderTable
-				.getOrdersTable());
+		
+//		testDataList.add(new OrderFromUI("", "47.0", "0", "", "Ordered",
+//				"login2", "Merchandiser"));
+		
+		testDataList.add(OrderFromUI.get().setOrderName("")
+				.setTotalPrice("47.0").setMaxDiscount("0")
+				.setDeliveryDate("")
+				.setStatus("Ordered").setAssigne("login2")
+				.setRole("Merchandiser"));
+		
+//		testDataList.add(new OrderFromUI("", "220.0", "0", "", "Ordered",
+//				"login2", "Merchandiser"));
+		
+		testDataList.add(OrderFromUI.get().setOrderName("")
+				.setTotalPrice("220.0").setMaxDiscount("0")
+				.setDeliveryDate("")
+				.setStatus("Ordered").setAssigne("login2")
+				.setRole("Merchandiser"));
+		
+		
+
+		OrderTable orderTable = OrderTable.setDriver(driver);
+		OrderNavigation navigation = OrderNavigation.setDriver(driver);
+		navigation.navigateToFirstPage();
+		navigation.refreshReferences();
+		navigation.navigateToNextPage();
+		navigation.refreshReferences();
+		List<OrderFromUI> ordersList = orderTable
+				.getOrdersFromTablePage(orderTable.getOrdersTable());
+		assertTrue(orderTable.listsEqual(testDataList, ordersList));
+	}
+
+	@Test(priority = 2, groups = { "testGroup" })
+	public void checkLastButton() {
+		// hardcoding test data
+		List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
+		// OrderName2 120.0 12 2012-12-02 00:00:00.0 Ordered marko Administrator
+//		testDataList.add(new OrderFromUI("OrderName2", "120.0", "12",
+//				"2012-12-02 00:00:00.0", "Ordered", "marko", "Administrator"));
+		
+		testDataList.add(OrderFromUI.get().setOrderName("OrderName2")
+				.setTotalPrice("120.0").setMaxDiscount("12")
+				.setDeliveryDate("2012-12-02 00:00:00.0")
+				.setStatus("Ordered").setAssigne("marko")
+				.setRole("Administrator"));
+		
+		
+		
+		// OrderName4 0.0 14 2012-12-02 00:00:00.0 Created vitalik Administrator
+		// testDataList
+		// .add(new OrderFromUI("OrderName4", "0.0", "14",
+		// "2012-12-02 00:00:00.0", "Created", "vitalik",
+		// "Administrator"));
+
+		testDataList.add(OrderFromUI.get().setOrderName("OrderName4")
+				.setTotalPrice("0.0").setMaxDiscount("14")
+				.setDeliveryDate("2012-12-02 00:00:00.0")
+				.setStatus("Created").setAssigne("vitalik")
+				.setRole("Administrator"));
+		
+		
+		OrderTable orderTable = OrderTable.setDriver(driver);
+		OrderNavigation navigation = OrderNavigation.setDriver(driver);
+		navigation.navigateToLastPage();
+		navigation.refreshReferences();
+		List<OrderFromUI> ordersList = orderTable
+				.getOrdersFromTablePage(orderTable.getOrdersTable());
 		assertTrue(orderTable.listsEqual(testDataList, ordersList));
 	}
 

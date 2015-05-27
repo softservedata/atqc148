@@ -4,26 +4,50 @@ import static org.junit.Assert.assertEquals;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class LoginPage {
 
 	private WebDriver driver;
+	private WebElement loginFld;
+	private WebElement passwordFld;
+	private WebElement submitBtn;
 
 	private LoginPage(WebDriver driver) {
 		this.driver = driver;
+		driver.get("http://localhost:8080/OMS/");
+	}
+	
+	public LoginPage getLoginFields(){
+		loginFld = driver.findElement(By.name("j_username"));
+		passwordFld = driver.findElement(By.name("j_password"));
+		submitBtn = driver.findElement(By.name("submit"));
+		return this;
 	}
 
 	public static LoginPage setDriver(WebDriver driver) {
 		return new LoginPage(driver);
 	}
 
+	public WebElement getLoginFld() {
+		return loginFld;
+	}
+
+	public WebElement getPasswordFld() {
+		return passwordFld;
+	}
+
+	public WebElement getSubmitBtn() {
+		return submitBtn;
+	}
+
 	public void logIn(String login, String password, String role) {
-		driver.get("http://localhost:8080/OMS/");
-		driver.findElement(By.name("j_username")).clear();
-		driver.findElement(By.name("j_username")).sendKeys(login);
-		driver.findElement(By.name("j_password")).clear();
-		driver.findElement(By.name("j_password")).sendKeys(password);
-		driver.findElement(By.name("submit")).click();
+
+		loginFld.clear();
+		loginFld.sendKeys(login);
+		passwordFld.clear();
+		passwordFld.sendKeys(password);
+		submitBtn.click();
 		assertEquals(
 				role,
 				driver.findElement(
@@ -31,13 +55,12 @@ public class LoginPage {
 						.getText());
 	}
 
-	public void logIn(UserEnum user) {
-		driver.get("http://localhost:8080/OMS/");
-		driver.findElement(By.name("j_username")).clear();
-		driver.findElement(By.name("j_username")).sendKeys(user.getLogin());
-		driver.findElement(By.name("j_password")).clear();
-		driver.findElement(By.name("j_password")).sendKeys(user.getPassword());
-		driver.findElement(By.name("submit")).click();
+	public void logIn(IUser user) {
+		loginFld.clear();
+		loginFld.sendKeys(user.getLogin());
+		passwordFld.clear();
+		passwordFld.sendKeys(user.getPassword());
+		submitBtn.click();
 		assertEquals(
 				user.getRole(),
 				driver.findElement(
@@ -45,12 +68,10 @@ public class LoginPage {
 						.getText());
 	}
 
+//	made it static coz 
 	public void logOut() {
-		driver.get("http://localhost:8080/OMS/logout.htm");
-		if (driver.getPageSource().contains("HTTP Status 404")) {
-			driver.navigate().back();
-			driver.findElement(By.cssSelector("img[alt=\"logout\"]")).click();
-		}
+		WebElement logout = driver.findElement(By.xpath("//a[@href='/OMS/logout.htm']"));
+		logout.click();
 	}
 
 }

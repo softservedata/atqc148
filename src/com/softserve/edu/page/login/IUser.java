@@ -13,5 +13,7 @@ public interface IUser {
 	String getPassword();
 
 	String getRole();
+	
+	String getEmail();
 
 }

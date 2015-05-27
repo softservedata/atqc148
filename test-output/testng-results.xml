@@ -2,88 +2,88 @@
 <testng-results skipped="0" failed="4" total="11" passed="7">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="143809" started-at="2015-05-26T14:29:14Z" finished-at="2015-05-26T14:31:38Z">
+  <suite name="Default suite" duration-ms="144262" started-at="2015-05-27T16:02:19Z" finished-at="2015-05-27T16:04:44Z">
     <groups>
       <group name="testGroup">
-        <method signature="OrdersPageTest.checkFirstButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkFirstButton" class="com.softserve.edu.tests.OrdersPageTest"/>
-        <method signature="OrdersPageTest.checkIfFirstButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkIfFirstButtonIsDisabled" class="com.softserve.edu.tests.OrdersPageTest"/>
-        <method signature="OrdersPageTest.checkIfLastButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkIfLastButtonIsDisabled" class="com.softserve.edu.tests.OrdersPageTest"/>
-        <method signature="OrdersPageTest.checkIfNextButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkIfNextButtonIsDisabled" class="com.softserve.edu.tests.OrdersPageTest"/>
-        <method signature="OrdersPageTest.checkIfPreviousButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkIfPreviousButtonIsDisabled" class="com.softserve.edu.tests.OrdersPageTest"/>
-        <method signature="OrdersPageTest.checkLastButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkLastButton" class="com.softserve.edu.tests.OrdersPageTest"/>
-        <method signature="OrdersPageTest.checkNextButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkNextButton" class="com.softserve.edu.tests.OrdersPageTest"/>
-        <method signature="OrdersPageTest.checkPreviousButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkPreviousButton" class="com.softserve.edu.tests.OrdersPageTest"/>
-        <method signature="OrdersPageTest.filterByRoleTest()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="filterByRoleTest" class="com.softserve.edu.tests.OrdersPageTest"/>
-        <method signature="OrdersPageTest.filterByStatusTest()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="filterByStatusTest" class="com.softserve.edu.tests.OrdersPageTest"/>
-        <method signature="OrdersPageTest.testTableData()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="testTableData" class="com.softserve.edu.tests.OrdersPageTest"/>
+        <method signature="OrdersPageTest.checkFirstButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkFirstButton" class="com.softserve.edu.tests.OrdersPageTest"/>
+        <method signature="OrdersPageTest.checkIfFirstButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkIfFirstButtonIsDisabled" class="com.softserve.edu.tests.OrdersPageTest"/>
+        <method signature="OrdersPageTest.checkIfLastButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkIfLastButtonIsDisabled" class="com.softserve.edu.tests.OrdersPageTest"/>
+        <method signature="OrdersPageTest.checkIfNextButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkIfNextButtonIsDisabled" class="com.softserve.edu.tests.OrdersPageTest"/>
+        <method signature="OrdersPageTest.checkIfPreviousButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkIfPreviousButtonIsDisabled" class="com.softserve.edu.tests.OrdersPageTest"/>
+        <method signature="OrdersPageTest.checkLastButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkLastButton" class="com.softserve.edu.tests.OrdersPageTest"/>
+        <method signature="OrdersPageTest.checkNextButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkNextButton" class="com.softserve.edu.tests.OrdersPageTest"/>
+        <method signature="OrdersPageTest.checkPreviousButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkPreviousButton" class="com.softserve.edu.tests.OrdersPageTest"/>
+        <method signature="OrdersPageTest.filterByRoleTest()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="filterByRoleTest" class="com.softserve.edu.tests.OrdersPageTest"/>
+        <method signature="OrdersPageTest.filterByStatusTest()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="filterByStatusTest" class="com.softserve.edu.tests.OrdersPageTest"/>
+        <method signature="OrdersPageTest.testTableData()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="testTableData" class="com.softserve.edu.tests.OrdersPageTest"/>
       </group> <!-- testGroup -->
     </groups>
-    <test name="Default test" duration-ms="143809" started-at="2015-05-26T14:29:14Z" finished-at="2015-05-26T14:31:38Z">
+    <test name="Default test" duration-ms="144262" started-at="2015-05-27T16:02:19Z" finished-at="2015-05-27T16:04:44Z">
       <class name="com.softserve.edu.tests.OrdersPageTest">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="setUp" is-config="true" duration-ms="3491" started-at="2015-05-26T17:29:11Z" finished-at="2015-05-26T17:29:14Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="setUp" is-config="true" duration-ms="3583" started-at="2015-05-27T19:02:16Z" finished-at="2015-05-27T19:02:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logIn" is-config="true" duration-ms="1531" started-at="2015-05-26T17:29:14Z" finished-at="2015-05-26T17:29:16Z">
+        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logIn" is-config="true" duration-ms="1460" started-at="2015-05-27T19:02:19Z" finished-at="2015-05-27T19:02:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logIn -->
-        <test-method status="PASS" signature="filterByRoleTest()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="filterByRoleTest" duration-ms="37244" started-at="2015-05-26T17:29:16Z" finished-at="2015-05-26T17:29:53Z">
+        <test-method status="PASS" signature="filterByRoleTest()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="filterByRoleTest" duration-ms="37265" started-at="2015-05-27T19:02:21Z" finished-at="2015-05-27T19:02:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- filterByRoleTest -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logOut" is-config="true" duration-ms="223" started-at="2015-05-26T17:29:53Z" finished-at="2015-05-26T17:29:53Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logOut" is-config="true" duration-ms="374" started-at="2015-05-27T19:02:58Z" finished-at="2015-05-27T19:02:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logIn" is-config="true" duration-ms="1300" started-at="2015-05-26T17:29:53Z" finished-at="2015-05-26T17:29:55Z">
+        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logIn" is-config="true" duration-ms="1340" started-at="2015-05-27T19:02:59Z" finished-at="2015-05-27T19:03:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logIn -->
-        <test-method status="PASS" signature="filterByStatusTest()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="filterByStatusTest" duration-ms="42856" started-at="2015-05-26T17:29:55Z" finished-at="2015-05-26T17:30:38Z">
+        <test-method status="PASS" signature="filterByStatusTest()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="filterByStatusTest" duration-ms="42778" started-at="2015-05-27T19:03:00Z" finished-at="2015-05-27T19:03:43Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- filterByStatusTest -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logOut" is-config="true" duration-ms="203" started-at="2015-05-26T17:30:38Z" finished-at="2015-05-26T17:30:38Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logOut" is-config="true" duration-ms="406" started-at="2015-05-27T19:03:43Z" finished-at="2015-05-27T19:03:43Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logIn" is-config="true" duration-ms="1374" started-at="2015-05-26T17:30:38Z" finished-at="2015-05-26T17:30:39Z">
+        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logIn" is-config="true" duration-ms="1299" started-at="2015-05-27T19:03:43Z" finished-at="2015-05-27T19:03:44Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logIn -->
-        <test-method status="PASS" signature="testTableData()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="testTableData" duration-ms="24625" started-at="2015-05-26T17:30:39Z" finished-at="2015-05-26T17:31:04Z">
+        <test-method status="PASS" signature="testTableData()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="testTableData" duration-ms="24826" started-at="2015-05-27T19:03:44Z" finished-at="2015-05-27T19:04:09Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testTableData -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logOut" is-config="true" duration-ms="199" started-at="2015-05-26T17:31:04Z" finished-at="2015-05-26T17:31:04Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logOut" is-config="true" duration-ms="327" started-at="2015-05-27T19:04:09Z" finished-at="2015-05-27T19:04:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logIn" is-config="true" duration-ms="1576" started-at="2015-05-26T17:31:04Z" finished-at="2015-05-26T17:31:05Z">
+        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logIn" is-config="true" duration-ms="1365" started-at="2015-05-27T19:04:10Z" finished-at="2015-05-27T19:04:11Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logIn -->
-        <test-method status="PASS" signature="checkFirstButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkFirstButton" duration-ms="4481" started-at="2015-05-26T17:31:05Z" finished-at="2015-05-26T17:31:10Z">
+        <test-method status="PASS" signature="checkFirstButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkFirstButton" duration-ms="4403" started-at="2015-05-27T19:04:11Z" finished-at="2015-05-27T19:04:15Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkFirstButton -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logOut" is-config="true" duration-ms="236" started-at="2015-05-26T17:31:10Z" finished-at="2015-05-26T17:31:10Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logOut" is-config="true" duration-ms="430" started-at="2015-05-27T19:04:15Z" finished-at="2015-05-27T19:04:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logIn" is-config="true" duration-ms="1691" started-at="2015-05-26T17:31:10Z" finished-at="2015-05-26T17:31:12Z">
+        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logIn" is-config="true" duration-ms="1294" started-at="2015-05-27T19:04:16Z" finished-at="2015-05-27T19:04:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logIn -->
-        <test-method status="FAIL" signature="checkIfFirstButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkIfFirstButtonIsDisabled" duration-ms="503" started-at="2015-05-26T17:31:12Z" finished-at="2015-05-26T17:31:12Z">
+        <test-method status="FAIL" signature="checkIfFirstButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkIfFirstButtonIsDisabled" duration-ms="368" started-at="2015-05-27T19:04:17Z" finished-at="2015-05-27T19:04:17Z">
           <exception class="java.lang.AssertionError">
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError
 	at org.junit.Assert.fail(Assert.java:92)
 	at org.junit.Assert.assertTrue(Assert.java:43)
 	at org.junit.Assert.assertTrue(Assert.java:54)
-	at com.softserve.edu.tests.OrdersPageTest.checkIfFirstButtonIsDisabled(OrdersPageTest.java:103)
+	at com.softserve.edu.tests.OrdersPageTest.checkIfFirstButtonIsDisabled(OrdersPageTest.java:99)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -114,22 +114,22 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkIfFirstButtonIsDisabled -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logOut" is-config="true" duration-ms="311" started-at="2015-05-26T17:31:12Z" finished-at="2015-05-26T17:31:13Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logOut" is-config="true" duration-ms="446" started-at="2015-05-27T19:04:17Z" finished-at="2015-05-27T19:04:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logIn" is-config="true" duration-ms="1578" started-at="2015-05-26T17:31:13Z" finished-at="2015-05-26T17:31:14Z">
+        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logIn" is-config="true" duration-ms="1430" started-at="2015-05-27T19:04:18Z" finished-at="2015-05-27T19:04:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logIn -->
-        <test-method status="FAIL" signature="checkIfLastButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkIfLastButtonIsDisabled" duration-ms="833" started-at="2015-05-26T17:31:14Z" finished-at="2015-05-26T17:31:15Z">
+        <test-method status="FAIL" signature="checkIfLastButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkIfLastButtonIsDisabled" duration-ms="775" started-at="2015-05-27T19:04:19Z" finished-at="2015-05-27T19:04:20Z">
           <exception class="java.lang.AssertionError">
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError
 	at org.junit.Assert.fail(Assert.java:92)
 	at org.junit.Assert.assertTrue(Assert.java:43)
 	at org.junit.Assert.assertTrue(Assert.java:54)
-	at com.softserve.edu.tests.OrdersPageTest.checkIfLastButtonIsDisabled(OrdersPageTest.java:124)
+	at com.softserve.edu.tests.OrdersPageTest.checkIfLastButtonIsDisabled(OrdersPageTest.java:120)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -160,22 +160,22 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkIfLastButtonIsDisabled -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logOut" is-config="true" duration-ms="239" started-at="2015-05-26T17:31:15Z" finished-at="2015-05-26T17:31:15Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logOut" is-config="true" duration-ms="446" started-at="2015-05-27T19:04:20Z" finished-at="2015-05-27T19:04:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logIn" is-config="true" duration-ms="1445" started-at="2015-05-26T17:31:15Z" finished-at="2015-05-26T17:31:17Z">
+        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logIn" is-config="true" duration-ms="1280" started-at="2015-05-27T19:04:21Z" finished-at="2015-05-27T19:04:22Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logIn -->
-        <test-method status="FAIL" signature="checkIfNextButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkIfNextButtonIsDisabled" duration-ms="915" started-at="2015-05-26T17:31:17Z" finished-at="2015-05-26T17:31:18Z">
+        <test-method status="FAIL" signature="checkIfNextButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkIfNextButtonIsDisabled" duration-ms="865" started-at="2015-05-27T19:04:22Z" finished-at="2015-05-27T19:04:23Z">
           <exception class="java.lang.AssertionError">
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError
 	at org.junit.Assert.fail(Assert.java:92)
 	at org.junit.Assert.assertTrue(Assert.java:43)
 	at org.junit.Assert.assertTrue(Assert.java:54)
-	at com.softserve.edu.tests.OrdersPageTest.checkIfNextButtonIsDisabled(OrdersPageTest.java:116)
+	at com.softserve.edu.tests.OrdersPageTest.checkIfNextButtonIsDisabled(OrdersPageTest.java:112)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -206,22 +206,22 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkIfNextButtonIsDisabled -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logOut" is-config="true" duration-ms="230" started-at="2015-05-26T17:31:18Z" finished-at="2015-05-26T17:31:18Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logOut" is-config="true" duration-ms="401" started-at="2015-05-27T19:04:23Z" finished-at="2015-05-27T19:04:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logIn" is-config="true" duration-ms="1580" started-at="2015-05-26T17:31:18Z" finished-at="2015-05-26T17:31:20Z">
+        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logIn" is-config="true" duration-ms="1539" started-at="2015-05-27T19:04:23Z" finished-at="2015-05-27T19:04:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logIn -->
-        <test-method status="FAIL" signature="checkIfPreviousButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkIfPreviousButtonIsDisabled" duration-ms="324" started-at="2015-05-26T17:31:20Z" finished-at="2015-05-26T17:31:20Z">
+        <test-method status="FAIL" signature="checkIfPreviousButtonIsDisabled()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkIfPreviousButtonIsDisabled" duration-ms="359" started-at="2015-05-27T19:04:25Z" finished-at="2015-05-27T19:04:25Z">
           <exception class="java.lang.AssertionError">
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError
 	at org.junit.Assert.fail(Assert.java:92)
 	at org.junit.Assert.assertTrue(Assert.java:43)
 	at org.junit.Assert.assertTrue(Assert.java:54)
-	at com.softserve.edu.tests.OrdersPageTest.checkIfPreviousButtonIsDisabled(OrdersPageTest.java:108)
+	at com.softserve.edu.tests.OrdersPageTest.checkIfPreviousButtonIsDisabled(OrdersPageTest.java:104)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -252,47 +252,47 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkIfPreviousButtonIsDisabled -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logOut" is-config="true" duration-ms="291" started-at="2015-05-26T17:31:20Z" finished-at="2015-05-26T17:31:20Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logOut" is-config="true" duration-ms="480" started-at="2015-05-27T19:04:25Z" finished-at="2015-05-27T19:04:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logIn" is-config="true" duration-ms="1693" started-at="2015-05-26T17:31:20Z" finished-at="2015-05-26T17:31:22Z">
+        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logIn" is-config="true" duration-ms="1442" started-at="2015-05-27T19:04:25Z" finished-at="2015-05-27T19:04:27Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logIn -->
-        <test-method status="PASS" signature="checkLastButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkLastButton" duration-ms="3955" started-at="2015-05-26T17:31:22Z" finished-at="2015-05-26T17:31:26Z">
+        <test-method status="PASS" signature="checkLastButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkLastButton" duration-ms="3941" started-at="2015-05-27T19:04:27Z" finished-at="2015-05-27T19:04:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkLastButton -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logOut" is-config="true" duration-ms="210" started-at="2015-05-26T17:31:26Z" finished-at="2015-05-26T17:31:26Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logOut" is-config="true" duration-ms="421" started-at="2015-05-27T19:04:31Z" finished-at="2015-05-27T19:04:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logIn" is-config="true" duration-ms="1365" started-at="2015-05-26T17:31:26Z" finished-at="2015-05-26T17:31:27Z">
+        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logIn" is-config="true" duration-ms="1321" started-at="2015-05-27T19:04:31Z" finished-at="2015-05-27T19:04:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logIn -->
-        <test-method status="PASS" signature="checkNextButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkNextButton" duration-ms="4388" started-at="2015-05-26T17:31:27Z" finished-at="2015-05-26T17:31:32Z">
+        <test-method status="PASS" signature="checkNextButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkNextButton" duration-ms="4461" started-at="2015-05-27T19:04:33Z" finished-at="2015-05-27T19:04:37Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkNextButton -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logOut" is-config="true" duration-ms="228" started-at="2015-05-26T17:31:32Z" finished-at="2015-05-26T17:31:32Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logOut" is-config="true" duration-ms="361" started-at="2015-05-27T19:04:37Z" finished-at="2015-05-27T19:04:37Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logIn" is-config="true" duration-ms="1442" started-at="2015-05-26T17:31:32Z" finished-at="2015-05-26T17:31:33Z">
+        <test-method status="PASS" signature="logIn()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logIn" is-config="true" duration-ms="1412" started-at="2015-05-27T19:04:37Z" finished-at="2015-05-27T19:04:39Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logIn -->
-        <test-method status="PASS" signature="checkPreviousButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="checkPreviousButton" duration-ms="4508" started-at="2015-05-26T17:31:33Z" finished-at="2015-05-26T17:31:38Z">
+        <test-method status="PASS" signature="checkPreviousButton()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="checkPreviousButton" duration-ms="4499" started-at="2015-05-27T19:04:39Z" finished-at="2015-05-27T19:04:43Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkPreviousButton -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="logOut" is-config="true" duration-ms="207" started-at="2015-05-26T17:31:38Z" finished-at="2015-05-26T17:31:38Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="logOut" is-config="true" duration-ms="423" started-at="2015-05-27T19:04:43Z" finished-at="2015-05-27T19:04:44Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@4a05c759]" name="tearDown" is-config="true" duration-ms="83" started-at="2015-05-26T17:31:39Z" finished-at="2015-05-26T17:31:39Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.softserve.edu.tests.OrdersPageTest@28d47c65]" name="tearDown" is-config="true" duration-ms="75" started-at="2015-05-27T19:04:44Z" finished-at="2015-05-27T19:04:44Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

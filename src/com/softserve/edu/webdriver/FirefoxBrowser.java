@@ -8,7 +8,7 @@ public class FirefoxBrowser implements IBrowser {
 	WebDriver driver;
 
 	@Override
-	public WebDriver getDriver() {
+	public WebDriver getWebDriver() {
 		return new FirefoxDriver();
 	}
 

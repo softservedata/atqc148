@@ -13,12 +13,7 @@ public class OrderFromUI {
 	private String assigne;
 	private String role;
 
-	OrderFromUI() {
-
-	}
-
-	public static OrderFromUI applyFilterByStatus() {
-		return new OrderFromUI();
+	private OrderFromUI() {
 	}
 
 	// effective java book constructors with multiple parameters
@@ -32,6 +27,50 @@ public class OrderFromUI {
 		this.status = status;
 		this.assigne = assigne;
 		this.role = role;
+	}
+
+	public static OrderFromUI get(){
+		return new OrderFromUI();
+	}
+	
+	
+	public OrderFromUI setOrderName(String val) {
+		this.orderName = val;
+		return this;
+	}
+	
+	public OrderFromUI setTotalPrice(String val) {
+		this.totalPrice = val;
+		return this;
+	}
+
+	public OrderFromUI setMaxDiscount(String val) {
+		this.maxDiscount = val;
+		return this;
+	}
+
+	public OrderFromUI setDeliveryDate(String val) {
+		this.deliveryDate = val;
+		return this;
+	}
+	
+	public OrderFromUI setStatus(String val) {
+		this.status = val;
+		return this;
+	}
+	
+	public OrderFromUI setAssigne(String val) {
+		this.assigne = val;
+		return this;
+	}
+
+	public OrderFromUI setRole(String val) {
+		this.role = val;
+		return this;
+	}
+
+	public OrderFromUI build() {
+		return this;
 	}
 
 	public List<OrderFromUI> filterByStatus(List<OrderFromUI> list,
@@ -71,4 +110,33 @@ public class OrderFromUI {
 		boolean rol = ord.role.equals(role);
 		return name && price && discount && date && stat && assign && rol;
 	}
+
+	public String getOrderName() {
+		return orderName;
+	}
+
+	public String getTotalPrice() {
+		return totalPrice;
+	}
+
+	public String getMaxDiscount() {
+		return maxDiscount;
+	}
+
+	public String getDeliveryDate() {
+		return deliveryDate;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public String getAssigne() {
+		return assigne;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
 }

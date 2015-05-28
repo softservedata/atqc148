@@ -9,23 +9,29 @@ import com.softserve.edu.db.DbProcessor;
 
 public class DbHelper {
 
-	public static List<OrderFromUI> readOrdersByField(FilterValues filter,
-			OrderStatuses status) throws Exception {
-		ConnectionSource connection = DbConnector.getConnection();
-		List<OrderFromUI> odrderList = DbProcessor.setConnection(connection)
-				.getOrdersFromDbByStatus(filter.getDbName(), status.getId());
-		return odrderList;
-	}
-	
-	
-	public static List<OrderFromUI> readOrdersByField(FilterValues filter,
-			UserRoles role) throws Exception {
-		ConnectionSource connection = DbConnector.getConnection();
-		List<OrderFromUI> odrderList = DbProcessor.setConnection(connection)
-				.getOrdersFromDbByRole(filter.getDbName(), role.getId());
-		return odrderList;
-	}
-	
-	
-	
+    public static List<OrderFromUI> readOrdersByField(FilterValues filter,
+                                                      OrderStatuses status) throws Exception {
+        ConnectionSource connection = DbConnector.getConnection();
+        List<OrderFromUI> odrderList = DbProcessor.setConnection(connection)
+                .getOrdersFromDbByStatus(filter.getDbName(), status.getId());
+        return odrderList;
+    }
+
+
+    public static List<OrderFromUI> readOrdersByField(FilterValues filter,
+                                                      UserRoles role) throws Exception {
+        ConnectionSource connection = DbConnector.getConnection();
+        List<OrderFromUI> odrderList = DbProcessor.setConnection(connection)
+                .getOrdersFromDbByRole(filter.getDbName(), role.getId());
+        return odrderList;
+    }
+
+    public static List<OrderFromUI> readOrdersByOrderName(String orderName) throws Exception {
+        ConnectionSource connection = DbConnector.getConnection();
+        List<OrderFromUI> odrderList = DbProcessor.setConnection(connection)
+                .getOrdersFromDbByOrderName(orderName);
+        return odrderList;
+    }
+
+
 }

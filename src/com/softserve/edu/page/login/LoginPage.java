@@ -1,10 +1,11 @@
 package com.softserve.edu.page.login;
 
-import static org.junit.Assert.assertEquals;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
 
 public class LoginPage {
 

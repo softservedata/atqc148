@@ -15,6 +15,7 @@ import com.softserve.edu.webdriver.WebDriverUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.*;
 
@@ -38,7 +39,7 @@ public class OrdersPageTest {
         OrderPage.navigateToOrderPage(driver);
     }
 
-        @Test(groups = {"testGroup"})
+    @Test(groups = {"testGroup"})
     public void filterByStatusTest() throws Exception {
         OrderTable orderTable = OrderTable.setDriver(driver);
         OrderFilter filter = OrderFilter.setDriver(driver);
@@ -62,7 +63,7 @@ public class OrdersPageTest {
         }
     }
 
-        @Test(groups = {"testGroup"})
+    @Test(groups = {"testGroup"})
     public void filterByRoleTest() throws Exception {
         OrderTable orderTable = OrderTable.setDriver(driver);
         OrderFilter filter = OrderFilter.setDriver(driver);
@@ -87,7 +88,7 @@ public class OrdersPageTest {
     }
 
 
-        @Test(groups = {"testGroup"})
+    @Test(groups = {"testGroup"})
     public void filterByNoneTest() throws Exception {
         OrderTable orderTable = OrderTable.setDriver(driver);
         OrderFilter filter = OrderFilter.setDriver(driver);
@@ -138,21 +139,21 @@ public class OrdersPageTest {
         List<OrderFromUI> ordersDB = DbHelper.readOrdersByOrderName(testData);
         List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
 //        need two checks here: empty table and equal with db table.
-        Assert.assertTrue(ordersUI.size()==0);
+        Assert.assertTrue(ordersUI.size() == 0);
         Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
     }
 
-        @Test(priority = 2, groups = {"testGroup"})
+    @Test(priority = 2, groups = {"testGroup"})
     public void checkIfFirstButtonIsDisabled() {
         Assert.assertTrue(OrderNavigation.setDriver(driver).isFirstBtnDisabled());
     }
 
-        @Test(priority = 2, groups = {"testGroup"})
+    @Test(priority = 2, groups = {"testGroup"})
     public void checkIfPreviousButtonIsDisabled() {
         Assert.assertTrue(OrderNavigation.setDriver(driver).isPrevBtnDisabled());
     }
 
-        @Test(priority = 2, groups = {"testGroup"})
+    @Test(priority = 2, groups = {"testGroup"})
     public void checkIfNextButtonIsDisabled() {
         OrderNavigation navigation = OrderNavigation.setDriver(driver);
         navigation.navigateToLastPage();
@@ -160,16 +161,15 @@ public class OrdersPageTest {
         Assert.assertTrue(navigation.isNextBtnDisabled());
     }
 
-        @Test(priority = 2, groups = {"testGroup"})
+    @Test(priority = 2, groups = {"testGroup"})
     public void checkIfLastButtonIsDisabled() {
         OrderNavigation navigation = OrderNavigation.setDriver(driver);
         navigation.navigateToLastPage();
         navigation.refreshReferences();
-//            ScreenShot.takeScreenshot("checkIfLastButtonIsDisabled");
         Assert.assertTrue(navigation.isLastBtnDisabled());
     }
 
-        @Test(priority = 2, groups = {"testGroup"})
+    @Test(priority = 2, groups = {"testGroup"})
     public void checkFirstButton() {
         // hardcoding test data
         List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
@@ -198,7 +198,7 @@ public class OrdersPageTest {
         Assert.assertTrue(orderTable.listsEqual(testDataList, ordersList));
     }
 
-        @Test(priority = 2, groups = {"testGroup"})
+    @Test(priority = 2, groups = {"testGroup"})
     public void checkPreviousButton() {
         // hardcoding test data
         List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
@@ -235,7 +235,7 @@ public class OrdersPageTest {
         Assert.assertTrue(orderTable.listsEqual(testDataList, ordersList));
     }
 
-        @Test(priority = 2, groups = {"testGroup"})
+    @Test(priority = 2, groups = {"testGroup"})
     public void checkNextButton() {
         // hardcoding test data
         List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
@@ -270,7 +270,7 @@ public class OrdersPageTest {
         Assert.assertTrue(orderTable.listsEqual(testDataList, ordersList));
     }
 
-        @Test(priority = 2, groups = {"testGroup"})
+    @Test(priority = 2, groups = {"testGroup"})
     public void checkLastButton() {
         // hardcoding test data
         List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
@@ -307,7 +307,7 @@ public class OrdersPageTest {
         Assert.assertTrue(orderTable.listsEqual(testDataList, ordersList));
     }
 
-        @Test(priority = 1, enabled = true, groups = {"testGroup"})
+    @Test(priority = 1, enabled = true, groups = {"testGroup"})
     // test runs slow coz of implicitlyWait(2, TimeUnit.SECONDS);
     // look comment in getDataFromRow() method
     public void testTableData() throws Exception {
@@ -321,7 +321,10 @@ public class OrdersPageTest {
     }
 
     @AfterMethod(groups = {"testGroup"})
-    public void logOut() {
+    public void logOut(ITestResult testResult) {
+        if (testResult.getStatus() == ITestResult.FAILURE) {
+            ScreenShot.takeScreenshot(testResult.getName());
+        }
         LoginPage.setDriver(driver).logOut();
     }
 

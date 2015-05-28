@@ -1,5 +1,6 @@
 package com.softserve.edu.page.order;
 
+import com.softserve.edu.helpers.Report;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,18 +32,22 @@ public class OrderNavigation {
 	}
 
 	public void navigateToNextPage() {
+		Report.log("Click on '"+nextBtn.getAttribute("value")+"'");
 		nextBtn.click();
 	}
 
 	public void navigateToPrevPage() {
+		Report.log("Click on '"+prevBtn.getAttribute("value")+"'");
 		prevBtn.click();
 	}
 
 	public void navigateToFirstPage() {
+		Report.log("Click on '"+firstBtn.getAttribute("value")+"'");
 		firstBtn.click();
 	}
 
 	public void navigateToLastPage() {
+		Report.log("Click on '"+lastBtn.getAttribute("value")+"'");
 		lastBtn.click();
 	}
 

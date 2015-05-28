@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import com.softserve.edu.helpers.Report;
 import org.apache.commons.lang3.time.StopWatch;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -54,6 +55,7 @@ public class OrderTable {
 	}
 
 	public List<OrderFromUI> getAllOrdersFromTable() {
+		Report.log("Getting all orders from table.");
 		// OrderPage.navigateToOrderPage(driver);
 		WebElement ordersTable = getOrdersTable();
 		List<OrderFromUI> orders = new ArrayList<OrderFromUI>();
@@ -71,8 +73,6 @@ public class OrderTable {
 			ordersTable = getOrdersTable();
 		}
 		// 2.compare
-		// TODO refactor hard code here
-		// TODO problem here. if orders count in ui isn't odd, on last 2 pages
 		// there's order duplicate *(look comment below)
 		List<OrderFromUI> ordersUi = getOrdersFromTablePage(ordersTable);
 		while (!orders.get(orders.size() - ordersUi.size()).equals(
@@ -158,7 +158,7 @@ public class OrderTable {
 
 	public boolean listsEqual(List<OrderFromUI> listOne,
 			List<OrderFromUI> listTwo) {
-
+		Report.log("Checking lists equality.");
 		// 1. compare sizes
 		if (listOne.size() != listTwo.size()) {
 			return false;
@@ -176,7 +176,7 @@ public class OrderTable {
 				}
 			}
 		}
-		System.out.println("Number of equal orders: " + equalFieldsNumber);
+		Report.log("Number of equal orders: " + equalFieldsNumber);
 		// if all orders are equal, result will be true
 		return (equalFieldsNumber == listOne.size());
 	}

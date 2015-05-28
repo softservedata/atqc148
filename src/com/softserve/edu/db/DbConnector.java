@@ -11,7 +11,6 @@ public abstract class DbConnector {
 	private static final String password = "32x2c";
 
 	public static ConnectionSource getConnection() throws SQLException {
-		System.out.println("Opening the connection.");
 		connectionSource = new JdbcConnectionSource(url);
 		connectionSource.setUsername(username);
 		connectionSource.setPassword(password);

@@ -6,18 +6,19 @@ import com.softserve.edu.dao.order.Order;
 import com.softserve.edu.dao.order.OrderFromUI;
 import com.softserve.edu.db.DbConnector;
 import com.softserve.edu.db.DbProcessor;
-import com.softserve.edu.helpers.DbHelper;
-import com.softserve.edu.helpers.FilterValues;
-import com.softserve.edu.helpers.OrderStatuses;
-import com.softserve.edu.helpers.UserRoles;
+import com.softserve.edu.helpers.*;
 import com.softserve.edu.page.login.LoginPage;
 import com.softserve.edu.page.login.Users;
 import com.softserve.edu.page.order.*;
+import com.softserve.edu.webdriver.BrowserRepository;
+import com.softserve.edu.webdriver.WebDriverUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.*;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -28,9 +29,7 @@ public class OrdersPageTest {
 
     @BeforeSuite
     public void setUp() throws Exception {
-        driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+        driver = WebDriverUtils.get(BrowserRepository.getFirefoxTemporary()).getWebDriver();
     }
 
     @BeforeMethod(groups = {"testGroup"})
@@ -48,6 +47,7 @@ public class OrdersPageTest {
         OrderStatuses statusValue;
 
         Iterator<String> iter = filterValues.iterator();
+//            skip 1st filter because its "None"
         iter.next();
         while (iter.hasNext()) {
             String crit = iter.next();
@@ -123,8 +123,6 @@ public class OrdersPageTest {
         search.apply();
         List<OrderFromUI> ordersDB = DbHelper.readOrdersByOrderName(testData);
         List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
-        System.out.println(ordersDB.size());
-        System.out.println(ordersUI.size());
         Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
     }
 
@@ -139,8 +137,6 @@ public class OrdersPageTest {
         search.apply();
         List<OrderFromUI> ordersDB = DbHelper.readOrdersByOrderName(testData);
         List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
-        System.out.println(ordersDB.size());
-        System.out.println(ordersUI.size());
 //        need two checks here: empty table and equal with db table.
         Assert.assertTrue(ordersUI.size()==0);
         Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
@@ -169,6 +165,7 @@ public class OrdersPageTest {
         OrderNavigation navigation = OrderNavigation.setDriver(driver);
         navigation.navigateToLastPage();
         navigation.refreshReferences();
+//            ScreenShot.takeScreenshot("checkIfLastButtonIsDisabled");
         Assert.assertTrue(navigation.isLastBtnDisabled());
     }
 

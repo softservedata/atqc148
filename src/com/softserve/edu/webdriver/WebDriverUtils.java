@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 
+//Double Checked Locking & volatile singleton
 public class WebDriverUtils {
 	private static volatile WebDriverUtils instance = null;
 	private long implicitlyWaitTimeout = 2;

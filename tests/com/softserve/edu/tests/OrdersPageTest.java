@@ -28,7 +28,13 @@ import java.util.concurrent.TimeUnit;
 public class OrdersPageTest {
     private WebDriver driver;
 
-    @BeforeSuite
+
+    @DataProvider
+    public Object[][] getBrowser() {
+        return new Object[][]{{BrowserRepository.getFirefoxTemporary()}, {BrowserRepository.getChromeTemporary()}};
+    }
+
+    @BeforeSuite()
     public void setUp() throws Exception {
         driver = WebDriverUtils.get(BrowserRepository.getFirefoxTemporary()).getWebDriver();
     }
@@ -47,19 +53,18 @@ public class OrdersPageTest {
                 .readValuesForField(FilterValues.Status.getName());
         OrderStatuses statusValue;
 
-        Iterator<String> iter = filterValues.iterator();
-//            skip 1st filter because its "None"
-        iter.next();
-        while (iter.hasNext()) {
-            String crit = iter.next();
-            statusValue = OrderStatuses.valueOf(crit);
-            filter.orderBy(FilterValues.Status.getName(), statusValue.getName());
-            filter.apply();
-            List<OrderFromUI> ordersDB = DbHelper.readOrdersByField(
-                    FilterValues.Status, statusValue);
-            List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
-            // method compares sizes, then compares each by each
-            Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
+
+        for (String crit : filterValues) {
+            if (!crit.equals("None")) {
+                statusValue = OrderStatuses.valueOf(crit);
+                filter.orderBy(FilterValues.Status.getName(), statusValue.getName());
+                filter.apply();
+                List<OrderFromUI> ordersDB = DbHelper.readOrdersByField(
+                        FilterValues.Status, statusValue);
+                List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
+                // method compares sizes, then compares each by each
+                Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
+            }
         }
     }
 
@@ -71,19 +76,16 @@ public class OrdersPageTest {
                 .getName());
         UserRoles roleValue;
 
-        Iterator<String> iter = filterValues.iterator();
-        iter.next();
-        while (iter.hasNext()) {
-            String crit = iter.next();
-            roleValue = UserRoles.valueOf(crit);
-            filter.orderBy(FilterValues.Role.getName(), roleValue.getName());
-            filter.apply();
-            List<OrderFromUI> ordersDB = DbHelper.readOrdersByField(
-                    FilterValues.Role, roleValue);
-            List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
-
-            // method compares sizes, then compares each by each
-            Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
+        for (String crit: filterValues){
+            if (!crit.equals("None")){
+                roleValue = UserRoles.valueOf(crit);
+                filter.orderBy(FilterValues.Role.getName(), roleValue.getName());
+                filter.apply();
+                List<OrderFromUI> ordersDB = DbHelper.readOrdersByField(
+                        FilterValues.Role, roleValue);
+                List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
+                Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
+            }
         }
     }
 
@@ -138,7 +140,6 @@ public class OrdersPageTest {
         search.apply();
         List<OrderFromUI> ordersDB = DbHelper.readOrdersByOrderName(testData);
         List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
-//        need two checks here: empty table and equal with db table.
         Assert.assertTrue(ordersUI.size() == 0);
         Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
     }
@@ -171,12 +172,8 @@ public class OrdersPageTest {
 
     @Test(priority = 2, groups = {"testGroup"})
     public void checkFirstButton() {
-        // hardcoding test data
+        // test data
         List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
-        // testDataList.add(new OrderFromUI("", "31.0", "0", "", "Created",
-        // "login2", "Merchandiser"));
-        // testDataList.add(new OrderFromUI("", "9.0", "0",
-        // "2015-05-21 00:00:00.0", "Pending", "login2", "Merchandiser"));
         testDataList.add(OrderFromUI.get().setOrderName("")
                 .setTotalPrice("31.0").setMaxDiscount("0").setDeliveryDate("")
                 .setStatus("Created").setAssigne("login2")
@@ -200,24 +197,13 @@ public class OrdersPageTest {
 
     @Test(priority = 2, groups = {"testGroup"})
     public void checkPreviousButton() {
-        // hardcoding test data
+        // test data
         List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
-        // OrderName5 0.0 15 2012-12-02 00:00:00.0 Delivered myroslav
-        // Administrator
-//		testDataList.add(new OrderFromUI("OrderName5", "0.0", "15",
-//				"2012-12-02 00:00:00.0", "Delivered", "myroslav",
-//				"Administrator"));
-
         testDataList.add(OrderFromUI.get().setOrderName("OrderName5")
                 .setTotalPrice("0.0").setMaxDiscount("15")
                 .setDeliveryDate("2012-12-02 00:00:00.0")
                 .setStatus("Delivered").setAssigne("myroslav")
                 .setRole("Administrator"));
-
-        // OrderName3 0.0 13 2012-12-02 00:00:00.0 Pending romanS Administrator
-//		testDataList.add(new OrderFromUI("OrderName3", "0.0", "13",
-//				"2012-12-02 00:00:00.0", "Pending", "romanS", "Administrator"));
-
         testDataList.add(OrderFromUI.get().setOrderName("OrderName3")
                 .setTotalPrice("0.0").setMaxDiscount("13")
                 .setDeliveryDate("2012-12-02 00:00:00.0")
@@ -239,25 +225,16 @@ public class OrdersPageTest {
     public void checkNextButton() {
         // hardcoding test data
         List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
-
-//		testDataList.add(new OrderFromUI("", "47.0", "0", "", "Ordered",
-//				"login2", "Merchandiser"));
-
         testDataList.add(OrderFromUI.get().setOrderName("")
                 .setTotalPrice("47.0").setMaxDiscount("0")
                 .setDeliveryDate("")
                 .setStatus("Ordered").setAssigne("login2")
                 .setRole("Merchandiser"));
-
-//		testDataList.add(new OrderFromUI("", "220.0", "0", "", "Ordered",
-//				"login2", "Merchandiser"));
-
         testDataList.add(OrderFromUI.get().setOrderName("")
                 .setTotalPrice("220.0").setMaxDiscount("0")
                 .setDeliveryDate("")
                 .setStatus("Ordered").setAssigne("login2")
                 .setRole("Merchandiser"));
-
 
         OrderTable orderTable = OrderTable.setDriver(driver);
         OrderNavigation navigation = OrderNavigation.setDriver(driver);
@@ -274,29 +251,16 @@ public class OrdersPageTest {
     public void checkLastButton() {
         // hardcoding test data
         List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
-        // OrderName2 120.0 12 2012-12-02 00:00:00.0 Ordered marko Administrator
-//		testDataList.add(new OrderFromUI("OrderName2", "120.0", "12",
-//				"2012-12-02 00:00:00.0", "Ordered", "marko", "Administrator"));
-
         testDataList.add(OrderFromUI.get().setOrderName("OrderName2")
                 .setTotalPrice("120.0").setMaxDiscount("12")
                 .setDeliveryDate("2012-12-02 00:00:00.0")
                 .setStatus("Ordered").setAssigne("marko")
                 .setRole("Administrator"));
-
-
-        // OrderName4 0.0 14 2012-12-02 00:00:00.0 Created vitalik Administrator
-        // testDataList
-        // .add(new OrderFromUI("OrderName4", "0.0", "14",
-        // "2012-12-02 00:00:00.0", "Created", "vitalik",
-        // "Administrator"));
-
         testDataList.add(OrderFromUI.get().setOrderName("OrderName4")
                 .setTotalPrice("0.0").setMaxDiscount("14")
                 .setDeliveryDate("2012-12-02 00:00:00.0")
                 .setStatus("Created").setAssigne("vitalik")
                 .setRole("Administrator"));
-
 
         OrderTable orderTable = OrderTable.setDriver(driver);
         OrderNavigation navigation = OrderNavigation.setDriver(driver);
@@ -323,6 +287,7 @@ public class OrdersPageTest {
     @AfterMethod(groups = {"testGroup"})
     public void logOut(ITestResult testResult) {
         if (testResult.getStatus() == ITestResult.FAILURE) {
+//           add thread.sleep
             ScreenShot.takeScreenshot(testResult.getName());
         }
         LoginPage.setDriver(driver).logOut();

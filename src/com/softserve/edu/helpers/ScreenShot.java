@@ -13,9 +13,12 @@ import java.io.IOException;
  * Created by Xdr on 5/28/15.
  */
 public final class ScreenShot {
+    /**
+     * Takes the screenshot of browser window.
+     * @param name Screenshot name.
+     */
     public static  void takeScreenshot(String name){
         File scrFile = ((TakesScreenshot) WebDriverUtils.get(BrowserRepository.getFirefoxTemporary()).getWebDriver()).getScreenshotAs(OutputType.FILE);
-// Now you can do whatever you need to do with it, for example copy somewhere
         try {
             FileUtils.copyFile(scrFile, new File("test-output/screenshots/"+name+".png"));
         } catch (IOException e) {

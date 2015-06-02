@@ -24,31 +24,45 @@ public class OrderSearch {
         return new OrderSearch(driver);
     }
 
+    /**
+     * Set search criterion to 'Status'
+     */
     public void setCriterionToStatus() {
         for (WebElement criterion : this.searchCriterion.getOptions()) {
             if (criterion.equals("Status")) {
-                Report.log("Click on '"+criterion+"'");
+                Report.log("Click on '" + criterion + "'");
                 criterion.click();
             }
         }
     }
 
+    /**
+     * Set search criterion to 'Order Name'
+     */
     public void setCriterionToOrderName() {
         for (WebElement criterion : this.searchCriterion.getOptions()) {
             if (criterion.equals("Order Name")) {
-                Report.log("Click on '"+criterion+"'");
+                Report.log("Click on '" + criterion + "'");
                 criterion.click();
             }
         }
     }
 
+    /**
+     * Click on 'Apply' button
+     */
     public void apply() {
-        Report.log("Click on '"+applyBtn.getAttribute("value")+"'");
+        Report.log("Click on '" + applyBtn.getAttribute("value") + "'");
         this.applyBtn.click();
     }
 
+    /**
+     * Type specified text to search field
+     *
+     * @param text text to type
+     */
     public void typeTextToSearch(String text) {
-        Report.log("Type '"+text+"' to '"+searchValue.getAttribute("id")+"'");
+        Report.log("Type '" + text + "' to '" + searchValue.getAttribute("id") + "'");
         this.searchValue.sendKeys(text);
     }
 

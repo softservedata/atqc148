@@ -10,6 +10,10 @@ import java.util.Date;
  */
 public final class Report {
 
+    /**
+     * Write testNG log with specified message.
+     * @param message message to log.
+     */
     public static void log(String message) {
         String time = CalendarUtilities.getDateBySpecifiedFormat(CalendarUtilities.getCurrentDate(), "HH:mm:ss.SSS");
         Reporter.log(time + " LOG - " + message, true);
@@ -18,6 +22,12 @@ public final class Report {
 
 
 class CalendarUtilities {
+    /**
+     * Convert date to specified format.
+     * @param currentDate date to convert.
+     * @param pattern pattern like "HH:mm:ss".
+     * @return converted date.
+     */
     static String getDateBySpecifiedFormat(Date currentDate, String pattern) {
         SimpleDateFormat format = new SimpleDateFormat(pattern);
         String date = format.format(currentDate);

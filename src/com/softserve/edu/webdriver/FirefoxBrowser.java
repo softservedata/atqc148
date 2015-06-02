@@ -13,6 +13,11 @@ public class FirefoxBrowser implements IBrowser {
 	}
 
 	@Override
+	public String getWebDriverName() {
+		return "FirefoxBrowser";
+	}
+
+	@Override
 	public void quit() {
 		this.driver.quit();
 	}

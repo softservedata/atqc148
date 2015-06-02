@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.softserve.edu.helpers.Report;
+import com.softserve.edu.page.Tools.ContextVisible;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,46 +18,63 @@ public class OrderFilter {
 
 	private OrderFilter(WebDriver driver) {
 		this.driver = driver;
-		fieldSelect = new Select(driver.findElement(By.id("filterBy")));
-		criterionSelect = new Select(driver.findElement(By.id("filterValue")));
+		getFilterSelectors();
 	}
 
-	public void refreshFilterSelectors() {
-		fieldSelect = new Select(driver.findElement(By.id("filterBy")));
-		criterionSelect = new Select(driver.findElement(By.id("filterValue")));
+	/**
+	 * Finds filter select elements.
+	 */
+	public void getFilterSelectors() {
+		fieldSelect = new Select(ContextVisible.get().getVisibleWebElement(By.id("filterBy")));
+		criterionSelect = new Select(ContextVisible.get().getVisibleWebElement(By.id("filterValue")));
 	}
 
 	public static OrderFilter setDriver(WebDriver driver) {
 		return new OrderFilter(driver);
 	}
 
+	/**
+	 * Finds select elements.
+	 * @return list of select web elements for filters.
+	 */
 	public List<WebElement> getFiltersBy() {
-		Select filterSelect = new Select(driver.findElement(By.id("filterBy")));
-		return filterSelect.getOptions();
+		getFilterSelectors();
+		return fieldSelect.getOptions();
 	}
 
+	/**
+	 * Finds select valuse elements.
+	 * @return list of select web elements for filter values.
+	 */
 	public List<WebElement> getFilterValues() {
-		refreshFilterSelectors();
-		Select filterSelect = new Select(driver.findElement(By
-				.id("filterValue")));
-		return filterSelect.getOptions();
+		getFilterSelectors();
+		return criterionSelect.getOptions();
 	}
 
+	/**
+	 * Select filter.
+	 * @param field filter select (Status or Role)
+	 * @param criterion filter Value (None, Pendidng...)
+	 */
 	public void orderBy(String field, String criterion) {
-		refreshFilterSelectors();
+		getFilterSelectors();
 		fieldSelect.selectByVisibleText(field);// "orderStatus"
 		if (criterion != null)
 			criterionSelect.selectByVisibleText(criterion);
-
 	}
 
+	/**
+	 * Get values for specified filter.
+	 * @param field filter field.
+	 * @return list of String filter values.
+	 */
 	public List<String> readValuesForField(String field) {
 		List<String> result = new ArrayList<String>();
 		fieldSelect.selectByVisibleText(field);
 
 		// need to apply coz theres bug with role
 		apply();
-		refreshFilterSelectors();
+		getFilterSelectors();
 
 		Iterator<WebElement> iter = criterionSelect.getOptions().iterator();
 		while (iter.hasNext()) {
@@ -67,17 +84,34 @@ public class OrderFilter {
 		return result;
 	}
 
+	/**
+	 * Select filter by status.
+	 */
 	public void setFilterByStatus() {
-		getFiltersBy().get(0).click();
+		List<WebElement> filters = getFiltersBy();
+		for (WebElement filter:filters){
+			if(filter.getText().equals("Status")){
+				filter.click();
+			}
+		}
 	}
 
+	/**
+	 * Select filter by role.
+	 */
 	public void setFilterByRole() {
-		getFiltersBy().get(1).click();
+				List<WebElement> filters = getFiltersBy();
+		for (WebElement filter:filters){
+			if(filter.getText().equals("Role")){
+				filter.click();
+			}
+		}
 	}
 
+	/**
+	 * Click on apply button.
+	 */
 	public void apply() {
-		driver.findElement(By.name("Apply")).click();
-		// or
-		// driver.findElement(By.name("Apply")).submit();
+		ContextVisible.get().getVisibleWebElement(By.name("Apply")).click();
 	}
 }

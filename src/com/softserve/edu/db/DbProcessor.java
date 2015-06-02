@@ -18,15 +18,31 @@ import com.softserve.edu.dao.userroles.UserRoleDaoImpl;
 public class DbProcessor {
     private ConnectionSource connectionSource;
 
-    private DbProcessor(ConnectionSource connectionSource) {
+    /**
+     * private constructor
+     * @param connectionSource
+     */
+    private DbProcessor(final ConnectionSource connectionSource) {
         this.connectionSource = connectionSource;
     }
 
+    /**
+     *
+     * @param connectionSource
+     * @return DbProcessor object
+     */
     public static DbProcessor setConnection(ConnectionSource connectionSource) {
         return new DbProcessor(connectionSource);
     }
 
-    public List<OrderFromUI> getOrdersFromDbByStatus(String filed, int fieldValue)
+    /**
+     * Search for orders in database by status.
+     * @param filed columnt in database to search in.
+     * @param fieldValue value for search.
+     * @return list of orders where field == fieldValue converted to OrderFromUI.
+     * @throws Exception
+     */
+    public List<OrderFromUI> getOrdersFromDbByStatus(String field, int fieldValue)
             throws Exception {
         OrderDaoImpl orderProc = new OrderDaoImpl(this.connectionSource);
         UserDaoImpl userDao = new UserDaoImpl(this.connectionSource);
@@ -37,7 +53,7 @@ public class DbProcessor {
         try {
             QueryBuilder<Order, Integer> queryBuilder = orderProc
                     .queryBuilder();
-            queryBuilder.where().eq(filed, fieldValue);
+            queryBuilder.where().eq(field, fieldValue);
             PreparedQuery<Order> preparedQuery = queryBuilder.prepare();
             orderList = orderProc.query(preparedQuery);
 
@@ -57,6 +73,13 @@ public class DbProcessor {
         return Order.toOrdersFromUI(orderList);
     }
 
+    /**
+     * Search for orders in database by role.
+     * @param filed column in database to search in.
+     * @param fieldValue value for search  converted to OrderFromUI.
+     * @return list of orders where field == fieldValue converted to OrderFromUI.
+     * @throws Exception
+     */
     public List<OrderFromUI> getOrdersFromDbByRole(String filed, int fieldValue)
             throws Exception {
         OrderDaoImpl orderProc = new OrderDaoImpl(this.connectionSource);
@@ -91,7 +114,13 @@ public class DbProcessor {
         return Order.toOrdersFromUI(orderList);
     }
 
-
+    /**
+     * Search for orders in database by order name.
+     * @param filed column in database to search in.
+     * @param fieldValue value for search  converted to OrderFromUI.
+     * @return list of orders where field == fieldValue converted to OrderFromUI.
+     * @throws Exception
+     */
     public List<OrderFromUI> getOrdersFromDbByOrderName(String fieldValue)
             throws Exception {
         String dbFieldName = "OrderName";
@@ -124,7 +153,11 @@ public class DbProcessor {
         return Order.toOrdersFromUI(orderList);
     }
 
-
+    /**
+     * Get all orders from orders table in database.
+     * @return list of orders.
+     * @throws Exception
+     */
     public List<Order> getDataFromDB() throws Exception {
         // TODO: handle exceptions
         OrderDaoImpl orderProc = new OrderDaoImpl(this.connectionSource);

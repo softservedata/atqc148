@@ -18,7 +18,11 @@ public class LoginPage {
 		this.driver = driver;
 		driver.get("http://localhost:8080/OMS/");
 	}
-	
+
+	/**
+	 * Finds login,password,submit elements on page.
+	 * @return LoginPage
+	 */
 	public LoginPage getLoginFields(){
 		loginFld = driver.findElement(By.name("j_username"));
 		passwordFld = driver.findElement(By.name("j_password"));
@@ -26,22 +30,45 @@ public class LoginPage {
 		return this;
 	}
 
+	/**
+	 * Set the driver to work with.
+	 * @param driver web browser driver.
+	 * @return
+	 */
 	public static LoginPage setDriver(WebDriver driver) {
 		return new LoginPage(driver);
 	}
 
+	/**
+	 * Login field getter.
+	 * @return login field web element.
+	 */
 	public WebElement getLoginFld() {
 		return loginFld;
 	}
 
+	/**
+	 * Password field getter.
+	 * @return password field web element.
+	 */
 	public WebElement getPasswordFld() {
 		return passwordFld;
 	}
 
+	/**
+	 * Submit button getter.
+	 * @return submit button element.
+	 */
 	public WebElement getSubmitBtn() {
 		return submitBtn;
 	}
 
+	/**
+	 * Log in under specified login password and role. Check if valid user logged.
+	 * @param login login name.
+	 * @param password password.
+	 * @param role user role(Administrator, Customer, Merchandiser, Supervisor).
+	 */
 	public void logIn(String login, String password, String role) {
 
 		loginFld.clear();
@@ -56,6 +83,10 @@ public class LoginPage {
 						.getText());
 	}
 
+	/**
+	 * Login under specified user. Check if valid user is logged.
+	 * @param user user that implements IUser interface.
+	 */
 	public void logIn(IUser user) {
 		loginFld.clear();
 		loginFld.sendKeys(user.getLogin());
@@ -69,7 +100,9 @@ public class LoginPage {
 						.getText());
 	}
 
-//	made it static coz 
+	/**
+	 * Log out from page.
+	 */
 	public void logOut() {
 		WebElement logout = driver.findElement(By.xpath("//a[@href='/OMS/logout.htm']"));
 		logout.click();

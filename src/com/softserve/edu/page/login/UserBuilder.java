@@ -45,6 +45,16 @@ public class UserBuilder implements ILoginName, IFirstName, ILastName, IPassword
 	private UserBuilder() {
 	}
 
+	/**
+	 * Create new user object.
+	 * @param loginName login name.
+	 * @param firstName first name.
+	 * @param lastName last name.
+	 * @param password password.
+	 * @param email email.
+	 * @param region region.
+	 * @param role role.
+	 */
 	private UserBuilder(String loginName, String firstName, String lastName,
 			String password, String email, String region, String role) {
 		this.loginName = loginName;

@@ -5,9 +5,14 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class OrderPage {
 
-	public static void navigateToOrderPage(WebDriver driver) {
-		//driver.get("http://localhost:8080/OMS/order.htm");
-		driver.findElement(By.linkText("Ordering")).click();
-	}
+    /**
+     * Open the order page.
+     *
+     * @param driver browser driver to work with.
+     */
+    public static void navigateToOrderPage(WebDriver driver) {
+        //driver.get("http://localhost:8080/OMS/order.htm");
+        driver.findElement(By.linkText("Ordering")).click();
+    }
 
 }

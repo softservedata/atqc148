@@ -27,6 +27,16 @@ public class WebDriverUtils {
 	}
 
 	public static WebDriverUtils get(IBrowser browser) {
+		if (instance != null) {
+			synchronized (WebDriverUtils.class) {
+				if (instance != null) {
+					if (!instance.browser.getWebDriverName().equals(browser.getWebDriverName())){
+						instance.stop();
+						instance=null;
+					}
+				}
+			}
+		}
 		if (instance == null) {
 			synchronized (WebDriverUtils.class) {
 				if (instance == null) {

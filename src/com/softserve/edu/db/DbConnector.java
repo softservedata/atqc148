@@ -10,6 +10,11 @@ public abstract class DbConnector {
 	private static final String username = "xdr";
 	private static final String password = "32x2c";
 
+	/**
+	 * Returns an connection to database.
+	 * @return ConnectionSource
+	 * @throws SQLException
+	 */
 	public static ConnectionSource getConnection() throws SQLException {
 		connectionSource = new JdbcConnectionSource(url);
 		connectionSource.setUsername(username);
@@ -17,6 +22,10 @@ public abstract class DbConnector {
 		return connectionSource;
 	}
 
+	/**
+	 * Closes connection.
+	 * @throws Exception
+	 */
 	public static void close() throws Exception {
 		System.out.println("Closing the connection.");
 		if (connectionSource != null)

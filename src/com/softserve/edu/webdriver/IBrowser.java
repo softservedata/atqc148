@@ -4,8 +4,11 @@ import org.openqa.selenium.WebDriver;
 
  interface IBrowser {
 
-	public WebDriver getWebDriver();
-	public void quit();
+	 WebDriver getWebDriver();
+
+	 String getWebDriverName();
+
+	 void quit();
 	
 	
 }

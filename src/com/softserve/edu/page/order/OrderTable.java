@@ -4,19 +4,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import com.softserve.edu.helpers.ContextVisible;
 import com.softserve.edu.helpers.Report;
-import com.softserve.edu.webdriver.WebDriverUtils;
-import org.apache.commons.lang3.time.StopWatch;
+import com.softserve.edu.helpers.webdriver.WebDriverUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.softserve.edu.dao.order.OrderFromUI;
+import com.softserve.edu.db.dao.order.OrderFromUI;
 
 public class OrderTable {
 
@@ -125,6 +120,7 @@ public class OrderTable {
         List<OrderFromUI> orderList = new ArrayList<OrderFromUI>();
         List<WebElement> rowWebElements = table.findElements(By.tagName("tr"));
         List<List<String>> rows = new ArrayList<List<String>>();
+
         for (WebElement row : rowWebElements) {
             List<String> rowCells = getDataFromRow(row);
             if (!rowCells.isEmpty())
@@ -145,12 +141,11 @@ public class OrderTable {
      * @return list of row cell values converted to string.
      */
     public static List<String> getDataFromRow(WebElement row) {
-
         List<String> rowString = new LinkedList<String>();
         // try to make driver explicitly wait
         // cos it runs slow implisitly waits amount of seconds from
         // driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        List<WebElement> cells = row.findElements(By.tagName("td"));
+        List<WebElement> cells = row.findElements(By.cssSelector("td"));
         for (WebElement cell : cells) {
             rowString.add(cell.getText());
         }

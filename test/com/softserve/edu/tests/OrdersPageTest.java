@@ -2,16 +2,16 @@ package com.softserve.edu.tests;
 
 
 import com.j256.ormlite.support.ConnectionSource;
-import com.softserve.edu.dao.order.Order;
-import com.softserve.edu.dao.order.OrderFromUI;
-import com.softserve.edu.db.DbConnector;
-import com.softserve.edu.db.DbProcessor;
+import com.softserve.edu.db.dao.order.Order;
+import com.softserve.edu.db.dao.order.OrderFromUI;
+import com.softserve.edu.db.dbhelpers.DbConnector;
+import com.softserve.edu.db.dbhelpers.DbHelpers;
 import com.softserve.edu.helpers.*;
 import com.softserve.edu.page.login.LoginPage;
 import com.softserve.edu.page.login.Users;
 import com.softserve.edu.page.order.*;
-import com.softserve.edu.webdriver.BrowserRepository;
-import com.softserve.edu.webdriver.WebDriverUtils;
+import com.softserve.edu.helpers.webdriver.BrowserRepository;
+import com.softserve.edu.helpers.webdriver.WebDriverUtils;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -32,7 +32,7 @@ public class OrdersPageTest {
 
     @BeforeSuite()
     public void setUp() throws Exception {
-        driver = WebDriverUtils.get(BrowserRepository.getFirefoxTemporary()).getWebDriver();
+        /*driver = */WebDriverUtils.get(BrowserRepository.getFirefoxTemporary()).getWebDriver();
     }
 
     @BeforeMethod(groups = {"testGroup"})
@@ -54,7 +54,7 @@ public class OrdersPageTest {
                 statusValue = OrderStatuses.valueOf(crit);
                 filter.orderBy(FilterValues.Status.getName(), statusValue.getName());
                 filter.apply();
-                List<OrderFromUI> ordersDB = DbHelper.readOrdersByField(
+                List<OrderFromUI> ordersDB = DbHelpers.readOrdersByField(
                         FilterValues.Status, statusValue);
                 List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
                 Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
@@ -74,7 +74,7 @@ public class OrdersPageTest {
                 roleValue = UserRoles.valueOf(crit);
                 filter.orderBy(FilterValues.Role.getName(), roleValue.getName());
                 filter.apply();
-                List<OrderFromUI> ordersDB = DbHelper.readOrdersByField(
+                List<OrderFromUI> ordersDB = DbHelpers.readOrdersByField(
                         FilterValues.Role, roleValue);
                 List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
                 Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
@@ -97,7 +97,7 @@ public class OrdersPageTest {
                 filter.apply();
                 //read all data from db
                 ConnectionSource connection = DbConnector.getConnection();
-                List<Order> ordersFromDB = DbProcessor.setConnection(connection)
+                List<Order> ordersFromDB = DbHelpers.setConnection(connection)
                         .getDataFromDB();
                 List<OrderFromUI> ordersDB = Order.toOrdersFromUI(ordersFromDB);
                 //read data from table (ui)
@@ -117,7 +117,7 @@ public class OrdersPageTest {
         search.setCriterionToOrderName();
         search.typeTextToSearch(testData);
         search.apply();
-        List<OrderFromUI> ordersDB = DbHelper.readOrdersByOrderName(testData);
+        List<OrderFromUI> ordersDB = DbHelpers.readOrdersByOrderName(testData);
         List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
         Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
     }
@@ -131,7 +131,7 @@ public class OrdersPageTest {
         search.setCriterionToOrderName();
         search.typeTextToSearch(testData);
         search.apply();
-        List<OrderFromUI> ordersDB = DbHelper.readOrdersByOrderName(testData);
+        List<OrderFromUI> ordersDB = DbHelpers.readOrdersByOrderName(testData);
         List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
         Assert.assertTrue(ordersUI.size() == 0);
         Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
@@ -271,7 +271,7 @@ public class OrdersPageTest {
         OrderTable orderTable = OrderTable.setDriver();
         ConnectionSource connection = DbConnector.getConnection();
         List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
-        List<Order> ordersFromDB = DbProcessor.setConnection(connection)
+        List<Order> ordersFromDB = DbHelpers.setConnection(connection)
                 .getDataFromDB();
         List<OrderFromUI> ordersDB = Order.toOrdersFromUI(ordersFromDB);
         Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
@@ -280,8 +280,10 @@ public class OrdersPageTest {
     @AfterMethod(groups = {"testGroup"})
     public void logOut(ITestResult testResult) {
         if (testResult.getStatus() == ITestResult.FAILURE) {
-//           add thread.sleep
+//           wait till opacity is 1 or
 //            take screenshot
+
+//            ExpectedConditions.
 
             Report.log("Test Failed. Making screenshot.");
             Report.takeScreenshot(testResult.getName());

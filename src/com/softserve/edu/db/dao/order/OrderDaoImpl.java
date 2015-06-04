@@ -1,16 +1,14 @@
-package com.softserve.edu.dao.order;
+package com.softserve.edu.db.dao.order;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.j256.ormlite.dao.BaseDaoImpl;
-import com.j256.ormlite.stmt.PreparedQuery;
-import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
-import com.softserve.edu.dao.orderstatus.OrderStatusDaoImpl;
-import com.softserve.edu.dao.user.UserDaoImpl;
-import com.softserve.edu.dao.userroles.UserRoleDaoImpl;
+import com.softserve.edu.db.dao.orderstatus.OrderStatusDaoImpl;
+import com.softserve.edu.db.dao.user.UserDaoImpl;
+import com.softserve.edu.db.dao.userroles.UserRoleDaoImpl;
 
 public class OrderDaoImpl extends BaseDaoImpl<Order, Integer> implements
 		OrderDao, AutoCloseable {

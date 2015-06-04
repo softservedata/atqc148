@@ -1,4 +1,4 @@
-package com.softserve.edu.webdriver;
+package com.softserve.edu.helpers.webdriver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;

@@ -1,6 +1,6 @@
 package com.softserve.edu.helpers;
 
-import com.softserve.edu.webdriver.WebDriverUtils;
+import com.softserve.edu.helpers.webdriver.WebDriverUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;

@@ -2,7 +2,7 @@ package com.softserve.edu.page.order;
 
 import com.softserve.edu.helpers.ContextVisible;
 import com.softserve.edu.helpers.Report;
-import com.softserve.edu.webdriver.WebDriverUtils;
+import com.softserve.edu.helpers.webdriver.WebDriverUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

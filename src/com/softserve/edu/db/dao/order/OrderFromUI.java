@@ -1,4 +1,4 @@
-package com.softserve.edu.dao.order;
+package com.softserve.edu.db.dao.order;
 
 import java.util.LinkedList;
 import java.util.List;

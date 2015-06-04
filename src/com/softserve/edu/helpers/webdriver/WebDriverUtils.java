@@ -1,4 +1,4 @@
-package com.softserve.edu.webdriver;
+package com.softserve.edu.helpers.webdriver;
 
 import java.util.concurrent.TimeUnit;
 

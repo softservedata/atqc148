@@ -1,6 +1,6 @@
 package com.softserve.edu.page.order;
 
-import com.softserve.edu.webdriver.WebDriverUtils;
+import com.softserve.edu.helpers.webdriver.WebDriverUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

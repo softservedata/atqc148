@@ -1,8 +1,8 @@
-package com.softserve.edu.dao.user;
+package com.softserve.edu.db.dao.user;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.softserve.edu.dao.userroles.UserRole;
+import com.softserve.edu.db.dao.userroles.UserRole;
 
 @DatabaseTable(tableName = "Users", daoClass = UserDaoImpl.class)
 public class User {

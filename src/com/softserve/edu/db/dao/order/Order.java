@@ -1,4 +1,4 @@
-package com.softserve.edu.dao.order;
+package com.softserve.edu.db.dao.order;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -7,8 +7,8 @@ import java.util.List;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.softserve.edu.dao.orderstatus.OrderStatus;
-import com.softserve.edu.dao.user.User;
+import com.softserve.edu.db.dao.orderstatus.OrderStatus;
+import com.softserve.edu.db.dao.user.User;
 
 @DatabaseTable(tableName = "Orders", daoClass = OrderDaoImpl.class)
 public class Order {

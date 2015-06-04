@@ -1,4 +1,4 @@
-package com.softserve.edu.dao.userroles;
+package com.softserve.edu.db.dao.userroles;
 
 import com.j256.ormlite.dao.Dao;
 

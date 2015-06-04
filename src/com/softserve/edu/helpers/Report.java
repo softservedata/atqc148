@@ -1,7 +1,7 @@
 package com.softserve.edu.helpers;
 
-import com.softserve.edu.webdriver.BrowserRepository;
-import com.softserve.edu.webdriver.WebDriverUtils;
+import com.softserve.edu.helpers.webdriver.BrowserRepository;
+import com.softserve.edu.helpers.webdriver.WebDriverUtils;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;

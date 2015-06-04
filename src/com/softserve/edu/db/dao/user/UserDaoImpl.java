@@ -1,4 +1,4 @@
-package com.softserve.edu.dao.user;
+package com.softserve.edu.db.dao.user;
 
 import java.sql.SQLException;
 import java.util.List;

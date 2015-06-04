@@ -1,4 +1,4 @@
-package com.softserve.edu.dao.user;
+package com.softserve.edu.db.dao.user;
 import com.j256.ormlite.dao.Dao;
 
 public interface UserDao extends Dao<User, Integer> {

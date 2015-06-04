@@ -1,52 +1,488 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="13" failed="0" total="14" passed="1">
+<testng-results skipped="0" failed="4" total="14" passed="10">
   <reporter-output>
     <line>
-      <![CDATA[09:43:47.975 LOG - Test started: testTableData
+      <![CDATA[16:27:20.463 LOG - Test started: testTableData
 ]]>
     </line>
     <line>
-      <![CDATA[09:43:48.035 LOG - Getting all orders from table.
+      <![CDATA[16:27:20.533 LOG - Getting all orders from table.
 ]]>
     </line>
     <line>
-      <![CDATA[09:43:50.636 LOG - Click on 'Next'
+      <![CDATA[16:27:23.295 LOG - Click on 'Next'
 ]]>
     </line>
     <line>
-      <![CDATA[09:43:53.473 LOG - Click on 'Next'
+      <![CDATA[16:27:26.263 LOG - Click on 'Next'
 ]]>
     </line>
     <line>
-      <![CDATA[09:43:56.285 LOG - Click on 'Next'
+      <![CDATA[16:27:29.371 LOG - Click on 'Next'
 ]]>
     </line>
     <line>
-      <![CDATA[09:43:59.079 LOG - Click on 'Next'
+      <![CDATA[16:27:32.358 LOG - Click on 'Next'
 ]]>
     </line>
     <line>
-      <![CDATA[09:44:01.900 LOG - Click on 'Next'
+      <![CDATA[16:27:35.334 LOG - Click on 'Next'
 ]]>
     </line>
     <line>
-      <![CDATA[09:44:04.774 LOG - Click on 'Next'
+      <![CDATA[16:27:38.333 LOG - Click on 'Next'
 ]]>
     </line>
     <line>
-      <![CDATA[09:44:07.543 LOG - Checking lists equality.
+      <![CDATA[16:27:41.231 LOG - Checking lists equality.
 ]]>
     </line>
     <line>
-      <![CDATA[09:44:07.543 LOG - Number of equal orders: 12
+      <![CDATA[16:27:41.231 LOG - Number of equal orders: 12
 ]]>
     </line>
     <line>
-      <![CDATA[09:44:07.546 LOG - Test Succeed.
+      <![CDATA[16:27:41.233 LOG - Test Succeed.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:27:43.404 LOG - Test started: checkFirstButton
+]]>
+    </line>
+    <line>
+      <![CDATA[16:27:44.042 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:27:45.006 LOG - Click on 'First'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:27:48.028 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:27:48.028 LOG - Number of equal orders: 2
+]]>
+    </line>
+    <line>
+      <![CDATA[16:27:48.030 LOG - Test Succeed.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:27:50.273 LOG - Test started: checkIfFirstButtonIsDisabled
+]]>
+    </line>
+    <line>
+      <![CDATA[16:27:51.008 LOG - Test Failed. Making screenshot.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:27:53.912 LOG - Test started: checkIfLastButtonIsDisabled
+]]>
+    </line>
+    <line>
+      <![CDATA[16:27:54.536 LOG - Click on 'Last'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:27:55.444 LOG - Test Failed. Making screenshot.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:27:58.328 LOG - Test started: checkIfNextButtonIsDisabled
+]]>
+    </line>
+    <line>
+      <![CDATA[16:27:59.068 LOG - Click on 'Last'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:00.416 LOG - Test Failed. Making screenshot.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:03.327 LOG - Test started: checkIfPreviousButtonIsDisabled
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:03.986 LOG - Test Failed. Making screenshot.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:06.886 LOG - Test started: checkLastButton
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:07.546 LOG - Click on 'Last'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:10.626 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:10.626 LOG - Number of equal orders: 2
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:10.627 LOG - Test Succeed.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:12.862 LOG - Test started: checkNextButton
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:13.587 LOG - Click on 'First'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:14.485 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:17.615 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:17.615 LOG - Number of equal orders: 2
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:17.616 LOG - Test Succeed.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:19.929 LOG - Test started: checkPreviousButton
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:20.599 LOG - Click on 'Last'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:21.522 LOG - Click on 'Previous'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:24.617 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:24.617 LOG - Number of equal orders: 2
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:24.618 LOG - Test Succeed.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:26.856 LOG - Test started: filterByNoneTest
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:30.200 LOG - Getting all orders from table.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:32.903 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:35.963 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:39.067 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:42.007 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:45.075 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:48.198 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:50.829 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:50.830 LOG - Number of equal orders: 12
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:50.830 LOG - Test Succeed.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:53.103 LOG - Test started: filterByRoleTest
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:56.649 LOG - Reading orders from DB where 'Role'='Administrator'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:56.686 LOG - Getting all orders from table.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:28:59.402 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:02.445 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:05.443 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:07.990 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:07.990 LOG - Number of equal orders: 6
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:08.908 LOG - Reading orders from DB where 'Role'='Customer'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:08.919 LOG - Getting all orders from table.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:10.165 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:11.341 LOG - Reading orders from DB where 'Role'='Merchandiser'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:11.360 LOG - Getting all orders from table.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:14.140 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:17.162 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:20.182 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:22.708 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:22.708 LOG - Number of equal orders: 6
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:23.791 LOG - Reading orders from DB where 'Role'='Supervisor'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:23.802 LOG - Getting all orders from table.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:24.992 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:24.996 LOG - Test Succeed.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:27.269 LOG - Test started: filterByStatusTest
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:30.650 LOG - Reading orders from DB where 'Status'='Created'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:30.670 LOG - Getting all orders from table.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:33.457 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:36.589 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:39.304 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:39.304 LOG - Number of equal orders: 3
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:40.387 LOG - Reading orders from DB where 'Status'='Pending'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:40.404 LOG - Getting all orders from table.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:43.267 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:45.857 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:45.857 LOG - Number of equal orders: 2
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:46.861 LOG - Reading orders from DB where 'Status'='Ordered'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:46.877 LOG - Getting all orders from table.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:49.672 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:52.791 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:55.431 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:55.432 LOG - Number of equal orders: 3
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:56.520 LOG - Reading orders from DB where 'Status'='Delivered'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:56.539 LOG - Getting all orders from table.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:29:59.711 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:03.209 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:05.795 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:05.795 LOG - Number of equal orders: 4
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:05.796 LOG - Test Succeed.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:08.031 LOG - Test started: searchTestNegative
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:08.929 LOG - Type '123qwe' to 'searchValue'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:09.107 LOG - Click on 'Apply'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:09.407 LOG - Reading orders from DB where 'Order Name'=123qwe'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:09.419 LOG - Getting all orders from table.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:10.648 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:10.650 LOG - Test Succeed.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:13.034 LOG - Test started: searchTestPositive
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:13.751 LOG - Type 'ordername' to 'searchValue'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:13.929 LOG - Click on 'Apply'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:14.207 LOG - Reading orders from DB where 'Order Name'=ordername'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:14.230 LOG - Getting all orders from table.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:17.150 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:20.134 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:23.153 LOG - Click on 'Next'
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:25.699 LOG - Checking lists equality.
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:25.699 LOG - Number of equal orders: 6
+]]>
+    </line>
+    <line>
+      <![CDATA[16:30:25.700 LOG - Test Succeed.
 ]]>
     </line>
   </reporter-output>
-  <suite name="Custom suite" duration-ms="23344" started-at="2015-06-04T09:43:46Z" finished-at="2015-06-04T09:44:09Z">
+  <suite name="Custom suite" duration-ms="187644" started-at="2015-06-04T16:27:18Z" finished-at="2015-06-04T16:30:26Z">
     <groups>
       <group name="testGroup">
         <method signature="com.softserve.edu.tests.OrdersPageTest.checkFirstButton()" name="checkFirstButton" class="com.softserve.edu.tests.OrdersPageTest"/>
@@ -65,11 +501,11 @@
         <method signature="com.softserve.edu.tests.OrdersPageTest.testTableData()" name="testTableData" class="com.softserve.edu.tests.OrdersPageTest"/>
       </group>
     </groups>
-    <test name="Tests" duration-ms="23344" started-at="2015-06-04T09:43:46Z" finished-at="2015-06-04T09:44:09Z">
+    <test name="Tests" duration-ms="187644" started-at="2015-06-04T16:27:18Z" finished-at="2015-06-04T16:30:26Z">
       <class name="com.softserve.edu.tests.OrdersPageTest">
-        <test-method status="PASS" signature="setUp()" name="setUp" is-config="true" duration-ms="4117" started-at="2015-06-04T09:43:41Z" finished-at="2015-06-04T09:43:46Z">
+        <test-method status="PASS" signature="setUp()" name="setUp" is-config="true" duration-ms="4384" started-at="2015-06-04T16:27:14Z" finished-at="2015-06-04T16:27:18Z">
         </test-method>
-        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1956" started-at="2015-06-04T09:43:46Z" finished-at="2015-06-04T09:43:47Z">
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1931" started-at="2015-06-04T16:27:18Z" finished-at="2015-06-04T16:27:20Z">
           <params>
             <param index="0">
               <value>
@@ -78,48 +514,66 @@
             </param>
           </params>
         </test-method>
-        <test-method status="PASS" signature="testTableData()" name="testTableData" duration-ms="19563" started-at="2015-06-04T09:43:47Z" finished-at="2015-06-04T09:44:07Z">
+        <test-method status="PASS" signature="testTableData()" name="testTableData" duration-ms="20762" started-at="2015-06-04T16:27:20Z" finished-at="2015-06-04T16:27:41Z">
         </test-method>
-        <test-method status="FAIL" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:07Z" finished-at="2015-06-04T09:44:07Z">
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="385" started-at="2015-06-04T16:27:41Z" finished-at="2015-06-04T16:27:41Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult: testTableData STATUS:SUCCESS METHOD:com.softserve.edu.tests.OrdersPageTest.testTableData()09:43:48.035 LOG - Getting all orders from table.
+                <![CDATA[[TestResult: testTableData STATUS:SUCCESS METHOD:com.softserve.edu.tests.OrdersPageTest.testTableData()16:27:20.533 LOG - Getting all orders from table.
 ]]>
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.TimeoutException">
+        </test-method>
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1785" started-at="2015-06-04T16:27:41Z" finished-at="2015-06-04T16:27:43Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.softserve.edu.tests.OrdersPageTest.checkFirstButton()]]>
+              </value>
+            </param>
+          </params>
+        </test-method>
+        <test-method status="PASS" signature="checkFirstButton()" name="checkFirstButton" duration-ms="4625" started-at="2015-06-04T16:27:43Z" finished-at="2015-06-04T16:27:48Z">
+        </test-method>
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="453" started-at="2015-06-04T16:27:48Z" finished-at="2015-06-04T16:27:48Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult: checkFirstButton STATUS:SUCCESS METHOD:com.softserve.edu.tests.OrdersPageTest.checkFirstButton()16:27:44.042 LOG - Click on 'Next'
+]]>
+              </value>
+            </param>
+          </params>
+        </test-method>
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1791" started-at="2015-06-04T16:27:48Z" finished-at="2015-06-04T16:27:50Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.softserve.edu.tests.OrdersPageTest.checkIfFirstButtonIsDisabled()]]>
+              </value>
+            </param>
+          </params>
+        </test-method>
+        <test-method status="FAIL" signature="checkIfFirstButtonIsDisabled()" name="checkIfFirstButtonIsDisabled" duration-ms="733" started-at="2015-06-04T16:27:50Z" finished-at="2015-06-04T16:27:51Z">
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Timed out after 1 seconds waiting for visibility of element located by By.name: j_username
-Build info: version: '2.45.0', revision: '5017cb8e7ca8e37638dc3091b2440b90a1d8686f', time: '2015-02-27 09:10:26'
-System info: host: 'Tarass-MacBook-Pro.local', ip: '192.168.103.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.3', java.version: '1.7.0_55'
-Session ID: 28382cad-9165-6340-aefa-d391881faeda
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=38.0.1}]]]>
+              <![CDATA[expected:<true> but was:<false>]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Timed out after 1 seconds waiting for visibility of element located by By.name: j_username
-Build info: version: '2.45.0', revision: '5017cb8e7ca8e37638dc3091b2440b90a1d8686f', time: '2015-02-27 09:10:26'
-System info: host: 'Tarass-MacBook-Pro.local', ip: '192.168.103.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.3', java.version: '1.7.0_55'
-Session ID: 28382cad-9165-6340-aefa-d391881faeda
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=38.0.1}]
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:79)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-	at com.softserve.edu.helpers.ContextVisible.getVisibleWebElement(ContextVisible.java:34)
-	at com.softserve.edu.page.login.LoginPage.getLoginFields(LoginPage.java:30)
-	at com.softserve.edu.page.login.LoginPage.<init>(LoginPage.java:22)
-	at com.softserve.edu.page.login.LoginPage.setDriver(LoginPage.java:42)
-	at com.softserve.edu.tests.OrdersPageTest.logOut(OrdersPageTest.java:292)
+              <![CDATA[java.lang.AssertionError: expected:<true> but was:<false>
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:480)
+	at org.testng.Assert.assertTrue(Assert.java:37)
+	at org.testng.Assert.assertTrue(Assert.java:47)
+	at com.softserve.edu.tests.OrdersPageTest.checkIfFirstButtonIsDisabled(OrdersPageTest.java:142)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:606)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:74)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:525)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:202)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:757)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:673)
 	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:846)
 	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1170)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
@@ -145,122 +599,418 @@ Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, cssSel
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:606)
 	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
-Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"name","selector":"j_username"}
-Command duration or timeout: 1.09 seconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '2.45.0', revision: '5017cb8e7ca8e37638dc3091b2440b90a1d8686f', time: '2015-02-27 09:10:26'
-System info: host: 'Tarass-MacBook-Pro.local', ip: '192.168.103.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.3', java.version: '1.7.0_55'
-*** Element info: {Using=name, value=j_username}
-Session ID: 28382cad-9165-6340-aefa-d391881faeda
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=38.0.1}]
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByName(RemoteWebDriver.java:425)
-	at org.openqa.selenium.By$ByName.findElement(By.java:299)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
-	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:730)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:39)
-	at org.openqa.selenium.support.ui.ExpectedConditions$4.apply(ExpectedConditions.java:130)
-	at org.openqa.selenium.support.ui.ExpectedConditions$4.apply(ExpectedConditions.java:126)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
-	... 38 more
-Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"name","selector":"j_username"}
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '2.45.0', revision: '5017cb8e7ca8e37638dc3091b2440b90a1d8686f', time: '2015-02-27 09:10:26'
-System info: host: 'Tarass-MacBook-Pro.local', ip: '192.168.103.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.3', java.version: '1.7.0_55'
-Driver info: driver.version: unknown
-	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///var/folders/_r/46gr5x5d6v193k5v48kjzs400000gn/T/anonymous4271597305877665198webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10271)
-	at <anonymous class>.fxdriver.Timer.prototype.setTimeout/<.notify(file:///var/folders/_r/46gr5x5d6v193k5v48kjzs400000gn/T/anonymous4271597305877665198webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:603)
 ]]>
             </full-stacktrace>
           </exception>
         </test-method>
-        <test-method status="SKIP" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="1079" started-at="2015-06-04T16:27:51Z" finished-at="2015-06-04T16:27:52Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult: checkIfFirstButtonIsDisabled STATUS:FAILURE METHOD:com.softserve.edu.tests.OrdersPageTest.checkIfFirstButtonIsDisabled()]
+]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1825" started-at="2015-06-04T16:27:52Z" finished-at="2015-06-04T16:27:53Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.softserve.edu.tests.OrdersPageTest.checkIfLastButtonIsDisabled()]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="checkFirstButton()" name="checkFirstButton" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="FAIL" signature="checkIfLastButtonIsDisabled()" name="checkIfLastButtonIsDisabled" duration-ms="1531" started-at="2015-06-04T16:27:53Z" finished-at="2015-06-04T16:27:55Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected:<true> but was:<false>]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected:<true> but was:<false>
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:480)
+	at org.testng.Assert.assertTrue(Assert.java:37)
+	at org.testng.Assert.assertTrue(Assert.java:47)
+	at com.softserve.edu.tests.OrdersPageTest.checkIfLastButtonIsDisabled(OrdersPageTest.java:163)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:74)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:673)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:846)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1170)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:1147)
+	at org.testng.TestRunner.privateRun(TestRunner.java:749)
+	at org.testng.TestRunner.run(TestRunner.java:600)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:317)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:274)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:223)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1039)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:964)
+	at org.testng.TestNG.run(TestNG.java:900)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:110)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:174)
+	at org.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:125)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+]]>
+            </full-stacktrace>
+          </exception>
         </test-method>
-        <test-method status="SKIP" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="1087" started-at="2015-06-04T16:27:55Z" finished-at="2015-06-04T16:27:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult: checkIfLastButtonIsDisabled STATUS:FAILURE METHOD:com.softserve.edu.tests.OrdersPageTest.checkIfLastButtonIsDisabled()16:27:54.536 LOG - Click on 'Last'
+]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="checkIfFirstButtonIsDisabled()" name="checkIfFirstButtonIsDisabled" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1796" started-at="2015-06-04T16:27:56Z" finished-at="2015-06-04T16:27:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.softserve.edu.tests.OrdersPageTest.checkIfNextButtonIsDisabled()]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="FAIL" signature="checkIfNextButtonIsDisabled()" name="checkIfNextButtonIsDisabled" duration-ms="2086" started-at="2015-06-04T16:27:58Z" finished-at="2015-06-04T16:28:00Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected:<true> but was:<false>]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected:<true> but was:<false>
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:480)
+	at org.testng.Assert.assertTrue(Assert.java:37)
+	at org.testng.Assert.assertTrue(Assert.java:47)
+	at com.softserve.edu.tests.OrdersPageTest.checkIfNextButtonIsDisabled(OrdersPageTest.java:155)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:74)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:673)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:846)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1170)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:1147)
+	at org.testng.TestRunner.privateRun(TestRunner.java:749)
+	at org.testng.TestRunner.run(TestRunner.java:600)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:317)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:274)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:223)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1039)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:964)
+	at org.testng.TestNG.run(TestNG.java:900)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:110)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:174)
+	at org.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:125)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+]]>
+            </full-stacktrace>
+          </exception>
         </test-method>
-        <test-method status="SKIP" signature="checkIfLastButtonIsDisabled()" name="checkIfLastButtonIsDisabled" duration-ms="1" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="997" started-at="2015-06-04T16:28:00Z" finished-at="2015-06-04T16:28:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult: checkIfNextButtonIsDisabled STATUS:FAILURE METHOD:com.softserve.edu.tests.OrdersPageTest.checkIfNextButtonIsDisabled()16:27:59.068 LOG - Click on 'Last'
+]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1913" started-at="2015-06-04T16:28:01Z" finished-at="2015-06-04T16:28:03Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.softserve.edu.tests.OrdersPageTest.checkIfPreviousButtonIsDisabled()]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="FAIL" signature="checkIfPreviousButtonIsDisabled()" name="checkIfPreviousButtonIsDisabled" duration-ms="658" started-at="2015-06-04T16:28:03Z" finished-at="2015-06-04T16:28:03Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected:<true> but was:<false>]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected:<true> but was:<false>
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:480)
+	at org.testng.Assert.assertTrue(Assert.java:37)
+	at org.testng.Assert.assertTrue(Assert.java:47)
+	at com.softserve.edu.tests.OrdersPageTest.checkIfPreviousButtonIsDisabled(OrdersPageTest.java:147)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:74)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:673)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:846)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1170)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:1147)
+	at org.testng.TestRunner.privateRun(TestRunner.java:749)
+	at org.testng.TestRunner.run(TestRunner.java:600)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:317)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:274)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:223)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1039)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:964)
+	at org.testng.TestNG.run(TestNG.java:900)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:110)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:174)
+	at org.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:125)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+]]>
+            </full-stacktrace>
+          </exception>
         </test-method>
-        <test-method status="SKIP" signature="checkIfNextButtonIsDisabled()" name="checkIfNextButtonIsDisabled" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="1073" started-at="2015-06-04T16:28:03Z" finished-at="2015-06-04T16:28:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult: checkIfPreviousButtonIsDisabled STATUS:FAILURE METHOD:com.softserve.edu.tests.OrdersPageTest.checkIfPreviousButtonIsDisabled()]
+]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1827" started-at="2015-06-04T16:28:05Z" finished-at="2015-06-04T16:28:06Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.softserve.edu.tests.OrdersPageTest.checkLastButton()]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="checkLastButton()" name="checkLastButton" duration-ms="3740" started-at="2015-06-04T16:28:06Z" finished-at="2015-06-04T16:28:10Z">
         </test-method>
-        <test-method status="SKIP" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="500" started-at="2015-06-04T16:28:10Z" finished-at="2015-06-04T16:28:11Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult: checkLastButton STATUS:SUCCESS METHOD:com.softserve.edu.tests.OrdersPageTest.checkLastButton()16:28:07.546 LOG - Click on 'Last'
+]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="checkIfPreviousButtonIsDisabled()" name="checkIfPreviousButtonIsDisabled" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1736" started-at="2015-06-04T16:28:11Z" finished-at="2015-06-04T16:28:12Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.softserve.edu.tests.OrdersPageTest.checkNextButton()]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="checkNextButton()" name="checkNextButton" duration-ms="4752" started-at="2015-06-04T16:28:12Z" finished-at="2015-06-04T16:28:17Z">
         </test-method>
-        <test-method status="SKIP" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="487" started-at="2015-06-04T16:28:17Z" finished-at="2015-06-04T16:28:18Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult: checkNextButton STATUS:SUCCESS METHOD:com.softserve.edu.tests.OrdersPageTest.checkNextButton()16:28:13.587 LOG - Click on 'First'
+]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="checkLastButton()" name="checkLastButton" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1827" started-at="2015-06-04T16:28:18Z" finished-at="2015-06-04T16:28:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.softserve.edu.tests.OrdersPageTest.checkPreviousButton()]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="checkPreviousButton()" name="checkPreviousButton" duration-ms="4688" started-at="2015-06-04T16:28:19Z" finished-at="2015-06-04T16:28:24Z">
         </test-method>
-        <test-method status="SKIP" signature="checkNextButton()" name="checkNextButton" duration-ms="1" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="444" started-at="2015-06-04T16:28:24Z" finished-at="2015-06-04T16:28:25Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult: checkPreviousButton STATUS:SUCCESS METHOD:com.softserve.edu.tests.OrdersPageTest.checkPreviousButton()16:28:20.599 LOG - Click on 'Last'
+]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1793" started-at="2015-06-04T16:28:25Z" finished-at="2015-06-04T16:28:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.softserve.edu.tests.OrdersPageTest.filterByNoneTest() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="filterByNoneTest()" name="filterByNoneTest" duration-ms="23974" started-at="2015-06-04T16:28:26Z" finished-at="2015-06-04T16:28:50Z">
         </test-method>
-        <test-method status="SKIP" signature="checkPreviousButton()" name="checkPreviousButton" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="425" started-at="2015-06-04T16:28:50Z" finished-at="2015-06-04T16:28:51Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult: filterByNoneTest STATUS:SUCCESS METHOD:com.softserve.edu.tests.OrdersPageTest.filterByNoneTest()16:28:30.200 LOG - Getting all orders from table.
+]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1848" started-at="2015-06-04T16:28:51Z" finished-at="2015-06-04T16:28:53Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.softserve.edu.tests.OrdersPageTest.filterByRoleTest() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="filterByRoleTest()" name="filterByRoleTest" duration-ms="31889" started-at="2015-06-04T16:28:53Z" finished-at="2015-06-04T16:29:24Z">
         </test-method>
-        <test-method status="SKIP" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="541" started-at="2015-06-04T16:29:24Z" finished-at="2015-06-04T16:29:25Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult: filterByRoleTest STATUS:SUCCESS METHOD:com.softserve.edu.tests.OrdersPageTest.filterByRoleTest()16:28:56.649 LOG - Reading orders from DB where 'Role'='Administrator'
+]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="filterByNoneTest()" name="filterByNoneTest" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1731" started-at="2015-06-04T16:29:25Z" finished-at="2015-06-04T16:29:27Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.softserve.edu.tests.OrdersPageTest.filterByStatusTest() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="filterByStatusTest()" name="filterByStatusTest" duration-ms="38526" started-at="2015-06-04T16:29:27Z" finished-at="2015-06-04T16:30:05Z">
         </test-method>
-        <test-method status="SKIP" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="413" started-at="2015-06-04T16:30:05Z" finished-at="2015-06-04T16:30:06Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult: filterByStatusTest STATUS:SUCCESS METHOD:com.softserve.edu.tests.OrdersPageTest.filterByStatusTest()16:29:30.650 LOG - Reading orders from DB where 'Status'='Created'
+]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="filterByRoleTest()" name="filterByRoleTest" duration-ms="1" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1821" started-at="2015-06-04T16:30:06Z" finished-at="2015-06-04T16:30:08Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.softserve.edu.tests.OrdersPageTest.searchTestNegative() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="searchTestNegative()" name="searchTestNegative" duration-ms="2617" started-at="2015-06-04T16:30:08Z" finished-at="2015-06-04T16:30:10Z">
         </test-method>
-        <test-method status="SKIP" signature="filterByStatusTest()" name="filterByStatusTest" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="507" started-at="2015-06-04T16:30:10Z" finished-at="2015-06-04T16:30:11Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult: searchTestNegative STATUS:SUCCESS METHOD:com.softserve.edu.tests.OrdersPageTest.searchTestNegative()16:30:08.929 LOG - Type '123qwe' to 'searchValue'
+]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="1877" started-at="2015-06-04T16:30:11Z" finished-at="2015-06-04T16:30:13Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.softserve.edu.tests.OrdersPageTest.searchTestPositive() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="searchTestPositive()" name="searchTestPositive" duration-ms="12665" started-at="2015-06-04T16:30:13Z" finished-at="2015-06-04T16:30:25Z">
         </test-method>
-        <test-method status="SKIP" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="PASS" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="476" started-at="2015-06-04T16:30:25Z" finished-at="2015-06-04T16:30:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult: searchTestPositive STATUS:SUCCESS METHOD:com.softserve.edu.tests.OrdersPageTest.searchTestPositive()16:30:13.751 LOG - Type 'ordername' to 'searchValue'
+]]>
+              </value>
+            </param>
+          </params>
         </test-method>
-        <test-method status="SKIP" signature="searchTestNegative()" name="searchTestNegative" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
-        </test-method>
-        <test-method status="SKIP" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
-        </test-method>
-        <test-method status="SKIP" signature="logIn(java.lang.reflect.Method)" name="logIn" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
-        </test-method>
-        <test-method status="SKIP" signature="searchTestPositive()" name="searchTestPositive" duration-ms="1" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
-        </test-method>
-        <test-method status="SKIP" signature="logOut(org.testng.ITestResult)" name="logOut" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
-        </test-method>
-        <test-method status="SKIP" signature="tearDown()" name="tearDown" is-config="true" duration-ms="0" started-at="2015-06-04T09:44:09Z" finished-at="2015-06-04T09:44:09Z">
+        <test-method status="FAIL" signature="tearDown()" name="tearDown" is-config="true" duration-ms="0" started-at="2015-06-04T16:30:26Z" finished-at="2015-06-04T16:30:26Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at com.softserve.edu.tests.OrdersPageTest.tearDown(OrdersPageTest.java:299)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:74)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:525)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:202)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:130)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:223)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1039)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:964)
+	at org.testng.TestNG.run(TestNG.java:900)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:110)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:174)
+	at org.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:125)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+]]>
+            </full-stacktrace>
+          </exception>
         </test-method>
       </class>
     </test>

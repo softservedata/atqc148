@@ -8,19 +8,11 @@
           <include name="setUp"/>
           <include name="checkIfLastButtonIsDisabled"/>
           <include name="checkIfPreviousButtonIsDisabled"/>
-          <include name="checkLastButton"/>
-          <include name="searchTestPositive"/>
-          <include name="filterByStatusTest"/>
-          <include name="checkIfNextButtonIsDisabled"/>
-          <include name="checkFirstButton"/>
-          <include name="checkNextButton"/>
-          <include name="filterByNoneTest"/>
-          <include name="filterByRoleTest"/>
-          <include name="searchTestNegative"/>
           <include name="logOut"/>
           <include name="checkIfFirstButtonIsDisabled"/>
+          <include name="checkIfNextButtonIsDisabled"/>
           <include name="logIn"/>
-          <include name="checkPreviousButton"/>
+          <include name="tearDown"/>
         </methods>
       </class>
     </classes>

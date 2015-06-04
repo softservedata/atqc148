@@ -1,4 +1,4 @@
-package com.softserve.edu.dao.orderstatus;
+package com.softserve.edu.db.dao.orderstatus;
 
 import com.j256.ormlite.dao.Dao;
 

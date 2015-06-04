@@ -1,4 +1,4 @@
-package com.softserve.edu.db;
+package com.softserve.edu.db.dbhelpers;
 
 import java.sql.SQLException;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;

@@ -1,8 +1,7 @@
-package com.softserve.edu.webdriver;
+package com.softserve.edu.helpers.webdriver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
  * Created by Xdr on 6/1/15.

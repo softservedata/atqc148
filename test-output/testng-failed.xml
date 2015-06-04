@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]">
-  <test name="Default test(failed)">
+<suite verbose="0" name="Failed suite [Custom suite]" parallel="none">
+  <test name="Tests(failed)" parallel="none" preserve-order="false">
     <classes>
       <class name="com.softserve.edu.tests.OrdersPageTest">
         <methods>
-          <include name="logIn"/>
-          <include name="tearDown"/>
-          <include name="checkIfNextButtonIsDisabled"/>
-          <include name="checkIfFirstButtonIsDisabled"/>
-          <include name="logOut"/>
-          <include name="checkIfPreviousButtonIsDisabled"/>
           <include name="setUp"/>
           <include name="checkIfLastButtonIsDisabled"/>
+          <include name="checkIfPreviousButtonIsDisabled"/>
+          <include name="checkLastButton"/>
+          <include name="searchTestPositive"/>
+          <include name="filterByStatusTest"/>
+          <include name="checkIfNextButtonIsDisabled"/>
+          <include name="checkFirstButton"/>
+          <include name="checkNextButton"/>
+          <include name="filterByNoneTest"/>
+          <include name="filterByRoleTest"/>
+          <include name="searchTestNegative"/>
+          <include name="logOut"/>
+          <include name="checkIfFirstButtonIsDisabled"/>
+          <include name="logIn"/>
+          <include name="checkPreviousButton"/>
         </methods>
-      </class> <!-- com.softserve.edu.tests.OrdersPageTest -->
+      </class>
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test>
+</suite>

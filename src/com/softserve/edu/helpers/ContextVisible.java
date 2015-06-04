@@ -1,4 +1,4 @@
-package com.softserve.edu.page.Tools;
+package com.softserve.edu.helpers;
 
 import com.softserve.edu.webdriver.WebDriverUtils;
 import org.openqa.selenium.By;

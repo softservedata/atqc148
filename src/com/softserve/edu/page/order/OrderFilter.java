@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.softserve.edu.page.Tools.ContextVisible;
+import com.softserve.edu.helpers.ContextVisible;
+import com.softserve.edu.webdriver.WebDriverUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,8 +30,8 @@ public class OrderFilter {
 		criterionSelect = new Select(ContextVisible.get().getVisibleWebElement(By.id("filterValue")));
 	}
 
-	public static OrderFilter setDriver(WebDriver driver) {
-		return new OrderFilter(driver);
+	public static OrderFilter setDriver() {
+		return new OrderFilter(WebDriverUtils.get().getWebDriver());
 	}
 
 	/**

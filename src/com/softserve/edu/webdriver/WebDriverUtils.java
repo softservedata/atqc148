@@ -7,7 +7,8 @@ import org.openqa.selenium.WebDriver;
 //Double Checked Locking & volatile singleton
 public class WebDriverUtils {
 	private static volatile WebDriverUtils instance = null;
-	private long implicitlyWaitTimeout = 2;
+//	implicit wait is 1 sec coz test run faster and need to remake it to explicit wait
+	private long implicitlyWaitTimeout = 1;
 	private IBrowser browser;
 	private WebDriver driver;
 

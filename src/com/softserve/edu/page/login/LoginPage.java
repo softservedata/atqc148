@@ -1,6 +1,8 @@
 package com.softserve.edu.page.login;
 
 
+import com.softserve.edu.helpers.ContextVisible;
+import com.softserve.edu.webdriver.WebDriverUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +17,7 @@ public class LoginPage {
 	private WebElement submitBtn;
 
 	private LoginPage(WebDriver driver) {
-		this.driver = driver;
+		this.driver= driver;
 		driver.get("http://localhost:8080/OMS/");
 	}
 
@@ -24,9 +26,9 @@ public class LoginPage {
 	 * @return LoginPage
 	 */
 	public LoginPage getLoginFields(){
-		loginFld = driver.findElement(By.name("j_username"));
-		passwordFld = driver.findElement(By.name("j_password"));
-		submitBtn = driver.findElement(By.name("submit"));
+		loginFld = ContextVisible.get().getVisibleWebElement(By.name("j_username"));
+		passwordFld = ContextVisible.get().getVisibleWebElement(By.name("j_password"));
+		submitBtn = ContextVisible.get().getVisibleWebElement(By.name("submit"));
 		return this;
 	}
 
@@ -35,8 +37,8 @@ public class LoginPage {
 	 * @param driver web browser driver.
 	 * @return
 	 */
-	public static LoginPage setDriver(WebDriver driver) {
-		return new LoginPage(driver);
+	public static LoginPage setDriver() {
+		return new LoginPage(WebDriverUtils.get().getWebDriver());
 	}
 
 	/**
@@ -70,7 +72,6 @@ public class LoginPage {
 	 * @param role user role(Administrator, Customer, Merchandiser, Supervisor).
 	 */
 	public void logIn(String login, String password, String role) {
-
 		loginFld.clear();
 		loginFld.sendKeys(login);
 		passwordFld.clear();
@@ -107,5 +108,4 @@ public class LoginPage {
 		WebElement logout = driver.findElement(By.xpath("//a[@href='/OMS/logout.htm']"));
 		logout.click();
 	}
-
 }

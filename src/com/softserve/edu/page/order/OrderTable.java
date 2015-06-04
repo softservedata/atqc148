@@ -6,7 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import com.softserve.edu.helpers.ContextVisible;
 import com.softserve.edu.helpers.Report;
+import com.softserve.edu.webdriver.WebDriverUtils;
 import org.apache.commons.lang3.time.StopWatch;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -24,8 +26,8 @@ public class OrderTable {
         this.driver = driver;
     }
 
-    public static OrderTable setDriver(WebDriver driver) {
-        return new OrderTable(driver);
+    public static OrderTable setDriver() {
+        return new OrderTable(WebDriverUtils.get().getWebDriver());
     }
 
     /**
@@ -34,11 +36,11 @@ public class OrderTable {
      * @return Size of orders table.
      */
     public int getTableSize() {
-        OrderPage.navigateToOrderPage(driver);
+        OrderPage.navigateToOrderPage();
         WebElement ordersTable = getOrdersTable();
         List<OrderFromUI> ordersFromTable = getOrdersFromTablePage(ordersTable);
         int size = ordersFromTable.size();
-        OrderNavigation.setDriver(driver).navigateToNextPage();
+        OrderNavigation.setDriver().navigateToNextPage();
         ordersTable = getOrdersTable();
         while (!ordersFromTable.get(0).equals(
                 getOrdersFromTablePage(ordersTable).get(0))) {
@@ -47,12 +49,12 @@ public class OrderTable {
                     getOrdersFromTablePage(ordersTable).get(0))) {
                 size += 2;
                 ordersFromTable = getOrdersFromTablePage(ordersTable);
-                OrderNavigation.setDriver(driver).navigateToNextPage();
+                OrderNavigation.setDriver().navigateToNextPage();
                 ordersTable = getOrdersTable();
             } else {
                 size += 1;
                 ordersFromTable = getOrdersFromTablePage(ordersTable);
-                OrderNavigation.setDriver(driver).navigateToNextPage();
+                OrderNavigation.setDriver().navigateToNextPage();
                 ordersTable = getOrdersTable();
             }
         }
@@ -79,7 +81,7 @@ public class OrderTable {
             for (OrderFromUI order : ordersFromTable) {
                 orders.add(order);
             }
-            OrderNavigation.setDriver(driver).navigateToNextPage();
+            OrderNavigation.setDriver().navigateToNextPage();
             ordersTable = getOrdersTable();
         }
         // 2.compare
@@ -97,11 +99,10 @@ public class OrderTable {
                     orders.add(order);
                 }
             }
-            OrderNavigation.setDriver(driver).navigateToNextPage();
+            OrderNavigation.setDriver().navigateToNextPage();
             ordersTable = getOrdersTable();
             ordersUi = getOrdersFromTablePage(ordersTable);
         }
-
         return orders;
     }
 
@@ -163,7 +164,7 @@ public class OrderTable {
      * @return OrderFromUI object with data from table row.
      */
     public OrderFromUI getOrderByNumber(int num) {
-        OrderPage.navigateToOrderPage(driver);
+        OrderPage.navigateToOrderPage();
         WebElement table = getOrdersTable();
         WebElement row = null;
         int pageNum = 1;
@@ -175,16 +176,20 @@ public class OrderTable {
                 row = rows.get(num / pageNum);
                 elementFound = true;
             } else {
-                OrderNavigation.setDriver(driver).navigateToNextPage();
+                OrderNavigation.setDriver().navigateToNextPage();
                 table = getOrdersTable();
                 pageNum++;
                 rowsSize *= pageNum;
             }
         }
         List<String> rowStr = getDataFromRow(row);
-        OrderFromUI ord = new OrderFromUI(rowStr.get(0), rowStr.get(1),
-                rowStr.get(2), rowStr.get(3), rowStr.get(4), rowStr.get(5),
-                rowStr.get(6));
+//        OrderFromUI ord = new OrderFromUI(rowStr.get(0), rowStr.get(1),
+//                rowStr.get(2), rowStr.get(3), rowStr.get(4), rowStr.get(5),
+//                rowStr.get(6));
+        OrderFromUI ord = OrderFromUI.get().setOrderName(rowStr.get(0)).setTotalPrice(rowStr.get(1))
+                                                .setMaxDiscount(rowStr.get(2)).setDeliveryDate(rowStr.get(3))
+                                                        .setStatus(rowStr.get(4)).setAssigne(rowStr.get(5))
+                                                                                             .setRole(rowStr.get(6));
         ord.print();
         return ord;
     }
@@ -220,5 +225,4 @@ public class OrderTable {
         // if all orders are equal, result will be true
         return (equalFieldsNumber == listOne.size());
     }
-
 }

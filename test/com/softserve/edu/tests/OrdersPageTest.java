@@ -13,17 +13,13 @@ import com.softserve.edu.page.order.*;
 import com.softserve.edu.webdriver.BrowserRepository;
 import com.softserve.edu.webdriver.WebDriverUtils;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.Reporter;
 import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class OrdersPageTest {
     private WebDriver driver;
@@ -40,20 +36,19 @@ public class OrdersPageTest {
     }
 
     @BeforeMethod(groups = {"testGroup"})
-    public void logIn() {
-        LoginPage.setDriver(driver).getLoginFields().logIn(Users.getCustomerUser());
-        OrderPage.navigateToOrderPage(driver);
+    public void logIn(Method method) {
+        LoginPage.setDriver().getLoginFields().logIn(Users.getCustomerUser());
+        OrderPage.navigateToOrderPage();
+        Report.log("Test started: " + method.getName());
     }
 
-    @Test(groups = {"testGroup"})
+    @Test(priority = 2, groups = {"testGroup"})
     public void filterByStatusTest() throws Exception {
-        OrderTable orderTable = OrderTable.setDriver(driver);
-        OrderFilter filter = OrderFilter.setDriver(driver);
+        OrderTable orderTable = OrderTable.setDriver();
+        OrderFilter filter = OrderFilter.setDriver();
         List<String> filterValues = filter
                 .readValuesForField(FilterValues.Status.getName());
         OrderStatuses statusValue;
-
-
         for (String crit : filterValues) {
             if (!crit.equals("None")) {
                 statusValue = OrderStatuses.valueOf(crit);
@@ -62,22 +57,20 @@ public class OrdersPageTest {
                 List<OrderFromUI> ordersDB = DbHelper.readOrdersByField(
                         FilterValues.Status, statusValue);
                 List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
-                // method compares sizes, then compares each by each
                 Assert.assertTrue(orderTable.listsEqual(ordersUI, ordersDB));
             }
         }
     }
 
-    @Test(groups = {"testGroup"})
+    @Test(priority = 2, groups = {"testGroup"})
     public void filterByRoleTest() throws Exception {
-        OrderTable orderTable = OrderTable.setDriver(driver);
-        OrderFilter filter = OrderFilter.setDriver(driver);
+        OrderTable orderTable = OrderTable.setDriver();
+        OrderFilter filter = OrderFilter.setDriver();
         List<String> filterValues = filter.readValuesForField(FilterValues.Role
                 .getName());
         UserRoles roleValue;
-
-        for (String crit: filterValues){
-            if (!crit.equals("None")){
+        for (String crit : filterValues) {
+            if (!crit.equals("None")) {
                 roleValue = UserRoles.valueOf(crit);
                 filter.orderBy(FilterValues.Role.getName(), roleValue.getName());
                 filter.apply();
@@ -90,10 +83,10 @@ public class OrdersPageTest {
     }
 
 
-    @Test(groups = {"testGroup"})
+    @Test(priority = 2, groups = {"testGroup"})
     public void filterByNoneTest() throws Exception {
-        OrderTable orderTable = OrderTable.setDriver(driver);
-        OrderFilter filter = OrderFilter.setDriver(driver);
+        OrderTable orderTable = OrderTable.setDriver();
+        OrderFilter filter = OrderFilter.setDriver();
         List<String> filterValues = filter
                 .readValuesForField(FilterValues.Status.getName());
         OrderStatuses statusValue;
@@ -116,10 +109,10 @@ public class OrdersPageTest {
     }
 
 
-    @Test(groups = {"testGroup"})
+    @Test(priority = 2, groups = {"testGroup"})
     public void searchTestPositive() throws Exception {
-        OrderTable orderTable = OrderTable.setDriver(driver);
-        OrderSearch search = OrderSearch.setDriver(driver);
+        OrderTable orderTable = OrderTable.setDriver();
+        OrderSearch search = OrderSearch.setDriver();
         String testData = "ordername";
         search.setCriterionToOrderName();
         search.typeTextToSearch(testData);
@@ -130,10 +123,10 @@ public class OrdersPageTest {
     }
 
 
-    @Test(groups = {"testGroup"})
+    @Test(priority = 2, groups = {"testGroup"})
     public void searchTestNegative() throws Exception {
-        OrderTable orderTable = OrderTable.setDriver(driver);
-        OrderSearch search = OrderSearch.setDriver(driver);
+        OrderTable orderTable = OrderTable.setDriver();
+        OrderSearch search = OrderSearch.setDriver();
         String testData = "123qwe";
         search.setCriterionToOrderName();
         search.typeTextToSearch(testData);
@@ -146,27 +139,27 @@ public class OrdersPageTest {
 
     @Test(priority = 2, groups = {"testGroup"})
     public void checkIfFirstButtonIsDisabled() {
-        Assert.assertTrue(OrderNavigation.setDriver(driver).isFirstBtnDisabled());
+        Assert.assertTrue(OrderNavigation.setDriver().isFirstBtnDisabled());
     }
 
     @Test(priority = 2, groups = {"testGroup"})
     public void checkIfPreviousButtonIsDisabled() {
-        Assert.assertTrue(OrderNavigation.setDriver(driver).isPrevBtnDisabled());
+        Assert.assertTrue(OrderNavigation.setDriver().isPrevBtnDisabled());
     }
 
     @Test(priority = 2, groups = {"testGroup"})
     public void checkIfNextButtonIsDisabled() {
-        OrderNavigation navigation = OrderNavigation.setDriver(driver);
+        OrderNavigation navigation = OrderNavigation.setDriver();
         navigation.navigateToLastPage();
-        navigation.refreshReferences();
+        navigation.getReferences();
         Assert.assertTrue(navigation.isNextBtnDisabled());
     }
 
     @Test(priority = 2, groups = {"testGroup"})
     public void checkIfLastButtonIsDisabled() {
-        OrderNavigation navigation = OrderNavigation.setDriver(driver);
+        OrderNavigation navigation = OrderNavigation.setDriver();
         navigation.navigateToLastPage();
-        navigation.refreshReferences();
+        navigation.getReferences();
         Assert.assertTrue(navigation.isLastBtnDisabled());
     }
 
@@ -184,12 +177,12 @@ public class OrdersPageTest {
                 .setDeliveryDate("2015-05-21 00:00:00.0").setStatus("Pending")
                 .setAssigne("login2").setRole("Merchandiser").build());
 
-        OrderTable orderTable = OrderTable.setDriver(driver);
-        OrderNavigation navigation = OrderNavigation.setDriver(driver);
+        OrderTable orderTable = OrderTable.setDriver();
+        OrderNavigation navigation = OrderNavigation.setDriver();
         navigation.navigateToNextPage();
-        navigation.refreshReferences();
+        navigation.getReferences();
         navigation.navigateToFirstPage();
-        navigation.refreshReferences();
+        navigation.getReferences();
         List<OrderFromUI> ordersList = orderTable
                 .getOrdersFromTablePage(orderTable.getOrdersTable());
         Assert.assertTrue(orderTable.listsEqual(testDataList, ordersList));
@@ -210,12 +203,12 @@ public class OrdersPageTest {
                 .setStatus("Pending").setAssigne("romanS")
                 .setRole("Administrator"));
 
-        OrderTable orderTable = OrderTable.setDriver(driver);
-        OrderNavigation navigation = OrderNavigation.setDriver(driver);
+        OrderTable orderTable = OrderTable.setDriver();
+        OrderNavigation navigation = OrderNavigation.setDriver();
         navigation.navigateToLastPage();
-        navigation.refreshReferences();
+        navigation.getReferences();
         navigation.navigateToPrevPage();
-        navigation.refreshReferences();
+        navigation.getReferences();
         List<OrderFromUI> ordersList = orderTable
                 .getOrdersFromTablePage(orderTable.getOrdersTable());
         Assert.assertTrue(orderTable.listsEqual(testDataList, ordersList));
@@ -236,12 +229,12 @@ public class OrdersPageTest {
                 .setStatus("Ordered").setAssigne("login2")
                 .setRole("Merchandiser"));
 
-        OrderTable orderTable = OrderTable.setDriver(driver);
-        OrderNavigation navigation = OrderNavigation.setDriver(driver);
+        OrderTable orderTable = OrderTable.setDriver();
+        OrderNavigation navigation = OrderNavigation.setDriver();
         navigation.navigateToFirstPage();
-        navigation.refreshReferences();
+        navigation.getReferences();
         navigation.navigateToNextPage();
-        navigation.refreshReferences();
+        navigation.getReferences();
         List<OrderFromUI> ordersList = orderTable
                 .getOrdersFromTablePage(orderTable.getOrdersTable());
         Assert.assertTrue(orderTable.listsEqual(testDataList, ordersList));
@@ -262,10 +255,10 @@ public class OrdersPageTest {
                 .setStatus("Created").setAssigne("vitalik")
                 .setRole("Administrator"));
 
-        OrderTable orderTable = OrderTable.setDriver(driver);
-        OrderNavigation navigation = OrderNavigation.setDriver(driver);
+        OrderTable orderTable = OrderTable.setDriver();
+        OrderNavigation navigation = OrderNavigation.setDriver();
         navigation.navigateToLastPage();
-        navigation.refreshReferences();
+        navigation.getReferences();
         List<OrderFromUI> ordersList = orderTable
                 .getOrdersFromTablePage(orderTable.getOrdersTable());
         Assert.assertTrue(orderTable.listsEqual(testDataList, ordersList));
@@ -275,7 +268,7 @@ public class OrdersPageTest {
     // test runs slow coz of implicitlyWait(2, TimeUnit.SECONDS);
     // look comment in getDataFromRow() method
     public void testTableData() throws Exception {
-        OrderTable orderTable = OrderTable.setDriver(driver);
+        OrderTable orderTable = OrderTable.setDriver();
         ConnectionSource connection = DbConnector.getConnection();
         List<OrderFromUI> ordersUI = orderTable.getAllOrdersFromTable();
         List<Order> ordersFromDB = DbProcessor.setConnection(connection)
@@ -288,9 +281,15 @@ public class OrdersPageTest {
     public void logOut(ITestResult testResult) {
         if (testResult.getStatus() == ITestResult.FAILURE) {
 //           add thread.sleep
-            ScreenShot.takeScreenshot(testResult.getName());
+//            take screenshot
+
+            Report.log("Test Failed. Making screenshot.");
+            Report.takeScreenshot(testResult.getName());
         }
-        LoginPage.setDriver(driver).logOut();
+        if (testResult.getStatus() == ITestResult.SUCCESS) {
+            Report.log("Test Succeed.");
+        }
+        LoginPage.setDriver().logOut();
     }
 
     @AfterSuite

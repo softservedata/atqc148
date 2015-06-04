@@ -1,6 +1,8 @@
 package com.softserve.edu.page.order;
 
+import com.softserve.edu.helpers.ContextVisible;
 import com.softserve.edu.helpers.Report;
+import com.softserve.edu.webdriver.WebDriverUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,13 +17,17 @@ public class OrderSearch {
 
     private OrderSearch(WebDriver driver) {
         this.driver = driver;
-        this.searchCriterion = new Select(driver.findElement(By.id("search")));
-        this.searchValue = driver.findElement(By.id("searchValue"));
-        this.applyBtn = driver.findElement(By.name("Apply"));
+        getReferences();
     }
 
-    public static OrderSearch setDriver(WebDriver driver) {
-        return new OrderSearch(driver);
+    public static OrderSearch setDriver() {
+        return new OrderSearch(WebDriverUtils.get().getWebDriver());
+    }
+
+    public void getReferences() {
+        this.searchCriterion = new Select(ContextVisible.get().getVisibleWebElement(By.id("search")));
+        this.searchValue = ContextVisible.get().getVisibleWebElement(By.id("searchValue"));
+        this.applyBtn = ContextVisible.get().getVisibleWebElement(By.name("Apply"));
     }
 
     /**
@@ -65,6 +71,4 @@ public class OrderSearch {
         Report.log("Type '" + text + "' to '" + searchValue.getAttribute("id") + "'");
         this.searchValue.sendKeys(text);
     }
-
-
 }

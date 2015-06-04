@@ -1,6 +1,8 @@
 package com.softserve.edu.page.order;
 
+import com.softserve.edu.helpers.ContextVisible;
 import com.softserve.edu.helpers.Report;
+import com.softserve.edu.webdriver.WebDriverUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,24 +16,21 @@ public class OrderNavigation {
 
     private OrderNavigation(WebDriver driver) {
         this.driver = driver;
-        nextBtn = driver.findElement(By.name("nextPage"));
-        prevBtn = driver.findElement(By.name("previousPage"));
-        firstBtn = driver.findElement(By.name("firstPage"));
-        lastBtn = driver.findElement(By.name("lastPage"));
+        getReferences();
     }
 
     /**
      * Finds navigation buttons on page.
      */
-    public void refreshReferences() {
-        nextBtn = driver.findElement(By.name("nextPage"));
-        prevBtn = driver.findElement(By.name("previousPage"));
-        firstBtn = driver.findElement(By.name("firstPage"));
-        lastBtn = driver.findElement(By.name("lastPage"));
+    public void getReferences() {
+        nextBtn = ContextVisible.get().getVisibleWebElement(By.name("nextPage"));
+        prevBtn = ContextVisible.get().getVisibleWebElement(By.name("previousPage"));
+        firstBtn = ContextVisible.get().getVisibleWebElement(By.name("firstPage"));
+        lastBtn = ContextVisible.get().getVisibleWebElement(By.name("lastPage"));
     }
 
-    public static OrderNavigation setDriver(WebDriver driver) {
-        return new OrderNavigation(driver);
+    public static OrderNavigation setDriver() {
+        return new OrderNavigation(WebDriverUtils.get().getWebDriver());
     }
 
     /**

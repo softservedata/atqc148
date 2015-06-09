@@ -24,7 +24,7 @@ public final class Report {
      */
     public static void log(String message) {
         String time = CalendarUtilities.getDateBySpecifiedFormat(CalendarUtilities.getCurrentDate(), "HH:mm:ss.SSS");
-        Reporter.log(time + " LOG - " + message+"\n", true);
+        Reporter.log(time + " LOG - " + message + "\n", true);
     }
 
     /**
@@ -39,6 +39,7 @@ public final class Report {
         File scrFile = ((TakesScreenshot) WebDriverUtils.get(BrowserRepository.getFirefoxTemporary()).getWebDriver()).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, new File(folder + time + " " + name + format));
+            log("Screenshot has been made. "+"<img src=\"../" + "screenshots/" + time + " " + name + format + "\" alt=\"\"/><br />");
         } catch (IOException e) {
             e.printStackTrace();
         }

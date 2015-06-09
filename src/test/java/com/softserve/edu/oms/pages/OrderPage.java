@@ -43,12 +43,9 @@ public class OrderPage {
         this.createNewOrder = ContextVisible.get().getVisibleWebElement(By.partialLinkText("Create new order"));
         //    filters
         this.filterBySelect = new Select(ContextVisible.get().getVisibleWebElement(By.id("filterBy")));
-        ;
         this.filterValueSelect = new Select(ContextVisible.get().getVisibleWebElement(By.id("filterValue")));
-        ;
         //    search
         this.searchBySelect = new Select(ContextVisible.get().getVisibleWebElement(By.id("search")));
-        ;
         this.searchField = ContextVisible.get().getVisibleWebElement(By.id("searchValue"));
         this.applyBtn = ContextVisible.get().getVisibleWebElement(By.name("Apply"));
         //    table
@@ -506,7 +503,7 @@ public void getSearchFields() {
                 .setMaxDiscount(rowStr.get(2)).setDeliveryDate(rowStr.get(3))
                 .setStatus(rowStr.get(4)).setAssigne(rowStr.get(5))
                 .setRole(rowStr.get(6));
-        ord.print();
+//        ord.print();
         return ord;
     }
 

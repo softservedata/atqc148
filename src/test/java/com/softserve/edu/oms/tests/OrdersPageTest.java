@@ -7,30 +7,24 @@ import main.java.edu.atqc.db.dao.order.OrderFromUI;
 import main.java.edu.atqc.db.dbhelpers.DbConnector;
 import main.java.edu.atqc.db.dbhelpers.DbHelpers;
 import main.java.edu.atqc.helpers.*;
-import main.java.edu.atqc.page.login.LoginPageHelper;
-import main.java.edu.atqc.page.order.OrderPageHelper;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import test.java.com.softserve.edu.oms.data.UrlRepository;
-import test.java.com.softserve.edu.oms.data.user.UserRepository;
-import main.java.edu.atqc.page.order.*;
 import main.java.edu.atqc.helpers.webdriver.BrowserRepository;
 import main.java.edu.atqc.helpers.webdriver.WebDriverUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import test.java.com.softserve.edu.oms.pages.*;
+import test.java.com.softserve.edu.oms.data.UrlRepository;
+import test.java.com.softserve.edu.oms.data.user.UserRepository;
+import test.java.com.softserve.edu.oms.pages.CustomerHomePage;
+import test.java.com.softserve.edu.oms.pages.OrderPage;
+import test.java.com.softserve.edu.oms.pages.StartLoginPage;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
 public class OrdersPageTest {
-    private WebDriver driver;
-
 
     @DataProvider
     public Object[][] browserProvider() {
@@ -42,37 +36,40 @@ public class OrdersPageTest {
     }
 
     @BeforeMethod(groups = {"testGroup"})
-    public void logIn(Method method) {
+    public void startTestMsg(Method method) {
         Report.log("Test started: " + method.getName());
     }
 
-    @Test(priority = 2, groups = {"testGroup"}, dependsOnMethods = "checkNextButton")
+    @Test(priority = 2, groups = {"testGroup"}, dependsOnMethods = "testTableData")
     public void filterByStatusTest() throws Exception {
-        // DEPENDS ON NEXTPAGEBUTTONTEST
         //        Login as customer
         CustomerHomePage customerHomePage = StartLoginPage
                 .load(BrowserRepository.getFirefoxTemporary(), UrlRepository.Urls.LOCAL_HOST.toString())
                 .successCustomerLogin(UserRepository.getCustomerUser());
 //        open orders page
         OrderPage orderpage = customerHomePage.orderingClick();
+//        read values for 'status' filter
         List<String> filterValues = orderpage.readValuesForField(FilterValues.Status.getName());
         OrderStatuses statusValue;
+//      for each field apply and check every field
         for (String crit : filterValues) {
             if (!crit.equals("None")) {
                 statusValue = OrderStatuses.valueOf(crit);
                 orderpage.orderBy(FilterValues.Status.getName(), statusValue.getName());
                 orderpage.apply();
+//                get orders from db
                 List<OrderFromUI> ordersDB = DbHelpers.readOrdersByField(
                         FilterValues.Status, statusValue);
+//                get orders from table
                 List<OrderFromUI> ordersUI = orderpage.getAllOrdersFromTable();
+//                compare lists
                 Assert.assertTrue(orderpage.listsEqual(ordersUI, ordersDB));
             }
         }
     }
 
-    @Test(priority = 2, groups = {"testGroup"}, dependsOnMethods = "checkNextButton")
+    @Test(priority = 2, groups = {"testGroup"}, dependsOnMethods = "testTableData")
     public void filterByRoleTest() throws Exception {
-// DEPENDS ON NEXTPAGEBUTTONTEST
 //      Login as customer, open orders page
         OrderPage orderpage = StartLoginPage
                 .load(BrowserRepository.getFirefoxTemporary(), UrlRepository.Urls.LOCAL_HOST.toString())
@@ -93,9 +90,8 @@ public class OrdersPageTest {
         }
     }
 
-    @Test(priority = 2, groups = {"testGroup"}, dependsOnMethods = "checkNextButton")
+    @Test(priority = 2, groups = {"testGroup"}, dependsOnMethods = "testTableData")
     public void filterByNoneTest() throws Exception {
-        // DEPENDS ON NEXTPAGEBUTTONTEST
         //      Login as customer, open orders page
         OrderPage orderpage = StartLoginPage
                 .load(BrowserRepository.getFirefoxTemporary(), UrlRepository.Urls.LOCAL_HOST.toString())
@@ -115,35 +111,44 @@ public class OrdersPageTest {
                 List<OrderFromUI> ordersDB = Order.toOrdersFromUI(ordersFromDB);
                 //read data from table (ui)
                 List<OrderFromUI> ordersUI = orderpage.getAllOrdersFromTable();
-
+                //compare lists
                 Assert.assertTrue(orderpage.listsEqual(ordersUI, ordersDB));
             }
         }
     }
 
+    @DataProvider
+    public Object[][] searchPositiveProvider() {
+        return new Object[][]{{"ordername"}};
+    }
 
-    @Test(priority = 2, groups = {"testGroup"}, dependsOnMethods = "checkNextButton")
-    public void searchTestPositive() throws Exception {
-//            DEPENDS ON NEXTBUTTONTEST
+    @Test(priority = 2, groups = {"testGroup"}, dependsOnMethods = "testTableData", dataProvider = "searchPositiveProvider")
+    public void searchTestPositive(String testData) throws Exception {
+//        login as customer, open orders page
         OrderPage orderpage = StartLoginPage
                 .load(BrowserRepository.getFirefoxTemporary(), UrlRepository.Urls.LOCAL_HOST.toString())
                 .successCustomerLogin(UserRepository.getCustomerUser()).orderingClick();
-        String testData = "ordername";
+//        set search criterion to 'Order Name'
         orderpage.setCriterionToOrderName();
+//        type text to search, click 'apply' button
         orderpage.typeTextToSearch(testData);
         orderpage.apply();
+//        read fields from ui and db, compare them
         List<OrderFromUI> ordersDB = DbHelpers.readOrdersByOrderName(testData);
         List<OrderFromUI> ordersUI = orderpage.getAllOrdersFromTable();
         Assert.assertTrue(orderpage.listsEqual(ordersUI, ordersDB));
     }
 
+    @DataProvider
+    public Object[][] searchNegativeProvider() {
+        return new Object[][]{{"123qwe"}};
+    }
 
-    @Test(priority = 2, groups = {"testGroup"})
-    public void searchTestNegative() throws Exception {
+    @Test(priority = 2, groups = {"testGroup"}, dataProvider = "searchNegativeProvider")
+    public void searchTestNegative(String testData) throws Exception {
         OrderPage orderpage = StartLoginPage
                 .load(BrowserRepository.getFirefoxTemporary(), UrlRepository.Urls.LOCAL_HOST.toString())
                 .successCustomerLogin(UserRepository.getCustomerUser()).orderingClick();
-        String testData = "123qwe";
         orderpage.setCriterionToOrderName();
         orderpage.typeTextToSearch(testData);
         orderpage.apply();
@@ -155,9 +160,11 @@ public class OrdersPageTest {
 
     @Test(priority = 2, groups = {"testGroup"})
     public void checkIfFirstButtonIsDisabled() {
+//        login as customer, open orders page
         OrderPage orderpage = StartLoginPage
                 .load(BrowserRepository.getFirefoxTemporary(), UrlRepository.Urls.LOCAL_HOST.toString())
                 .successCustomerLogin(UserRepository.getCustomerUser()).orderingClick();
+//        check if 'first' button is disabled
         Assert.assertTrue(orderpage.isFirstBtnDisabled());
     }
 
@@ -171,11 +178,14 @@ public class OrdersPageTest {
 
     @Test(priority = 2, groups = {"testGroup"})
     public void checkIfNextButtonIsDisabled() {
+//        login as customer, open orders page
         OrderPage orderpage = StartLoginPage
                 .load(BrowserRepository.getFirefoxTemporary(), UrlRepository.Urls.LOCAL_HOST.toString())
                 .successCustomerLogin(UserRepository.getCustomerUser()).orderingClick();
+//        click on 'last' button, refresh references
         orderpage.navigateToLastPage();
-        orderpage.getNavButtons(); //makes sense to call this method inside navigatetolastpage();
+        orderpage.getNavButtons();
+//        check if 'next' button is disabled
         Assert.assertTrue(orderpage.isNextBtnDisabled());
     }
 
@@ -189,7 +199,6 @@ public class OrdersPageTest {
         Assert.assertTrue(orderpage.isLastBtnDisabled());
     }
 
-
     @DataProvider
     public Object[][] firstOrdersProvider() {
         List<OrderFromUI> testDataList = new ArrayList<OrderFromUI>();
@@ -197,7 +206,6 @@ public class OrdersPageTest {
                 .setTotalPrice("31.0").setMaxDiscount("0").setDeliveryDate("")
                 .setStatus("Created").setAssigne("login2")
                 .setRole("Merchandiser").build());
-
         testDataList.add(OrderFromUI.get().setOrderName("")
                 .setTotalPrice("9.0").setMaxDiscount("0")
                 .setDeliveryDate("2015-05-21 00:00:00.0").setStatus("Pending")
@@ -207,15 +215,19 @@ public class OrdersPageTest {
 
     @Test(priority = 2, groups = {"testGroup"}, dataProvider = "firstOrdersProvider")
     public void checkFirstButton(List<OrderFromUI> testDataList) {
+//        login as customer, open orders page
         OrderPage orderpage = StartLoginPage
                 .load(BrowserRepository.getFirefoxTemporary(), UrlRepository.Urls.LOCAL_HOST.toString())
                 .successCustomerLogin(UserRepository.getCustomerUser()).orderingClick();
+//        click on 'next' button, refresh references
         orderpage.navigateToNextPage();
         orderpage.getNavButtons();
         orderpage.findOrdersTable();
+//        click on 'first' button, refresh references
         orderpage.navigateToFirstPage();
         orderpage.getNavButtons();
         orderpage.findOrdersTable();
+//        get data from ui and compage with test data
         List<OrderFromUI> ordersList = orderpage
                 .getOrdersFromTablePage();
         Assert.assertTrue(orderpage.listsEqual(testDataList, ordersList));
@@ -237,7 +249,7 @@ public class OrdersPageTest {
         return new Object[][]{{testDataList}};
     }
 
-    @Test(priority = 2, groups = {"testGroup"}, dataProvider = "previousOrdersProvider")
+    @Test(priority = 2, groups = {"testGroup"}, dataProvider = "previousOrdersProvider", dependsOnMethods = "testTableData")
     public void checkPreviousButton(List<OrderFromUI> testDataList) {
         OrderPage orderpage = StartLoginPage
                 .load(BrowserRepository.getFirefoxTemporary(), UrlRepository.Urls.LOCAL_HOST.toString())
@@ -252,7 +264,6 @@ public class OrdersPageTest {
                 .getOrdersFromTablePage();
         Assert.assertTrue(orderpage.listsEqual(testDataList, ordersList));
     }
-
 
     @DataProvider
     public Object[][] nextOrdersProvider() {
@@ -272,20 +283,23 @@ public class OrdersPageTest {
 
     @Test(priority = 1, groups = {"testGroup"}, dataProvider = "nextOrdersProvider")
     public void checkNextButton(List<OrderFromUI> testDataList) {
+//        login as customer, open orders page
         OrderPage orderpage = StartLoginPage
                 .load(BrowserRepository.getFirefoxTemporary(), UrlRepository.Urls.LOCAL_HOST.toString())
                 .successCustomerLogin(UserRepository.getCustomerUser()).orderingClick();
+//        click on 'first' button, refresh references
         orderpage.navigateToFirstPage();
         orderpage.getNavButtons();
         orderpage.findOrdersTable();
+//        click on 'next' button, refresh references
         orderpage.navigateToNextPage();
         orderpage.getNavButtons();
         orderpage.findOrdersTable();
+//        get data from ui table and compare with test data
         List<OrderFromUI> ordersList = orderpage
                 .getOrdersFromTablePage();
         Assert.assertTrue(orderpage.listsEqual(testDataList, ordersList));
     }
-
 
     @DataProvider
     public Object[][] lastOrdersProvider() {
@@ -303,7 +317,7 @@ public class OrdersPageTest {
         return new Object[][]{{testDataList}};
     }
 
-    @Test(priority = 2, groups = {"testGroup"}, dataProvider = "lastOrdersProvider")
+    @Test(priority = 2, groups = {"testGroup"}, dataProvider = "lastOrdersProvider", dependsOnMethods = "testTableData")
     public void checkLastButton(List<OrderFromUI> testDataList) {
         OrderPage orderpage = StartLoginPage
                 .load(BrowserRepository.getFirefoxTemporary(), UrlRepository.Urls.LOCAL_HOST.toString())
@@ -316,34 +330,26 @@ public class OrdersPageTest {
         Assert.assertTrue(orderpage.listsEqual(testDataList, ordersList));
     }
 
-    @Test(priority = 1, enabled = true, groups = {"testGroup"}, dependsOnMethods = "checkNextButton")
+    @Test(priority = 1, groups = {"testGroup"}, dependsOnMethods = "checkNextButton")
     public void testTableData() throws Exception {
         OrderPage orderpage = StartLoginPage
                 .load(BrowserRepository.getFirefoxTemporary(), UrlRepository.Urls.LOCAL_HOST.toString())
                 .successCustomerLogin(UserRepository.getCustomerUser()).orderingClick();
-//        get all orders from db
         List<OrderFromUI> ordersDB = DbHelpers.setConnection(DbConnector.getConnection()).getDataFromDatabase();
-//        get all orders from ui
         List<OrderFromUI> ordersUI = orderpage.getAllOrdersFromTable();
-//        compare lists
         Assert.assertTrue(orderpage.listsEqual(ordersUI, ordersDB));
     }
 
     @AfterMethod(groups = {"testGroup"})
     public void takeScreenshotIfFail(ITestResult testResult) {
-
         if (testResult.getStatus() == ITestResult.FAILURE) {
-//           wait till opacity is 1 or
-//            take screenshot
-
-//            ExpectedConditions.
-            Report.log("Test Failed. Making screenshot.");
+            ContextVisible.get().getVisibleWebElement(By.xpath("//body/div[@style='']"));
+            Report.log("Test: "+testResult.getName()+" FAILED. Making screenshot.");
             Report.takeScreenshot(testResult.getName());
         }
         if (testResult.getStatus() == ITestResult.SUCCESS) {
-            Report.log("Test Succeed.");
+            Report.log("Test "+testResult.getName()+" SUCCEED.");
         }
-
 //   TODO     to logout from page. need to refactor
         ContextVisible.get().getVisibleWebElement(By.xpath("//a[@href='/OMS/logout.htm']")).click();
     }

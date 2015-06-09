@@ -122,9 +122,9 @@ public class DbHelpers {
             orderStatusDao.close();
             roleDao.close();
         }
-        for (Order ord: orderList){
-            ord.print();
-        }
+//        for (Order ord: orderList){
+//            ord.print();
+//        }
         return Order.toOrdersFromUI(orderList);
     }
 

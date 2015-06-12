@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Simple HTML-XML Suite">
+<suite name="OMS Suite">
+
+    <listeners>
+        <listener class-name="main.java.edu.atqc.helpers.Listeners"/>
+    </listeners>
+
     <test name="OMS test">
         <classes>
-            <class name="test.java.com.softserve.edu.oms.tests.OrdersPageTest" />
+            <class name="test.java.com.softserve.edu.oms.tests.OrdersPageTest"/>
         </classes>
     </test>
 </suite>

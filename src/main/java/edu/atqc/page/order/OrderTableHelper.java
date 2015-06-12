@@ -22,81 +22,7 @@ public class OrderTableHelper {
         return new OrderTableHelper(WebDriverUtils.get().getWebDriver());
     }
 
-    /**
-     * Gets order table size. Navigates through orders table until finds duplicated values.
-     *
-     * @return Size of orders table.
-     */
-    public int getTableSize() {
-        OrderPageHelper.navigateToOrderPage();
-        WebElement ordersTable = getOrdersTable();
-        List<OrderFromUI> ordersFromTable = getOrdersFromTablePage(ordersTable);
-        int size = ordersFromTable.size();
-        OrderNavigationHelper.setDriver().navigateToNextPage();
-        ordersTable = getOrdersTable();
-        while (!ordersFromTable.get(0).equals(
-                getOrdersFromTablePage(ordersTable).get(0))) {
 
-            if (!ordersFromTable.get(ordersFromTable.size() - 1).equals(
-                    getOrdersFromTablePage(ordersTable).get(0))) {
-                size += 2;
-                ordersFromTable = getOrdersFromTablePage(ordersTable);
-                OrderNavigationHelper.setDriver().navigateToNextPage();
-                ordersTable = getOrdersTable();
-            } else {
-                size += 1;
-                ordersFromTable = getOrdersFromTablePage(ordersTable);
-                OrderNavigationHelper.setDriver().navigateToNextPage();
-                ordersTable = getOrdersTable();
-            }
-        }
-        return size;
-    }
-
-    /**
-     * Reads all orders from table. Navigates through untill duplicate is found.
-     *
-     * @return List of orders from orders table.
-     */
-    public List<OrderFromUI> getAllOrdersFromTable() {
-        Report.log("Getting all orders from table.");
-        // OrderPageHelper.navigateToOrderPage(driver);
-        WebElement ordersTable = getOrdersTable();
-        List<OrderFromUI> orders = new ArrayList<OrderFromUI>();
-
-        // 1.get orders from table page
-        if (orders.size() == 0) {
-            List<OrderFromUI> ordersFromTable = getOrdersFromTablePage(ordersTable);
-            if (ordersFromTable.size() == 0) {
-                return orders;
-            }
-            for (OrderFromUI order : ordersFromTable) {
-                orders.add(order);
-            }
-            OrderNavigationHelper.setDriver().navigateToNextPage();
-            ordersTable = getOrdersTable();
-        }
-        // 2.compare
-        // there's order duplicate *(look comment below)
-        List<OrderFromUI> ordersUi = getOrdersFromTablePage(ordersTable);
-        while (!orders.get(orders.size() - ordersUi.size()).equals(
-                ordersUi.get(0))) {
-            // List<OrderFromUI> ordersFromTable =
-            // getOrdersFromTablePage(ordersTable);
-            Iterator<OrderFromUI> iter = ordersUi.iterator();
-            while (iter.hasNext()) {
-                OrderFromUI order = iter.next();
-                // added check for duplicates
-                if (!orders.get(orders.size() - 1).equals(order)) {
-                    orders.add(order);
-                }
-            }
-            OrderNavigationHelper.setDriver().navigateToNextPage();
-            ordersTable = getOrdersTable();
-            ordersUi = getOrdersFromTablePage(ordersTable);
-        }
-        return orders;
-    }
 
     /**
      * Finds order table on page.
@@ -148,42 +74,6 @@ public class OrderTableHelper {
         return rowString;
     }
 
-    /**
-     * Reads order by row number in table.
-     *
-     * @param num row number.
-     * @return OrderFromUI object with data from table row.
-     */
-    public OrderFromUI getOrderByNumber(int num) {
-        OrderPageHelper.navigateToOrderPage();
-        WebElement table = getOrdersTable();
-        WebElement row = null;
-        int pageNum = 1;
-        int rowsSize = table.findElements(By.tagName("tr")).size() - 1;
-        boolean elementFound = false;
-        while (!elementFound) {
-            List<WebElement> rows = table.findElements(By.tagName("tr"));
-            if (rowsSize >= num) {
-                row = rows.get(num / pageNum);
-                elementFound = true;
-            } else {
-                OrderNavigationHelper.setDriver().navigateToNextPage();
-                table = getOrdersTable();
-                pageNum++;
-                rowsSize *= pageNum;
-            }
-        }
-        List<String> rowStr = getDataFromRow(row);
-//        OrderFromUI ord = new OrderFromUI(rowStr.get(0), rowStr.get(1),
-//                rowStr.get(2), rowStr.get(3), rowStr.get(4), rowStr.get(5),
-//                rowStr.get(6));
-        OrderFromUI ord = OrderFromUI.get().setOrderName(rowStr.get(0)).setTotalPrice(rowStr.get(1))
-                .setMaxDiscount(rowStr.get(2)).setDeliveryDate(rowStr.get(3))
-                .setStatus(rowStr.get(4)).setAssigne(rowStr.get(5))
-                .setRole(rowStr.get(6));
-        ord.print();
-        return ord;
-    }
 
     /**
      * Checks two list for equality. Compares all list elements.

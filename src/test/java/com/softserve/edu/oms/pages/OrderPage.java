@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -113,6 +114,7 @@ public class OrderPage {
 
 
 //    ----------------------------FILTERS----------------------------------------------------
+
     /**
      * Finds filter select elements.
      */
@@ -123,6 +125,7 @@ public class OrderPage {
 
     /**
      * Finds select elements.
+     *
      * @return list of select web elements for filters.
      */
     public List<WebElement> getFiltersBy() {
@@ -132,6 +135,7 @@ public class OrderPage {
 
     /**
      * Finds select valuse elements.
+     *
      * @return list of select web elements for filter values.
      */
     public List<WebElement> getFilterValues() {
@@ -141,7 +145,8 @@ public class OrderPage {
 
     /**
      * Select filter.
-     * @param field filter select (Status or Role)
+     *
+     * @param field     filter select (Status or Role)
      * @param criterion filter Value (None, Pendidng...)
      */
     public void orderBy(String field, String criterion) {
@@ -153,6 +158,7 @@ public class OrderPage {
 
     /**
      * Get values for specified filter.
+     *
      * @param field filter field.
      * @return list of String filter values.
      */
@@ -177,8 +183,8 @@ public class OrderPage {
      */
     public void setFilterByStatus() {
         List<WebElement> filters = getFiltersBy();
-        for (WebElement filter:filters){
-            if(filter.getText().equals("Status")){
+        for (WebElement filter : filters) {
+            if (filter.getText().equals("Status")) {
                 filter.click();
             }
         }
@@ -189,8 +195,8 @@ public class OrderPage {
      */
     public void setFilterByRole() {
         List<WebElement> filters = getFiltersBy();
-        for (WebElement filter:filters){
-            if(filter.getText().equals("Role")){
+        for (WebElement filter : filters) {
+            if (filter.getText().equals("Role")) {
                 filter.click();
             }
         }
@@ -207,6 +213,7 @@ public class OrderPage {
 
 
 //     -------------------------------NAVIGATION----------------------------------------
+
     /**
      * Finds navigation buttons on page.
      */
@@ -229,7 +236,7 @@ public class OrderPage {
      * Click on 'previous' button
      */
     public void navigateToPrevPage() {
-        Report.log("Click on '" +  this.previousPageBtn.getAttribute("value") + "'");
+        Report.log("Click on '" + this.previousPageBtn.getAttribute("value") + "'");
         this.previousPageBtn.click();
     }
 
@@ -264,7 +271,7 @@ public class OrderPage {
      * @return true if is disabled, fasle if is enabled.
      */
     public boolean isPrevBtnDisabled() {
-        return ! this.previousPageBtn.isEnabled();
+        return !this.previousPageBtn.isEnabled();
     }
 
     /**
@@ -284,17 +291,28 @@ public class OrderPage {
     public boolean isLastBtnDisabled() {
         return !this.lastPageBtn.isEnabled();
     }
-//     -------------------------------NAVIGATION----------------------------------------
 
+
+    /**
+     * Check if 'last' button is disabled.
+     *
+     * @throws AssertionError if button is not disabled.
+     */
+    public void isLastBtnDisabledWithException() throws AssertionError {
+        OrderNavigationHelper.get().isBtnDisabled(this.lastPageBtn);
+    }
+
+
+//     -------------------------------NAVIGATION----------------------------------------
 
 
 //     -------------------------------SEARCH----------------------------------------
 
-public void getSearchFields() {
-    this.searchBySelect = new Select(ContextVisible.get().getVisibleWebElement(By.id("search")));
-    this.searchField = ContextVisible.get().getVisibleWebElement(By.id("searchValue"));
-    this.applyBtn = ContextVisible.get().getVisibleWebElement(By.name("Apply"));
-}
+    public void getSearchFields() {
+        this.searchBySelect = new Select(ContextVisible.get().getVisibleWebElement(By.id("search")));
+        this.searchField = ContextVisible.get().getVisibleWebElement(By.id("searchValue"));
+        this.applyBtn = ContextVisible.get().getVisibleWebElement(By.name("Apply"));
+    }
 
     /**
      * Set search criterion to 'Status'
@@ -340,8 +358,8 @@ public void getSearchFields() {
 //     -------------------------------SEARCH----------------------------------------
 
 
-
 //     -------------------------------ORDER TABLE----------------------------------------
+
     /**
      * Gets order table size. Navigates through orders table until finds duplicated values.
      *
@@ -352,7 +370,7 @@ public void getSearchFields() {
         WebElement ordersTable = findOrdersTable();
         List<OrderFromUI> ordersFromTable = getOrdersFromTablePage();
         int size = ordersFromTable.size();
-        OrderNavigationHelper.setDriver().navigateToNextPage();
+        navigateToNextPage();
         ordersTable = findOrdersTable();
         while (!ordersFromTable.get(0).equals(
                 getOrdersFromTablePage().get(0))) {
@@ -361,12 +379,12 @@ public void getSearchFields() {
                     getOrdersFromTablePage().get(0))) {
                 size += 2;
                 ordersFromTable = getOrdersFromTablePage();
-                OrderNavigationHelper.setDriver().navigateToNextPage();
+                navigateToNextPage();
                 ordersTable = findOrdersTable();
             } else {
                 size += 1;
                 ordersFromTable = getOrdersFromTablePage();
-                OrderNavigationHelper.setDriver().navigateToNextPage();
+                navigateToNextPage();
                 ordersTable = findOrdersTable();
             }
         }
@@ -393,7 +411,8 @@ public void getSearchFields() {
             for (OrderFromUI order : ordersFromTable) {
                 orders.add(order);
             }
-            OrderNavigationHelper.setDriver().navigateToNextPage();
+            getNavButtons();
+            navigateToNextPage();
             ordersTable = findOrdersTable();
         }
         // 2.compare
@@ -411,7 +430,8 @@ public void getSearchFields() {
                     orders.add(order);
                 }
             }
-            OrderNavigationHelper.setDriver().navigateToNextPage();
+            getNavButtons();
+            navigateToNextPage();
             ordersTable = findOrdersTable();
             ordersUi = getOrdersFromTablePage();
         }
@@ -489,7 +509,7 @@ public void getSearchFields() {
                 row = rows.get(num / pageNum);
                 elementFound = true;
             } else {
-                OrderNavigationHelper.setDriver().navigateToNextPage();
+                navigateToNextPage();
                 table = findOrdersTable();
                 pageNum++;
                 rowsSize *= pageNum;

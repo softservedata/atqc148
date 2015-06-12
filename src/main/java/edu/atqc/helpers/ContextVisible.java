@@ -107,5 +107,4 @@ public final class ContextVisible {
                 WebDriverUtils.get().getImplicitlyWaitTimeout())
                 .until(ExpectedConditions.titleContains(partialTitle));
     }
-
 }

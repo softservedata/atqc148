@@ -14,7 +14,7 @@ public abstract class OrderPageHelper {
     public static void navigateToOrderPage(/*WebDriver driver*/) {
         //driver.get("http://localhost:8080/OMS/order.htm");
        WebDriver driver = WebDriverUtils.get().getWebDriver();
-//        TODO refactor using contextvisible
+//        refactor using contextvisible
         driver.findElement(By.linkText("Ordering")).click();
     }
 

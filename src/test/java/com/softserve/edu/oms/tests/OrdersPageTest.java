@@ -37,7 +37,6 @@ public class OrdersPageTest {
 
     @BeforeMethod(groups = {"testGroup"})
     public void startTestMsg(Method method) {
-        Report.log("Test started: " + method.getName());
     }
 
     @Test(priority = 2, groups = {"testGroup"}, dependsOnMethods = "testTableData")
@@ -197,6 +196,9 @@ public class OrdersPageTest {
         orderpage.navigateToLastPage();
         orderpage.getNavButtons();
         Assert.assertTrue(orderpage.isLastBtnDisabled());
+
+//      method throws assertion error and makes screenshot if button is not disabled.
+//        orderpage.isLastBtnDisabledWithException();
     }
 
     @DataProvider
@@ -342,14 +344,6 @@ public class OrdersPageTest {
 
     @AfterMethod(groups = {"testGroup"})
     public void takeScreenshotIfFail(ITestResult testResult) {
-        if (testResult.getStatus() == ITestResult.FAILURE) {
-            ContextVisible.get().getVisibleWebElement(By.xpath("//body/div[@style='']"));
-            Report.log("Test: "+testResult.getName()+" FAILED. Making screenshot.");
-            Report.takeScreenshot(testResult.getName());
-        }
-        if (testResult.getStatus() == ITestResult.SUCCESS) {
-            Report.log("Test "+testResult.getName()+" SUCCEED.");
-        }
 //   TODO     to logout from page. need to refactor
         ContextVisible.get().getVisibleWebElement(By.xpath("//a[@href='/OMS/logout.htm']")).click();
     }
@@ -359,3 +353,6 @@ public class OrdersPageTest {
         WebDriverUtils.get().stop();
     }
 }
+
+
+//TODO catch exception when element not found on page and throw custom exception

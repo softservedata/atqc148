@@ -3,6 +3,7 @@ package main.java.edu.atqc.helpers;
 import main.java.edu.atqc.helpers.webdriver.BrowserRepository;
 import main.java.edu.atqc.helpers.webdriver.WebDriverUtils;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Reporter;
@@ -27,6 +28,13 @@ public final class Report {
         Reporter.log(time + " LOG - " + message + "\n", true);
     }
 
+
+    public static void logWithColor(String message, String color) {
+        String time = CalendarUtilities.getDateBySpecifiedFormat(CalendarUtilities.getCurrentDate(), "HH:mm:ss.SSS");
+        Reporter.log("<p style=\"color:"+color+"\">"+time + " LOG - " + message + "</p>\n", false);
+    }
+
+
     /**
      * Takes the screenshot of browser window.
      *
@@ -36,6 +44,8 @@ public final class Report {
         String time = CalendarUtilities.getDateBySpecifiedFormat(CalendarUtilities.getCurrentDate(), "HH-mm-ss");
         String folder = "test-output/screenshots/";
         String format = ".png";
+//        wait till elements opacity is 1
+        ContextVisible.get().getVisibleWebElement(By.xpath("//body/div[@style='']"));
         File scrFile = ((TakesScreenshot) WebDriverUtils.get(BrowserRepository.getFirefoxTemporary()).getWebDriver()).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, new File(folder + time + " " + name + format));

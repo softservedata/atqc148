@@ -11,7 +11,6 @@ public class UserRoleDaoImpl extends BaseDaoImpl<UserRole, Integer> implements
 	public UserRoleDaoImpl(ConnectionSource connectionSource)
 			throws SQLException {
 		super(connectionSource, UserRole.class);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void close() throws SQLException {

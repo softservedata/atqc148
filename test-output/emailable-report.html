@@ -29,19 +29,36 @@ div.shootout {padding:2em;border:3px #4854A8 solid}
 <body>
 <table cellspacing=0 cellpadding=0 class="param">
 <tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em">Tests</td><td class="numi">0</td><td class="numi">0</td><td class="numi">0</td><td class="numi_attn">1</td><td class="numi">10.5 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">OMS test</td><td class="numi">10</td><td class="numi">10</td><td class="numi">0</td><td class="numi_attn">4</td><td class="numi">172.6 seconds</td><td class="numi"></td><td class="numi"></td></tr>
 </table>
 <a id="summary"></a>
 <table cellspacing=0 cellpadding=0 class="passed">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Time<br/>(Msecs)</th></tr>
-<tr><th colspan="4">Tests &#8212; failed</th></tr>
-<tr class="failedodd"><td rowspan="1">test.java.com.softserve.edu.oms.tests.OrdersPageTest<td><a href="#m1"><b>checkIfLastButtonIsDisabled</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">8844</td></tr>
+<tr><th colspan="4">OMS test &#8212; failed</th></tr>
+<tr class="failedodd"><td rowspan="4">test.java.com.softserve.edu.oms.tests.OrdersPageTest<td><a href="#m1"><b>checkIfNextButtonIsDisabled</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">5593</td></tr><tr class="failedodd"><td><a href="#m2"><b>checkIfLastButtonIsDisabled</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">4650</td></tr><tr class="failedodd"><td><a href="#m3"><b>checkIfFirstButtonIsDisabled</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">3967</td></tr><tr class="failedodd"><td><a href="#m4"><b>checkIfPreviousButtonIsDisabled</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">3720</td></tr>
+<tr><th colspan="4">OMS test &#8212; passed</th></tr>
+<tr class="passedodd"><td rowspan="10">test.java.com.softserve.edu.oms.tests.OrdersPageTest<td><a href="#m5"><b>checkFirstButton</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">7106</td></tr><tr class="passedodd"><td><a href="#m6"><b>checkLastButton</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">5987</td></tr><tr class="passedodd"><td><a href="#m7"><b>filterByNoneTest</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">21315</td></tr><tr class="passedodd"><td><a href="#m8"><b>checkPreviousButton</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">6942</td></tr><tr class="passedodd"><td><a href="#m9"><b>checkNextButton</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">11016</td></tr><tr class="passedodd"><td><a href="#m10"><b>filterByRoleTest</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">26786</td></tr><tr class="passedodd"><td><a href="#m11"><b>searchTestPositive</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">12824</td></tr><tr class="passedodd"><td><a href="#m12"><b>filterByStatusTest</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">31600</td></tr><tr class="passedodd"><td><a href="#m13"><b>searchTestNegative</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">4918</td></tr><tr class="passedodd"><td><a href="#m14"><b>testTableData</b> (testGroup) </a></td><td class="numi">1</td><td class="numi">19014</td></tr>
 </table>
-<h1>Tests</h1>
-<a id="m1"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:checkIfLastButtonIsDisabled</h2>
+<h1>OMS test</h1>
+<a id="m1"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:checkIfNextButtonIsDisabled</h2>
 <div style="padding-left:3em">
 <h3>Test Messages</h3>
-00:57:54.261 LOG - Click on 'Last'
+13:19:21.626 LOG - Click on 'Last'
+<br/>
+<h3>Failure</h3>
+<p>expected:&lt;true&gt; but was:&lt;false&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:480)
+<br/>at org.testng.Assert.assertTrue(Assert.java:37)
+<br/>at org.testng.Assert.assertTrue(Assert.java:47)
+<br/>at test.java.com.softserve.edu.oms.tests.OrdersPageTest.checkIfNextButtonIsDisabled(OrdersPageTest.java:189)
+<br/>32 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m2"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:checkIfLastButtonIsDisabled</h2>
+<div style="padding-left:3em">
+<h3>Test Messages</h3>
+13:19:14.490 LOG - Click on 'Last'
 <br/>
 <h3>Failure</h3>
 <p>expected:&lt;true&gt; but was:&lt;false&gt;</p>
@@ -51,6 +68,274 @@ org.testng.Assert.fail(Assert.java:89)
 <br/>at org.testng.Assert.assertTrue(Assert.java:47)
 <br/>at test.java.com.softserve.edu.oms.tests.OrdersPageTest.checkIfLastButtonIsDisabled(OrdersPageTest.java:199)
 <br/>32 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m3"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:checkIfFirstButtonIsDisabled</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;true&gt; but was:&lt;false&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:480)
+<br/>at org.testng.Assert.assertTrue(Assert.java:37)
+<br/>at org.testng.Assert.assertTrue(Assert.java:47)
+<br/>at test.java.com.softserve.edu.oms.tests.OrdersPageTest.checkIfFirstButtonIsDisabled(OrdersPageTest.java:168)
+<br/>32 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m4"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:checkIfPreviousButtonIsDisabled</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;true&gt; but was:&lt;false&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:480)
+<br/>at org.testng.Assert.assertTrue(Assert.java:37)
+<br/>at org.testng.Assert.assertTrue(Assert.java:47)
+<br/>at test.java.com.softserve.edu.oms.tests.OrdersPageTest.checkIfPreviousButtonIsDisabled(OrdersPageTest.java:176)
+<br/>32 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m5"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:checkFirstButton</h2>
+<table cellspacing=0 cellpadding=0 class="param">
+<tr><th style="padding-left:1em;padding-right:1em">Parameter #1</th></tr>
+<tr><td style="padding-left:.5em;padding-right:2em">[main.java.edu.atqc.db.dao.order.OrderFromUI@326cd1bd, main.java.edu.atqc.db.dao.order.OrderFromUI@63de928]</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+13:19:02.567 LOG - Click on 'Next'
+<br/>
+13:19:03.387 LOG - Click on 'First'
+<br/>
+13:19:05.670 LOG - Checking lists equality.
+<br/>
+13:19:05.670 LOG - Number of equal orders: 2
+<br/>
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m6"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:checkLastButton</h2>
+<table cellspacing=0 cellpadding=0 class="param">
+<tr><th style="padding-left:1em;padding-right:1em">Parameter #1</th></tr>
+<tr><td style="padding-left:.5em;padding-right:2em">[main.java.edu.atqc.db.dao.order.OrderFromUI@4ce5d531, main.java.edu.atqc.db.dao.order.OrderFromUI@50fab68]</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+13:17:15.269 LOG - Click on 'Last'
+<br/>
+13:17:17.514 LOG - Checking lists equality.
+<br/>
+13:17:17.514 LOG - Number of equal orders: 2
+<br/>
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m7"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:filterByNoneTest</h2>
+<div style="padding-left:3em">
+13:17:30.990 LOG - Getting all orders from table.
+<br/>
+13:17:32.930 LOG - Click on 'Next'
+<br/>
+13:17:35.203 LOG - Click on 'Next'
+<br/>
+13:17:37.503 LOG - Click on 'Next'
+<br/>
+13:17:39.791 LOG - Click on 'Next'
+<br/>
+13:17:42.135 LOG - Click on 'Next'
+<br/>
+13:17:44.400 LOG - Click on 'Next'
+<br/>
+13:17:46.234 LOG - Checking lists equality.
+<br/>
+13:17:46.234 LOG - Number of equal orders: 12
+<br/>
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m8"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:checkPreviousButton</h2>
+<table cellspacing=0 cellpadding=0 class="param">
+<tr><th style="padding-left:1em;padding-right:1em">Parameter #1</th></tr>
+<tr><td style="padding-left:.5em;padding-right:2em">[main.java.edu.atqc.db.dao.order.OrderFromUI@554c6b72, main.java.edu.atqc.db.dao.order.OrderFromUI@c22351e]</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+13:17:21.637 LOG - Click on 'Last'
+<br/>
+13:17:22.457 LOG - Click on 'Previous'
+<br/>
+13:17:24.694 LOG - Checking lists equality.
+<br/>
+13:17:24.694 LOG - Number of equal orders: 2
+<br/>
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m9"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:checkNextButton</h2>
+<table cellspacing=0 cellpadding=0 class="param">
+<tr><th style="padding-left:1em;padding-right:1em">Parameter #1</th></tr>
+<tr><td style="padding-left:.5em;padding-right:2em">[main.java.edu.atqc.db.dao.order.OrderFromUI@1e0a91ff, main.java.edu.atqc.db.dao.order.OrderFromUI@47f70bc1]</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+13:16:49.066 LOG - Click on 'First'
+<br/>
+13:16:49.881 LOG - Click on 'Next'
+<br/>
+13:16:52.072 LOG - Checking lists equality.
+<br/>
+13:16:52.072 LOG - Number of equal orders: 2
+<br/>
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m10"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:filterByRoleTest</h2>
+<div style="padding-left:3em">
+13:17:52.648 LOG - Reading orders from DB where 'Role'='Administrator'
+<br/>
+13:17:52.677 LOG - Getting all orders from table.
+<br/>
+13:17:54.709 LOG - Click on 'Next'
+<br/>
+13:17:56.982 LOG - Click on 'Next'
+<br/>
+13:17:59.209 LOG - Click on 'Next'
+<br/>
+13:18:01.133 LOG - Checking lists equality.
+<br/>
+13:18:01.133 LOG - Number of equal orders: 6
+<br/>
+13:18:02.156 LOG - Reading orders from DB where 'Role'='Customer'
+<br/>
+13:18:02.166 LOG - Getting all orders from table.
+<br/>
+13:18:02.434 LOG - Checking lists equality.
+<br/>
+13:18:03.581 LOG - Reading orders from DB where 'Role'='Merchandiser'
+<br/>
+13:18:03.601 LOG - Getting all orders from table.
+<br/>
+13:18:05.580 LOG - Click on 'Next'
+<br/>
+13:18:07.978 LOG - Click on 'Next'
+<br/>
+13:18:10.256 LOG - Click on 'Next'
+<br/>
+13:18:12.042 LOG - Checking lists equality.
+<br/>
+13:18:12.043 LOG - Number of equal orders: 6
+<br/>
+13:18:12.978 LOG - Reading orders from DB where 'Role'='Supervisor'
+<br/>
+13:18:12.989 LOG - Getting all orders from table.
+<br/>
+13:18:13.306 LOG - Checking lists equality.
+<br/>
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m11"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:searchTestPositive</h2>
+<table cellspacing=0 cellpadding=0 class="param">
+<tr><th style="padding-left:1em;padding-right:1em">Parameter #1</th></tr>
+<tr><td style="padding-left:.5em;padding-right:2em">ordername</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+13:18:49.473 LOG - Type 'ordername' to 'searchValue'
+<br/>
+13:18:49.857 LOG - Reading orders from DB where 'Order Name'=ordername'
+<br/>
+13:18:49.880 LOG - Getting all orders from table.
+<br/>
+13:18:51.877 LOG - Click on 'Next'
+<br/>
+13:18:54.134 LOG - Click on 'Next'
+<br/>
+13:18:56.462 LOG - Click on 'Next'
+<br/>
+13:18:58.269 LOG - Checking lists equality.
+<br/>
+13:18:58.269 LOG - Number of equal orders: 6
+<br/>
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m12"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:filterByStatusTest</h2>
+<div style="padding-left:3em">
+13:18:19.671 LOG - Reading orders from DB where 'Status'='Created'
+<br/>
+13:18:19.688 LOG - Getting all orders from table.
+<br/>
+13:18:21.814 LOG - Click on 'Next'
+<br/>
+13:18:24.079 LOG - Click on 'Next'
+<br/>
+13:18:25.855 LOG - Checking lists equality.
+<br/>
+13:18:25.855 LOG - Number of equal orders: 3
+<br/>
+13:18:26.851 LOG - Reading orders from DB where 'Status'='Pending'
+<br/>
+13:18:26.863 LOG - Getting all orders from table.
+<br/>
+13:18:28.967 LOG - Click on 'Next'
+<br/>
+13:18:30.792 LOG - Checking lists equality.
+<br/>
+13:18:30.793 LOG - Number of equal orders: 2
+<br/>
+13:18:31.734 LOG - Reading orders from DB where 'Status'='Ordered'
+<br/>
+13:18:31.748 LOG - Getting all orders from table.
+<br/>
+13:18:33.769 LOG - Click on 'Next'
+<br/>
+13:18:36.123 LOG - Click on 'Next'
+<br/>
+13:18:37.965 LOG - Checking lists equality.
+<br/>
+13:18:37.966 LOG - Number of equal orders: 3
+<br/>
+13:18:38.866 LOG - Reading orders from DB where 'Status'='Delivered'
+<br/>
+13:18:38.885 LOG - Getting all orders from table.
+<br/>
+13:18:41.030 LOG - Click on 'Next'
+<br/>
+13:18:43.312 LOG - Click on 'Next'
+<br/>
+13:18:45.164 LOG - Checking lists equality.
+<br/>
+13:18:45.164 LOG - Number of equal orders: 4
+<br/>
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m13"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:searchTestNegative</h2>
+<table cellspacing=0 cellpadding=0 class="param">
+<tr><th style="padding-left:1em;padding-right:1em">Parameter #1</th></tr>
+<tr><td style="padding-left:.5em;padding-right:2em">123qwe</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+13:19:32.582 LOG - Type '123qwe' to 'searchValue'
+<br/>
+13:19:32.898 LOG - Reading orders from DB where 'Order Name'=123qwe'
+<br/>
+13:19:32.907 LOG - Getting all orders from table.
+<br/>
+13:19:33.297 LOG - Checking lists equality.
+<br/>
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m14"></a><h2>test.java.com.softserve.edu.oms.tests.OrdersPageTest:testTableData</h2>
+<div style="padding-left:3em">
+13:16:56.482 LOG - Getting all orders from table.
+<br/>
+13:16:58.314 LOG - Click on 'Next'
+<br/>
+13:17:00.525 LOG - Click on 'Next'
+<br/>
+13:17:02.800 LOG - Click on 'Next'
+<br/>
+13:17:05.035 LOG - Click on 'Next'
+<br/>
+13:17:07.221 LOG - Click on 'Next'
+<br/>
+13:17:09.469 LOG - Click on 'Next'
+<br/>
+13:17:11.295 LOG - Checking lists equality.
+<br/>
+13:17:11.295 LOG - Number of equal orders: 12
+<br/>
 </div>
 <p class="totop"><a href="#summary">back to summary</a></p>
 </body></html>

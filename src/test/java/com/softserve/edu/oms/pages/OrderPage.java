@@ -1,15 +1,14 @@
 package test.java.com.softserve.edu.oms.pages;
 
-import main.java.edu.atqc.db.dao.order.OrderFromUI;
-import main.java.edu.atqc.helpers.ContextVisible;
-import main.java.edu.atqc.helpers.Report;
-import main.java.edu.atqc.page.order.OrderNavigationHelper;
-import main.java.edu.atqc.page.order.OrderPageHelper;
+import main.java.com.softserve.edu.atqc.db.dao.order.OrderFromUI;
+import main.java.com.softserve.edu.atqc.helpers.ContextVisible;
+import main.java.com.softserve.edu.atqc.helpers.Report;
+import main.java.com.softserve.edu.atqc.page.order.OrderNavigationHelper;
+import main.java.com.softserve.edu.atqc.page.order.OrderPageHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;

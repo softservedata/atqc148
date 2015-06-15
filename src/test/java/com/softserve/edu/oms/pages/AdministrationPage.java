@@ -1,10 +1,9 @@
 package com.softserve.edu.oms.pages;
 
-import main.java.edu.atqc.helpers.ContextVisible;
+import main.java.com.softserve.edu.atqc.helpers.ContextVisible;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import test.java.com.softserve.edu.oms.data.user.IUser;
 import test.java.com.softserve.edu.oms.pages.LoginPage;
 
 public class AdministrationPage {

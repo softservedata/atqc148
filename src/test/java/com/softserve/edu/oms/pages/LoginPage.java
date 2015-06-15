@@ -1,9 +1,9 @@
 package test.java.com.softserve.edu.oms.pages;
 
-import main.java.edu.atqc.helpers.ContextVisible;
+import main.java.com.softserve.edu.atqc.helpers.ContextVisible;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import test.java.com.softserve.edu.oms.data.user.IUser;
+import test.java.com.softserve.edu.oms.data.IUser;
 
 /**
  * Created by Xdr on 6/4/15.

@@ -2,7 +2,7 @@
 <suite name="OMS Suite">
 
     <listeners>
-        <listener class-name="main.java.edu.atqc.helpers.Listeners"/>
+        <listener class-name="main.java.com.softserve.edu.atqc.helpers.Listeners"/>
     </listeners>
 
     <test name="OMS test">

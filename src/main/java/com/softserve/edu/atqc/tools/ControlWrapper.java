@@ -67,7 +67,7 @@ public final class ControlWrapper {
 		return getWebElement().getAttribute(ATTRIBUTE_HREF);
 	}
 
-	public String getName() {
+	public String getAttributeName() {
 		return getWebElement().getAttribute(ATTRIBUTE_NAME);
 	}
 

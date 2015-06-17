@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 
-public class WebDriverUtils {
+public final class WebDriverUtils {
 	private static volatile WebDriverUtils instance = null;
 	private long implicitlyWaitTimeout = 20;
 	private IBrowser browser;
@@ -46,7 +46,7 @@ public class WebDriverUtils {
 		return instance;
 	}
 
-	public WebDriver getWebDriver() {
+	WebDriver getWebDriver() {
 		if (driver == null) {
 			synchronized (WebDriverUtils.class) {
 				if (driver == null) {

@@ -1,3 +1,5 @@
 # add .gitignore
 # add README.md
-# import to Eclipse
+# add project
+# June, 17, remove old project
+# add tools

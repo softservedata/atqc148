@@ -2,7 +2,6 @@ package com.softserve.edu.atqc.tools;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -30,12 +29,12 @@ public final class ContextVisible {
 	 * An expectation for checking that an element is present on the DOM of a
 	 * page and visible.
 	 */
-	public WebElement getVisibleWebElement(By controlLocation) {
+	WebElement getVisibleWebElement(ControlLocation controlLocation) {
 		WebElement webElement = new WebDriverWait(
 				WebDriverUtils.get().getWebDriver(),
 				WebDriverUtils.get().getImplicitlyWaitTimeout())
 			.until(ExpectedConditions
-				.visibilityOfElementLocated(controlLocation));
+				.visibilityOfElementLocated(controlLocation.getBy()));
 		if (webElement == null) {
 			// TODO Develop My Exception
 			throw new RuntimeException(String.format(ERROR_NOT_FOUND,
@@ -48,12 +47,12 @@ public final class ContextVisible {
 	 * An expectation for checking that all elements present on the web page
 	 * that match the locator are visible.
 	 */
-	List<WebElement> getVisibleWebElements(By controlLocation) {
+	List<WebElement> getVisibleWebElements(ControlLocation controlLocation) {
 		List<WebElement> webElements = new WebDriverWait(
 				WebDriverUtils.get().getWebDriver(),
 				WebDriverUtils.get().getImplicitlyWaitTimeout())
 			.until(ExpectedConditions
-				.visibilityOfAllElementsLocatedBy(controlLocation));
+				.visibilityOfAllElementsLocatedBy(controlLocation.getBy()));
 		if (webElements.size() == 0) {
 			// TODO Develop My Exception
 			throw new RuntimeException(String.format(ERROR_NOT_FOUND,
@@ -66,12 +65,12 @@ public final class ContextVisible {
 	 * An expectation for checking that an element is present on the DOM of a
 	 * page. This does not necessarily mean that the element is visible.
 	 */
-	WebElement getPresentWebElement(By controlLocation) {
+	WebElement getPresentWebElement(ControlLocation controlLocation) {
 		WebElement webElement = new WebDriverWait(
 				WebDriverUtils.get().getWebDriver(),
 				WebDriverUtils.get().getImplicitlyWaitTimeout())
 			.until(ExpectedConditions
-				.presenceOfElementLocated(controlLocation));
+				.presenceOfElementLocated(controlLocation.getBy()));
 		if (webElement == null) {
 			// TODO Develop My Exception
 			throw new RuntimeException(String.format(ERROR_NOT_FOUND,
@@ -84,12 +83,12 @@ public final class ContextVisible {
 	 * An expectation for checking that an element is either invisible or not
 	 * present on the DOM.
 	 */
-	public boolean isInvisibleWebElement(By controlLocation) {
+	public boolean isInvisibleWebElement(ControlLocation controlLocation) {
 		Boolean invisibilityWebElement = new WebDriverWait(
 				WebDriverUtils.get().getWebDriver(),
 				WebDriverUtils.get().getImplicitlyWaitTimeout())
 			.until(ExpectedConditions
-				.invisibilityOfElementLocated(controlLocation));
+				.invisibilityOfElementLocated(controlLocation.getBy()));
 		if (!invisibilityWebElement) {
 			// TODO Develop My Exception
 			throw new RuntimeException(String.format(ERROR_STILL_VISIBLE,

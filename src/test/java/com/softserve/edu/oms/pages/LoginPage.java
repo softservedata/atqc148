@@ -3,10 +3,14 @@ package com.softserve.edu.oms.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.atqc.controls.Label;
 import com.softserve.edu.atqc.tools.ContextVisible;
 import com.softserve.edu.oms.data.IUser;
 
 public class LoginPage {
+	/*
+	private ILabel oms = Label.getByXpath("");
+	//Calendar
 	private WebElement loginName;
 	private WebElement password;
 	private WebElement send;
@@ -18,6 +22,7 @@ public class LoginPage {
 	}
 
 	private void setLoginData(IUser user) {
+		oms.
 		this.loginName.click();
 		this.loginName.clear();
 		this.loginName.sendKeys(user.getLoginName());
@@ -62,5 +67,5 @@ public class LoginPage {
 		setLoginData(invalidUser);
 		return new ValidatorLoginPage(); // return this;
 	}
-
+*/
 }

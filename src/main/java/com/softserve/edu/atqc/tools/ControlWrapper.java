@@ -31,8 +31,38 @@ public final class ControlWrapper {
 		return webElement;
 	}
 
-	public boolean isSelected() {
-		return getWebElement().isSelected();
+	// for implements interface
+
+	public String getAttribute(String attribute) {
+		return getWebElement().getAttribute(attribute);
+	}
+
+	public String getAttributeName() {
+		return getWebElement().getAttribute(ATTRIBUTE_NAME);
+	}
+
+	public String getContent() {
+		return getWebElement().getText();
+	}
+
+	public String getTagName() {
+		return getWebElement().getTagName();
+	}
+
+	public String getText() {
+		return getWebElement().getText();
+	}
+
+	public String getUrl() {
+		return getWebElement().getAttribute(ATTRIBUTE_HREF);
+	}
+
+	public void clear() {
+		getWebElement().clear();
+	}
+
+	public void click() {
+		getWebElement().click();
 	}
 
 	public boolean isDisplayed() {
@@ -43,44 +73,21 @@ public final class ControlWrapper {
 		return getWebElement().isEnabled();
 	}
 
-	public String getContent() {
-		return getWebElement().getText();
-	}
-
-	public String getText() {
-		return getWebElement().getText();
+	public boolean isSelected() {
+		return getWebElement().isSelected();
 	}
 
 	public void sendKeys(String text) {
 		getWebElement().sendKeys(text);
 	}
 
+	public void setFocus() {
+		// TODO Make Visible
+		sendKeys(new String());
+	}
+
 	public void submit() {
 		getWebElement().submit();
-	}
-
-	public String getTagName() {
-		return getWebElement().getTagName();
-	}
-
-	public String getUrl() {
-		return getWebElement().getAttribute(ATTRIBUTE_HREF);
-	}
-
-	public String getAttributeName() {
-		return getWebElement().getAttribute(ATTRIBUTE_NAME);
-	}
-
-	public String getAttribute(String attribute) {
-		return getWebElement().getAttribute(attribute);
-	}
-
-	public void clear() {
-		getWebElement().clear();
-	}
-
-	public void click() {
-		getWebElement().click();
 	}
 
 }

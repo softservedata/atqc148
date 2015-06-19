@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import com.softserve.edu.atqc.tools.ContextVisible;
 
 public abstract class HomePage {
+	/*
 	private WebElement firstName;
 	private WebElement lastName;
 	private WebElement role;
@@ -41,5 +42,5 @@ public abstract class HomePage {
 		this.logout.click();
 		return new LoginPage();
 	}
-
+*/
 }

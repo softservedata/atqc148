@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import com.softserve.edu.atqc.tools.ContextVisible;
 
 public class AdminHomePage extends HomePage {
+	/*
 	private WebElement administrationTab;
 
 	public AdminHomePage() {
@@ -19,5 +20,5 @@ public class AdminHomePage extends HomePage {
 		this.administrationTab.click();
 		return new AdministrationPage();
 	}
-
+*/
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import com.softserve.edu.atqc.tools.ContextVisible;
 
 public class CustomerHomePage extends HomePage {
+	/*
 	private WebElement orderingTab;
 
 	public CustomerHomePage() {
@@ -20,5 +21,5 @@ public class CustomerHomePage extends HomePage {
 		this.orderingTab.click();
 		// return new OrderingPage();
 	}
-
+*/
 }

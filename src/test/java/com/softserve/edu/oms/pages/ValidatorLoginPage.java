@@ -20,6 +20,7 @@ public class ValidatorLoginPage extends LoginPage {
 		}
 	}
 
+	/*
 	private WebElement unSuccessValidator;
 
 	public ValidatorLoginPage() {
@@ -30,5 +31,5 @@ public class ValidatorLoginPage extends LoginPage {
 	public WebElement getUnSuccessValidator() {
 		return this.unSuccessValidator;
 	}
-
+*/
 }

@@ -44,6 +44,7 @@ public class AdministrationPage {
 		}
 	}
 
+	/*
 	private WebElement createNewUser;
 	private Select field;
 	private Select condition;
@@ -152,5 +153,5 @@ public class AdministrationPage {
 //	{
 //		searchButton.click();		
 //	}
-
+*/
 }

@@ -58,6 +58,7 @@ public final class ControlWrapper {
 	}
 
 	public void clear() {
+		click();
 		getWebElement().clear();
 	}
 

@@ -18,4 +18,8 @@ public class Link extends LabelClickable {
 		return new Link(control, controlLocation);
 	}
 
+	public static IControlWrapper getByPartialLinkText(String partialLinkText) {
+		return get(ControlLocation.getByPartialLinkText(partialLinkText));
+	}
+
 }

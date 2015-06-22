@@ -1,46 +1,57 @@
 package com.softserve.edu.oms.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import com.softserve.edu.atqc.tools.ContextVisible;
+import com.softserve.edu.atqc.controls.ILabel;
+import com.softserve.edu.atqc.controls.ILink;
+import com.softserve.edu.atqc.controls.Label;
+import com.softserve.edu.atqc.controls.Link;
 
 public abstract class HomePage {
-	/*
-	private WebElement firstName;
-	private WebElement lastName;
-	private WebElement role;
-	private WebElement logout;
+	private class HomePageUIMap {
+		public final ILabel firstName;
+		public final ILabel lastName;
+		public final ILabel role;
+		public final ILink logout;
 
-	public HomePage() {
-		this.firstName = ContextVisible.get().getVisibleWebElement(
-						By.xpath("//tbody/tr/td[text( )='First name']/following-sibling::td"));
-		this.lastName = ContextVisible.get().getVisibleWebElement(
-						By.xpath("//tbody/tr/td[text( )='Last name']/following-sibling::td"));
-		this.role = ContextVisible.get().getVisibleWebElement(
-						By.xpath("//tbody/tr/td[text( )='Role']/following-sibling::td"));
-		this.logout = ContextVisible.get().getVisibleWebElement(By.xpath("//a[@href='/OMS/logout.htm']"));
+		public HomePageUIMap() {
+			this.firstName = Label
+					.getByXpath("//tbody/tr/td[text( )='First name']/following-sibling::td");
+			this.lastName = Label
+					.getByXpath("//tbody/tr/td[text( )='Last name']/following-sibling::td");
+			this.role = Label
+					.getByXpath("//tbody/tr/td[text( )='Role']/following-sibling::td");
+			this.logout = Link.getByXpath("//a[@href='/OMS/logout.htm']");
+		}
 	}
 
-	// - - - - - - - - - -
+	// Elements
+	private HomePageUIMap controls;
 
-	public WebElement getFirstName() {
-		return this.firstName;
+	protected HomePage() {
+		this.controls = new HomePageUIMap();
 	}
 
-	public WebElement getLastName() {
-		return this.lastName;
+	// getters
+
+	public ILabel getFirstName() {
+		return this.controls.firstName;
 	}
 
-	public WebElement getRole() {
-		return this.role;
+	public ILabel getLastName() {
+		return this.controls.lastName;
 	}
 
-	// - - - - - - - - - -
-
-	public LoginPage logout() {
-		this.logout.click();
-		return new LoginPage();
+	public ILabel getRole() {
+		return this.controls.role;
 	}
-*/
+
+	public ILink getLogout() {
+		return this.controls.logout;
+	}
+
+	// setters
+
+	public void logout() {
+		this.controls.logout.click();
+	}
+
 }

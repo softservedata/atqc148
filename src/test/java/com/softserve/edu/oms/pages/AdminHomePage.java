@@ -1,24 +1,42 @@
 package com.softserve.edu.oms.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import com.softserve.edu.atqc.tools.ContextVisible;
+import com.softserve.edu.atqc.controls.ILink;
+import com.softserve.edu.atqc.controls.Link;
 
 public class AdminHomePage extends HomePage {
+	private class AdminHomePageUIMap {
+		public final ILink administrationTab;
+
+		public AdminHomePageUIMap() {
+			this.administrationTab = Link
+					.getByPartialLinkText("Administration");
+		}
+	}
+
+	// Elements
+	private AdminHomePageUIMap controls;
+
+	protected AdminHomePage() {
+		super();
+		this.controls = new AdminHomePageUIMap();
+	}
+
+	// getters
+
+	public ILink getAdministrationTab() {
+		return this.controls.administrationTab;
+	}
+
+	// setters
+
+	public void administrationTabClick() {
+		this.controls.administrationTab.click();
+	}
+
 	/*
-	private WebElement administrationTab;
-
-	public AdminHomePage() {
-		this.administrationTab = ContextVisible.get().getVisibleWebElement(By.partialLinkText("Administration"));
-	}
-
-	// - - - - - - - - - -
-
-	public AdministrationPage administrationClick() {
-		// public void administrationClick() {
-		this.administrationTab.click();
-		return new AdministrationPage();
-	}
-*/
+	 * 
+	 * public AdministrationPage administrationClick() { // public void
+	 * administrationClick() { this.administrationTab.click(); return new
+	 * AdministrationPage(); }
+	 */
 }

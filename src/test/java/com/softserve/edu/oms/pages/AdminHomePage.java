@@ -16,7 +16,7 @@ public class AdminHomePage extends HomePage {
 	// Elements
 	private AdminHomePageUIMap controls;
 
-	protected AdminHomePage() {
+	public AdminHomePage() {
 		super();
 		this.controls = new AdminHomePageUIMap();
 	}

@@ -11,15 +11,13 @@ import com.softserve.edu.atqc.tools.WebDriverUtils;
 import com.softserve.edu.oms.data.IUser;
 import com.softserve.edu.oms.data.UrlRepository.Urls;
 import com.softserve.edu.oms.data.UserRepository;
-import com.softserve.edu.oms.pages.AdminHomePage;
-import com.softserve.edu.oms.pages.AdministrationPage;
-import com.softserve.edu.oms.pages.AdministrationPage.Conditions;
-import com.softserve.edu.oms.pages.AdministrationPage.Fields;
-import com.softserve.edu.oms.pages.CustomerHomePage;
-import com.softserve.edu.oms.pages.LoginPage;
-import com.softserve.edu.oms.pages.StartLoginPage;
-import com.softserve.edu.oms.pages.ValidatorLoginPage;
-import com.softserve.edu.oms.pages.ValidatorLoginPage.Validators;
+import com.softserve.edu.oms.logics.AdminHomePageLogic;
+import com.softserve.edu.oms.logics.AdministrationPageLogic;
+import com.softserve.edu.oms.logics.CustomerHomePageLogic;
+import com.softserve.edu.oms.logics.LoginPageLogic;
+import com.softserve.edu.oms.logics.ValidatorLoginPageLogic;
+import com.softserve.edu.oms.pages.ValidatorLoginPage.LoginPageValidators;
+import com.softserve.edu.oms.spans.StartApplication;
 
 public class LoginTest {
 
@@ -33,21 +31,19 @@ public class LoginTest {
 		};
 	}
 
-	@Test(dataProvider = "invalidProvider")
+	//@Test(dataProvider = "invalidProvider")
 	public void checkInvalid(IBrowser browser, String url, IUser invalidUser) {
 		// Preconditions
 		// Steps
-		/*
-		LoginPage loginPage = StartLoginPage.load(browser, url);
-		ValidatorLoginPage validatorLoginPage = loginPage
+		LoginPageLogic loginPageLogic = StartApplication.load(browser, url);
+		ValidatorLoginPageLogic validatorLoginPageLogic = loginPageLogic
 				.unSuccesfulLogin(invalidUser);
 		// Check
 		Assert.assertEquals(
-				Validators.UNSUCCESS_VALIDATOR.toString(),
-				validatorLoginPage.getUnSuccessValidator().getText()
+				LoginPageValidators.UNSUCCESS_VALIDATOR.toString(),
+				validatorLoginPageLogic.getUnSuccessValidator()
 						.substring(0, 49));
 		// Return to previous state
-		 */
 	}
 
 	@DataProvider
@@ -64,19 +60,16 @@ public class LoginTest {
 	public void checkAdmin(IBrowser browser, String url, IUser adminUser) {
 		// Preconditions
 		// Steps
-		/*
-		AdminHomePage adminHomePage = StartLoginPage.load(browser, url)
+		AdminHomePageLogic adminHomePageLogic = StartApplication.load(browser, url)
 				.successAdminLogin(adminUser);
 		// Check
 		Assert.assertEquals(adminUser.getFirstName(),
-				adminHomePage.getFirstName().getText());
+				adminHomePageLogic.getFirstName());
 		Assert.assertEquals(adminUser.getLastName(),
-				adminHomePage.getLastName().getText());
-		Assert.assertEquals(adminUser.getRole(),
-				adminHomePage.getRole().getText());
+				adminHomePageLogic.getLastName());
+		Assert.assertEquals(adminUser.getRole(), adminHomePageLogic.getRole());
 		// Return to previous state
-		adminHomePage.logout();
-		*/
+		adminHomePageLogic.logout();
 	}
 
 	@DataProvider
@@ -93,19 +86,17 @@ public class LoginTest {
 	public void checkCustomer(IBrowser browser, String url, IUser customerUser) {
 		// Preconditions
 		// Steps
-		/*
-		CustomerHomePage customerHomePage = StartLoginPage.load(browser, url)
+		CustomerHomePageLogic customerHomePageLogic = StartApplication.load(browser, url)
 				.successCustomerLogin(customerUser);
 		// Check
 		Assert.assertEquals(customerUser.getFirstName(),
-				customerHomePage.getFirstName().getText());
+				customerHomePageLogic.getFirstName());
 		Assert.assertEquals(customerUser.getLastName(),
-				customerHomePage.getLastName().getText());
+				customerHomePageLogic.getLastName());
 		Assert.assertEquals(customerUser.getRole(),
-				customerHomePage.getRole().getText());
+				customerHomePageLogic.getRole());
 		// Return to previous state
-		customerHomePage.logout();
-		*/
+		customerHomePageLogic.logout();
 	}
 
 	@DataProvider
@@ -121,23 +112,20 @@ public class LoginTest {
 	@Test(dataProvider = "searchProvider")
 	public void checkSearchByLogin(IBrowser browser, String url, IUser searchUser) {
 		// Preconditions
-		/*
-		AdministrationPage administrationPage = StartLoginPage
-				.load(browser, url)
-				.successAdminLogin(UserRepository.getAdminUser())
-				.administrationClick();
-		// Steps
-		administrationPage.selectColumnFilter(Fields.LOGIN_NAME);
-		administrationPage.selectMatchFilter(Conditions.STARTS_WITH);
-		// administrationPage.typeSearchField(UserRepository.getAdminUser().getFirstName());
-		administrationPage.typeSearchField(searchUser.getLoginName());
-		// administrationPage.clickSearchButton();
-		// Check
-		Assert.assertEquals(searchUser.getFirstName(),
-				administrationPage.getFirstName().getText());
-		// Return to previous state
-		administrationPage.logout();
-		*/
+		  AdministrationPageLogic administrationPageLogic = StartApplication.load(browser, url)
+				  .successAdminLogin(UserRepository.getAdminUser())
+				  .administrationClick();
+		  // Steps
+//		  administrationPageLogic.selectColumnFilter(AdministrationPageFields.LOGIN_NAME);
+//		  administrationPageLogic.selectMatchFilter(AdministrationPageConditions.STARTS_WITH);
+//		  administrationPageLogic.typeSearchField(UserRepository.getAdminUser().getFirstName());
+//		  administrationPageLogic.typeSearchField(searchUser.getLoginName());
+		  // administrationPage.clickSearchButton();
+		  // Check
+//		  Assert.assertEquals(searchUser.getFirstName(),
+//				  administrationPageLogic.getFirstName().getText());
+		  // Return to previous state
+//		  administrationPage.logout();
 	}
 
 	@AfterClass

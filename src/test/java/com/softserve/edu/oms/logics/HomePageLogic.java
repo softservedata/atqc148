@@ -1,6 +1,7 @@
 package com.softserve.edu.oms.logics;
 
 import com.softserve.edu.oms.pages.HomePage;
+import com.softserve.edu.oms.pages.LoginPage;
 
 public abstract class HomePageLogic {
 	// Elements
@@ -29,5 +30,10 @@ public abstract class HomePageLogic {
 	public String getRole() {
 		return this.homePage.getRole().getText();
 	}
-	
+
+	public LoginPageLogic logout() {
+		this.homePage.getLogout().click();
+		return new LoginPageLogic(new LoginPage());
+	}
+
 }

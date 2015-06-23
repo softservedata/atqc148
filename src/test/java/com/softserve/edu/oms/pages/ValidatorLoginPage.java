@@ -1,16 +1,14 @@
 package com.softserve.edu.oms.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import com.softserve.edu.atqc.tools.ContextVisible;
+import com.softserve.edu.atqc.controls.ILabel;
+import com.softserve.edu.atqc.controls.Label;
 
 public class ValidatorLoginPage extends LoginPage {
-	public static enum Validators {
+	public static enum LoginPageValidators {
 		UNSUCCESS_VALIDATOR("Your login attempt was not successful, try again.");
 		private String field;
 
-		private Validators(String field) {
+		private LoginPageValidators(String field) {
 			this.field = field;
 		}
 
@@ -20,16 +18,26 @@ public class ValidatorLoginPage extends LoginPage {
 		}
 	}
 
-	/*
-	private WebElement unSuccessValidator;
+	private class ValidatorLoginPageUIMap {
+		public final ILabel unSuccessValidator;
+
+		public ValidatorLoginPageUIMap() {
+			this.unSuccessValidator = Label
+					.getByXpath("//div[@id='edit']//font");
+		}
+	}
+
+	// Elements
+	private ValidatorLoginPageUIMap controls;
 
 	public ValidatorLoginPage() {
-		super();
-		this.unSuccessValidator = ContextVisible.get().getVisibleWebElement(By.xpath("//div[@id='edit']//font") );
+		this.controls = new ValidatorLoginPageUIMap();
 	}
 
-	public WebElement getUnSuccessValidator() {
-		return this.unSuccessValidator;
+	// getters
+
+	public ILabel getUnSuccessValidator() {
+		return controls.unSuccessValidator;
 	}
-*/
+
 }

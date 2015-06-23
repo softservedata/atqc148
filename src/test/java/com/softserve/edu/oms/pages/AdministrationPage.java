@@ -1,14 +1,14 @@
 package com.softserve.edu.oms.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-
-import com.softserve.edu.atqc.tools.ContextVisible;
-import com.softserve.edu.oms.data.IUser;
+import com.softserve.edu.atqc.controls.ILabel;
+import com.softserve.edu.atqc.controls.ILink;
+import com.softserve.edu.atqc.controls.ITextField;
+import com.softserve.edu.atqc.controls.Label;
+import com.softserve.edu.atqc.controls.Link;
+import com.softserve.edu.atqc.controls.TextField;
 
 public class AdministrationPage {
-	public static enum Fields {
+	public static enum AdministrationPageFields {
 		ALL_COLUMNS("All Columns"),
 		FIRST_NAME("First Name"),
 		LAST_NAME("Last Name"),
@@ -16,7 +16,7 @@ public class AdministrationPage {
 		LOGIN_NAME("Login Name");
 		private String field;
 
-		private Fields(String field) {
+		private AdministrationPageFields(String field) {
 			this.field = field;
 		}
 
@@ -26,7 +26,7 @@ public class AdministrationPage {
 		}
 	}
 
-	public static enum Conditions {
+	public static enum AdministrationPageConditions {
 		EQUALS("equals"),
 		NOT_EQUALS_TO("not equals to"),
 		STARTS_WITH("starts with"),
@@ -34,7 +34,7 @@ public class AdministrationPage {
 		DOES_NOT_CONTAIN("does not contain");
 		private String field;
 
-		private Conditions(String field) {
+		private AdministrationPageConditions(String field) {
 			this.field = field;
 		}
 
@@ -44,6 +44,55 @@ public class AdministrationPage {
 		}
 	}
 
+	private class AdministrationPageUIMap {
+		public final ILink logout;
+		public final ILink createNewUser;
+		public final ITextField searchField;
+
+		// public final ISelect field;
+		// public final ISelect condition;
+
+		public AdministrationPageUIMap() {
+			this.logout = Link.getByXpath("//a[@href='/OMS/logout.htm']");
+			this.createNewUser = Link.getByPartialLinkText("Create New User");
+			this.searchField = TextField.getById("searchField");
+			// this.field = Select.getById("field");
+			// this.condition = Select.getById("condition");
+		}
+	}
+
+	private class AdministrationPageUIMapAjax {
+		public final ILabel usersFound;
+		public final ILabel firstName;
+		public final ILabel lastName;
+		public final ILabel login;
+		public final ILink delete;
+
+		public AdministrationPageUIMapAjax() {
+			this.usersFound = Label.getById("usersFound");
+			if (Integer.parseInt(usersFound.getText()) > 0) {
+				this.firstName = Label.getByXpath("//tbody/tr[1]/td[1]");
+				this.lastName = Label.getByXpath("//tbody/tr[1]/td[2]");
+				this.login = Label.getByXpath("//tbody/tr[1]/td[3]");
+				this.delete = Link.getByXpath("//tbody/tr[1]/td[7]/a");
+			} else {
+				this.firstName = Label.getByXpath("//thead/tr[1]/th[1]");
+				this.lastName = Label.getByXpath("//thead/tr[1]/th[2]");
+				this.login = Label.getByXpath("//thead/tr[1]/th[3]");
+				this.delete = Link.getByXpath("//thead/tr[1]/th[1]");
+			}
+		}
+
+		public AdministrationPageUIMapAjax(String login) {
+			this.usersFound = Label.getById("usersFound");
+			//
+			this.login = Label.getByXpath("//tbody//td[text()='" + login + "']");
+			this.lastName = Label.getByXpath("//tbody//td[text()='" + login + "']/preceding-sibling::td[1]");
+			this.firstName = Label.getByXpath("//tbody//td[text()='" + login + "']/preceding-sibling::td[2]");
+			//this.delete = Link.getByXpath(""//tbody//td[text()='" + login + "']   /a");
+		}
+
+	}
 	/*
 	private WebElement createNewUser;
 	private Select field;

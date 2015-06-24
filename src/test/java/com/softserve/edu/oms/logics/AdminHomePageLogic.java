@@ -1,6 +1,7 @@
 package com.softserve.edu.oms.logics;
 
 import com.softserve.edu.oms.pages.AdminHomePage;
+import com.softserve.edu.oms.pages.AdministrationPage;
 
 public class AdminHomePageLogic extends HomePageLogic {
 	// Elements
@@ -19,9 +20,9 @@ public class AdminHomePageLogic extends HomePageLogic {
 
 	// business
 
-	public AdministrationPageLogic administrationClick() {
+	public AdministrationPageLogic gotoAdministration() {
 		this.adminHomePage.getAdministrationTab().click();
-		return new AdministrationPageLogic();
+		return new AdministrationPageLogic(new AdministrationPage());
 	}
 
 }

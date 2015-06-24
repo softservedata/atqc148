@@ -97,6 +97,23 @@ public final class ContextVisible {
 		return invisibilityWebElement;
 	}
 
+	/**
+	 * Wait until an element is no longer attached to the DOM.
+	 */
+	public boolean isStalenessOfWebElement(ControlWrapper controlWrapper) {
+		Boolean stalenessOfWebElement = new WebDriverWait(
+				WebDriverUtils.get().getWebDriver(),
+				WebDriverUtils.get().getImplicitlyWaitTimeout())
+			.until(ExpectedConditions
+				.stalenessOf(controlWrapper.getWebElement()));
+		if (!stalenessOfWebElement) {
+			// TODO Develop My Exception
+			throw new RuntimeException(String.format(ERROR_STILL_VISIBLE,
+					controlWrapper.getWebElement().getTagName()));
+		}
+		return stalenessOfWebElement;
+	}
+
 	public boolean isVisibleTitle(String partialTitle) {
 		return new WebDriverWait(WebDriverUtils.get().getWebDriver(),
 				WebDriverUtils.get().getImplicitlyWaitTimeout())

@@ -1,5 +1,6 @@
 package com.softserve.edu.atqc.controls;
 
+import com.softserve.edu.atqc.tools.ContextVisible;
 import com.softserve.edu.atqc.tools.ControlLocation;
 import com.softserve.edu.atqc.tools.ControlWrapper;
 
@@ -100,8 +101,14 @@ public class Component implements IControlWrapper {
 		return getControl().isEnabled();
 	}
 
+//	public boolean isInvisible();
+	
 	public boolean isSelected() {
 		return getControl().isSelected();
+	}
+
+	public boolean isStalenessOf() {
+		return ContextVisible.get().isStalenessOfWebElement(getControl());
 	}
 
 	public void sendKeys(String text) {

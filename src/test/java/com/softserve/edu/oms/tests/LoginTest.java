@@ -114,7 +114,7 @@ public class LoginTest {
 		// Preconditions
 		  AdministrationPageLogic administrationPageLogic = StartApplication.load(browser, url)
 				  .successAdminLogin(UserRepository.getAdminUser())
-				  .administrationClick();
+				  .gotoAdministration();
 		  // Steps
 //		  administrationPageLogic.selectColumnFilter(AdministrationPageFields.LOGIN_NAME);
 //		  administrationPageLogic.selectMatchFilter(AdministrationPageConditions.STARTS_WITH);

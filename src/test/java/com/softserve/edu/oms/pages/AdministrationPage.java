@@ -45,19 +45,18 @@ public class AdministrationPage {
 	}
 
 	private class AdministrationPageUIMap {
-		public final ILink logout;
 		public final ILink createNewUser;
-		public final ITextField searchField;
-
 		// public final ISelect field;
 		// public final ISelect condition;
+		public final ITextField searchField;
+		public final ILink logout;
 
 		public AdministrationPageUIMap() {
-			this.logout = Link.getByXpath("//a[@href='/OMS/logout.htm']");
-			this.createNewUser = Link.getByPartialLinkText("Create New User");
 			this.searchField = TextField.getById("searchField");
 			// this.field = Select.getById("field");
 			// this.condition = Select.getById("condition");
+			this.createNewUser = Link.getByPartialLinkText("Create New User");
+			this.logout = Link.getByXpath("//a[@href='/OMS/logout.htm']");
 		}
 	}
 
@@ -86,121 +85,143 @@ public class AdministrationPage {
 		public AdministrationPageUIMapAjax(String login) {
 			this.usersFound = Label.getById("usersFound");
 			//
-			this.login = Label.getByXpath("//tbody//td[text()='" + login + "']");
-			this.lastName = Label.getByXpath("//tbody//td[text()='" + login + "']/preceding-sibling::td[1]");
-			this.firstName = Label.getByXpath("//tbody//td[text()='" + login + "']/preceding-sibling::td[2]");
-			//this.delete = Link.getByXpath(""//tbody//td[text()='" + login + "']   /a");
+			this.login = Label.getByXpath("//tbody//td[3][text()='" + login + "']");
+			this.lastName = Label.getByXpath("//tbody//td[3][text()='" + login + "']/preceding-sibling::td[1]");
+			this.firstName = Label.getByXpath("//tbody//td[3][text()='" + login + "']/preceding-sibling::td[2]");
+			this.delete = Link.getByXpath("//tbody//td[3][text()='" + login + "']/following-sibling::td[4]/a");
 		}
 
 	}
-	/*
-	private WebElement createNewUser;
-	private Select field;
-	private Select condition;
-	private WebElement searchField;
-	private WebElement logout;
-	// Refresh
-	private WebElement firstName;
-	private WebElement lastName;
-	private WebElement loginButton;
-	//private WebElement searchButton;
 
+    // Elements
+    private AdministrationPageUIMap controls;
+	// AJAX Elements
+    private AdministrationPageUIMapAjax controlsAjax;
+	// Alert Elements
+	//private IAlertLight controlsAlert = null;
 
-	public AdministrationPage() {
-		this.createNewUser = ContextVisible.get().getVisibleWebElement(By.partialLinkText("Create New User"));
-		this.field = new Select(ContextVisible.get().getVisibleWebElement(By.id("field")));
-		this.condition = new Select(ContextVisible.get().getVisibleWebElement(By.id("condition")));
-		this.searchField = ContextVisible.get().getVisibleWebElement(By.id("searchField"));
-		this.logout = ContextVisible.get().getVisibleWebElement(By.xpath("//a[@href='/OMS/logout.htm']"));
-		//
-		this.firstName = ContextVisible.get().getVisibleWebElement(By.xpath("//tbody/tr[1]/td[1]"));
-		this.lastName = ContextVisible.get().getVisibleWebElement(By.xpath("//tbody/tr[1]/td[2]"));
-		this.loginButton = ContextVisible.get().getVisibleWebElement(By.xpath("//tbody/tr[1]/td[3]"));
-//		this.searchButton = ContextVisible.get().getVisibleWebElement(By.tagName("search"));
+    public AdministrationPage() {
+        controls = new AdministrationPageUIMap();
+        controlsAjax = new AdministrationPageUIMapAjax();
+    }
+
+    // getters controls
+
+	public ILink getCreateNewUser() {
+		return this.controls.createNewUser;
 	}
 
-	// - - - - - - - - - -
-
-	public WebElement getCreateNewUser() {
-		return createNewUser;
-	}
-
-	public Select getField() {
-		return field;
-	}
-
-	public Select getCondition() {
-		return condition;
-	}
-
-	public WebElement getSearchField() {
-		return searchField;
-	}
-
-	public WebElement getFirstName() {
-		return firstName;
-	}
-
-	public WebElement getLastName() {
-		return lastName;
-	}
-
-	public WebElement getLogin() {
-		return loginButton;
-	}
-	
-//	public WebElement getSearchButton() {
-//		return searchButton;
+//	public ISelect getField() {
+//		return this.controls.field;
+//	}
+//
+//	public ISelect getCondition() {
+//		return this.controls.condition;
 //	}
 
-	// - - - - - - - - - -
-
-	public CreateNewUserPage gotoCreateNewUser(IUser newUser) {
-		createNewUser.click();
-		return new CreateNewUserPage();
+	public ITextField getSearchField() {
+		return this.controls.searchField;
 	}
 
-	public LoginPage logout() {
-		this.logout.click();
-		return new LoginPage();
+	public ILink getLogout() {
+		return this.controls.logout;
 	}
 
-	// - - - - - - - - - -
+    // getters controlsAjax
 
-	public void selectColumnFilter(Fields setField) {
-		field.selectByVisibleText(setField.toString());
+	public ILabel getUsersFound() {
+		return this.controlsAjax.usersFound;
 	}
 
-	public void selectMatchFilter(Conditions setCondition) {
-		condition.selectByVisibleText(setCondition.toString());
+	public ILabel getFirstName() {
+		return this.controlsAjax.firstName;
 	}
 
-	private void resetTable() {
-		this.firstName = ContextVisible.get().getVisibleWebElement(By.xpath("//tbody/tr[1]/td[1]"));
-		System.out.println("firstName = " + firstName.getText());
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public ILabel getLastName() {
+		return this.controlsAjax.lastName;
+	}
+
+	public ILabel getLogin() {
+		return this.controlsAjax.login;
+	}
+
+	public ILink getDelete() {
+		return this.controlsAjax.delete;
+	}
+
+    // getters controlsAlert
+
+	//public IAlert getAlert() {
+	//	if (this.controlsAlert != null) {
+	//	return this.controlsAlert;
+	//	}
+	//}
+
+	// setters controls
+
+	public void createNewUserClick() {
+		this.controls.createNewUser.click();
+	}
+
+	public void selectColumnFields(AdministrationPageFields field) {
+		//field.selectByVisibleText(field.toString());
+	}
+
+	public void selectMatchConditions(AdministrationPageConditions condition) {
+		//condition.selectByVisibleText(condition.toString());
+	}
+
+	public void searchFieldClear() {
+		this.controls.searchField.clear();
+	}
+
+	public void searchFieldClick() {
+		this.controls.searchField.click();
+	}
+	
+	public void searchFieldSendKeys(String text) {
+		this.controls.searchField.sendKeys(text);
+	}
+
+	public void logoutClick() {
+		this.controls.logout.click();
+	}
+	
+	// setters controlsAjax
+
+	public void resetTable() {
+		if (this.controlsAjax.firstName.isStalenessOf()) {
+			controlsAjax = new AdministrationPageUIMapAjax();
 		}
-		this.firstName = ContextVisible.get().getVisibleWebElement(By.xpath("//tbody/tr[1]/td[1]"));
-		this.lastName = ContextVisible.get().getVisibleWebElement(By.xpath("//tbody/tr[1]/td[2]"));
-		this.loginButton =ContextVisible.get().getVisibleWebElement(By.xpath("//tbody/tr[1]/td[3]"));
-		System.out.println("new firstName = " + firstName.getText());
-	}
-
-	public void typeSearchField(String text) {
-		searchField.click();
-		searchField.clear();
-		searchField.sendKeys(text);
-		//
-		resetTable();
 	}
 	
-//	public void clickSearchButton()
-//	{
-//		searchButton.click();		
+	public void resetTable(String login) {
+		if (this.controlsAjax.firstName.isStalenessOf()) {
+			controlsAjax = new AdministrationPageUIMapAjax(login);
+		}
+	}
+
+	public void deleteClick() {
+		this.controlsAjax.delete.click();
+		// this.controlsAlert = new Alert();
+	}
+
+	// setters controlsAlert
+
+	public void alertAccept() {
+//		if (this.controlsAlert != null) {
+//		this.controlsAlert.click();
+//		this.controlsAlert = null;
+//        controls = new AdministrationPageUIMap();
+//        controlsAjax = new AdministrationPageUIMapAjax();
 //	}
-*/
+	}
+
+	public void alertDismiss() {
+//		if (this.controlsAlert != null) {
+//			this.controlsAlert.click();
+//			this.controlsAlert = null;
+//		}
+	}	
+
 }

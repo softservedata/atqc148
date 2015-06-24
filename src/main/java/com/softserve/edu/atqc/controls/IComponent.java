@@ -9,5 +9,9 @@ public interface IComponent {
 	String getTagName();
 
 	boolean isDisplayed();
+	
+//	boolean isInvisible();
+	
+	boolean isStalenessOf();
 
 }

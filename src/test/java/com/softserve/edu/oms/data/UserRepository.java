@@ -4,9 +4,9 @@ public class UserRepository {
 
 	public static IUser getSearchUser() {
 		return User.get()
-			.setLoginName("iva")
-			.setFirstName("ivanka")
-			.setLastName("horoshko")
+			.setLoginName("aaai")
+			.setFirstName("Ira")
+			.setLastName("C")
 			.setPassword("qwerty")
 			.setEmail("aaaa@gmail.com")
 			.setRegion("East")

@@ -6,13 +6,13 @@ public interface ISelect extends IComponent {
 
 	List<ILabel> getAllOptions();
 
-	ILabel getSelectOptions();
+	ILabel getFirstSelectedOption();
 
 	void selectByIndex(int index);
 
 	void selectByValue(String value);
 
-	void selectByText(String text);
+	void selectByVisibleText(String text);
 
 	void selectByPartialText(String partialText);
 

@@ -1,5 +1,7 @@
 package com.softserve.edu.atqc.controls;
 
+import java.util.List;
+
 import com.softserve.edu.atqc.tools.ContextVisible;
 import com.softserve.edu.atqc.tools.ControlLocation;
 import com.softserve.edu.atqc.tools.ControlWrapper;
@@ -121,6 +123,28 @@ public class Component implements IControlWrapper {
 
 	public void submit() {
 		getControl().submit();
+	}
+
+	// ISelect
+
+	public List<ILabel> getAllOptions() {
+		return null;
+	}
+
+	public ILabel getFirstSelectedOption() {
+		return null;
+	}
+
+	public void selectByIndex(int index) {
+	}
+
+	public void selectByValue(String value) {
+	}
+
+	public void selectByVisibleText(String text) {
+	}
+
+	public void selectByPartialText(String partialText) {
 	}
 
 }

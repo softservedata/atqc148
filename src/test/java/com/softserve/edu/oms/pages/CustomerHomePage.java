@@ -1,10 +1,5 @@
 package com.softserve.edu.oms.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import com.softserve.edu.atqc.tools.ContextVisible;
-
 public class CustomerHomePage extends HomePage {
 	/*
 	private WebElement orderingTab;

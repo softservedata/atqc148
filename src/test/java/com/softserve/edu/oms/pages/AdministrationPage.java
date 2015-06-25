@@ -2,9 +2,11 @@ package com.softserve.edu.oms.pages;
 
 import com.softserve.edu.atqc.controls.ILabel;
 import com.softserve.edu.atqc.controls.ILink;
+import com.softserve.edu.atqc.controls.ISelect;
 import com.softserve.edu.atqc.controls.ITextField;
 import com.softserve.edu.atqc.controls.Label;
 import com.softserve.edu.atqc.controls.Link;
+import com.softserve.edu.atqc.controls.Select;
 import com.softserve.edu.atqc.controls.TextField;
 
 public class AdministrationPage {
@@ -46,15 +48,15 @@ public class AdministrationPage {
 
 	private class AdministrationPageUIMap {
 		public final ILink createNewUser;
-		// public final ISelect field;
-		// public final ISelect condition;
+		public final ISelect field;
+		public final ISelect condition;
 		public final ITextField searchField;
 		public final ILink logout;
 
 		public AdministrationPageUIMap() {
 			this.searchField = TextField.getById("searchField");
-			// this.field = Select.getById("field");
-			// this.condition = Select.getById("condition");
+			this.field = Select.getById("field");
+			this.condition = Select.getById("condition");
 			this.createNewUser = Link.getByPartialLinkText("Create New User");
 			this.logout = Link.getByXpath("//a[@href='/OMS/logout.htm']");
 		}
@@ -111,13 +113,13 @@ public class AdministrationPage {
 		return this.controls.createNewUser;
 	}
 
-//	public ISelect getField() {
-//		return this.controls.field;
-//	}
-//
-//	public ISelect getCondition() {
-//		return this.controls.condition;
-//	}
+	public ISelect getField() {
+		return this.controls.field;
+	}
+
+	public ISelect getCondition() {
+		return this.controls.condition;
+	}
 
 	public ITextField getSearchField() {
 		return this.controls.searchField;
@@ -164,11 +166,11 @@ public class AdministrationPage {
 	}
 
 	public void selectColumnFields(AdministrationPageFields field) {
-		//field.selectByVisibleText(field.toString());
+		this.controls.field.selectByVisibleText(field.toString());
 	}
 
 	public void selectMatchConditions(AdministrationPageConditions condition) {
-		//condition.selectByVisibleText(condition.toString());
+		this.controls.condition.selectByVisibleText(condition.toString());
 	}
 
 	public void searchFieldClear() {
@@ -196,9 +198,11 @@ public class AdministrationPage {
 	}
 	
 	public void resetTable(String login) {
+		System.out.println("resetTable start, firstName = "+this.controlsAjax.firstName.getText());
 		if (this.controlsAjax.firstName.isStalenessOf()) {
 			controlsAjax = new AdministrationPageUIMapAjax(login);
 		}
+		System.out.println("resetTable done");
 	}
 
 	public void deleteClick() {

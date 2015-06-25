@@ -16,6 +16,8 @@ import com.softserve.edu.oms.logics.AdministrationPageLogic;
 import com.softserve.edu.oms.logics.CustomerHomePageLogic;
 import com.softserve.edu.oms.logics.LoginPageLogic;
 import com.softserve.edu.oms.logics.ValidatorLoginPageLogic;
+import com.softserve.edu.oms.pages.AdministrationPage.AdministrationPageConditions;
+import com.softserve.edu.oms.pages.AdministrationPage.AdministrationPageFields;
 import com.softserve.edu.oms.pages.ValidatorLoginPage.LoginPageValidators;
 import com.softserve.edu.oms.spans.StartApplication;
 
@@ -116,16 +118,13 @@ public class LoginTest {
 				  .successAdminLogin(UserRepository.getAdminUser())
 				  .gotoAdministration();
 		  // Steps
-//		  administrationPageLogic.selectColumnFilter(AdministrationPageFields.LOGIN_NAME);
-//		  administrationPageLogic.selectMatchFilter(AdministrationPageConditions.STARTS_WITH);
-//		  administrationPageLogic.typeSearchField(UserRepository.getAdminUser().getFirstName());
-//		  administrationPageLogic.typeSearchField(searchUser.getLoginName());
-		  // administrationPage.clickSearchButton();
+		  administrationPageLogic.searchByLoginName(AdministrationPageFields.LOGIN_NAME,
+				  AdministrationPageConditions.STARTS_WITH, searchUser);
 		  // Check
-//		  Assert.assertEquals(searchUser.getFirstName(),
-//				  administrationPageLogic.getFirstName().getText());
+		  Assert.assertEquals(searchUser.getFirstName(),
+				  administrationPageLogic.getAdministrationPage().getFirstName().getText());
 		  // Return to previous state
-//		  administrationPage.logout();
+		  administrationPageLogic.logout();
 	}
 
 	@AfterClass

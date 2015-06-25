@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public final class ContextVisible {
@@ -30,10 +31,9 @@ public final class ContextVisible {
 	 * page and visible.
 	 */
 	WebElement getVisibleWebElement(ControlLocation controlLocation) {
-		WebElement webElement = new WebDriverWait(
-				WebDriverUtils.get().getWebDriver(),
-				WebDriverUtils.get().getImplicitlyWaitTimeout())
-			.until(ExpectedConditions
+		WebElement webElement = new WebDriverWait(WebDriverUtils.get()
+				.getWebDriver(), WebDriverUtils.get()
+				.getImplicitlyWaitTimeout()).until(ExpectedConditions
 				.visibilityOfElementLocated(controlLocation.getBy()));
 		if (webElement == null) {
 			// TODO Develop My Exception
@@ -48,10 +48,9 @@ public final class ContextVisible {
 	 * that match the locator are visible.
 	 */
 	List<WebElement> getVisibleWebElements(ControlLocation controlLocation) {
-		List<WebElement> webElements = new WebDriverWait(
-				WebDriverUtils.get().getWebDriver(),
-				WebDriverUtils.get().getImplicitlyWaitTimeout())
-			.until(ExpectedConditions
+		List<WebElement> webElements = new WebDriverWait(WebDriverUtils.get()
+				.getWebDriver(), WebDriverUtils.get()
+				.getImplicitlyWaitTimeout()).until(ExpectedConditions
 				.visibilityOfAllElementsLocatedBy(controlLocation.getBy()));
 		if (webElements.size() == 0) {
 			// TODO Develop My Exception
@@ -66,10 +65,9 @@ public final class ContextVisible {
 	 * page. This does not necessarily mean that the element is visible.
 	 */
 	WebElement getPresentWebElement(ControlLocation controlLocation) {
-		WebElement webElement = new WebDriverWait(
-				WebDriverUtils.get().getWebDriver(),
-				WebDriverUtils.get().getImplicitlyWaitTimeout())
-			.until(ExpectedConditions
+		WebElement webElement = new WebDriverWait(WebDriverUtils.get()
+				.getWebDriver(), WebDriverUtils.get()
+				.getImplicitlyWaitTimeout()).until(ExpectedConditions
 				.presenceOfElementLocated(controlLocation.getBy()));
 		if (webElement == null) {
 			// TODO Develop My Exception
@@ -101,11 +99,14 @@ public final class ContextVisible {
 	 * Wait until an element is no longer attached to the DOM.
 	 */
 	public boolean isStalenessOfWebElement(ControlWrapper controlWrapper) {
+		WebElement staleness = controlWrapper.getWebElement();
+		System.out.println("+++ isStalenessOfWebElement START");
 		Boolean stalenessOfWebElement = new WebDriverWait(
 				WebDriverUtils.get().getWebDriver(),
 				WebDriverUtils.get().getImplicitlyWaitTimeout())
-			.until(ExpectedConditions
-				.stalenessOf(controlWrapper.getWebElement()));
+				//.until(ExpectedConditions.stalenessOf(controlWrapper.getWebElement()));
+				.until(ExpectedConditions.stalenessOf(staleness));
+		System.out.println("+++ isStalenessOfWebElement DONE stalenessOfWebElement="+stalenessOfWebElement);
 		if (!stalenessOfWebElement) {
 			// TODO Develop My Exception
 			throw new RuntimeException(String.format(ERROR_STILL_VISIBLE,
@@ -114,8 +115,25 @@ public final class ContextVisible {
 		return stalenessOfWebElement;
 	}
 
+	Select getVisibleSelectWebElement(ControlLocation controlLocation) {
+		return new Select(getVisibleWebElement(controlLocation));
+	}
+
+	Select getVisibleSelectWebElement(ControlWrapper controlWrapper) {
+		return new Select(controlWrapper.getWebElement());
+	}
+
+	Select getPresentSelectWebElement(ControlLocation controlLocation) {
+		return new Select(getPresentWebElement(controlLocation));
+	}
+
+	Select getPresentSelectWebElement(ControlWrapper controlWrapper) {
+		return new Select(controlWrapper.getWebElement());
+	}
+
 	public boolean isVisibleTitle(String partialTitle) {
-		return new WebDriverWait(WebDriverUtils.get().getWebDriver(),
+		return new WebDriverWait(
+				WebDriverUtils.get().getWebDriver(),
 				WebDriverUtils.get().getImplicitlyWaitTimeout())
 				.until(ExpectedConditions.titleContains(partialTitle));
 	}

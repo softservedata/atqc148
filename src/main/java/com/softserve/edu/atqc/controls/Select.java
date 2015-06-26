@@ -1,20 +1,17 @@
 package com.softserve.edu.atqc.controls;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.softserve.edu.atqc.tools.ControlLocation;
 import com.softserve.edu.atqc.tools.ControlWrapper;
 import com.softserve.edu.atqc.tools.SelectWrapper;
 
 public class Select extends Component {
-	private SelectWrapper select;
+	//private SelectWrapper select;
 
 	// implements constructor
 
 	Select(ControlWrapper control, ControlLocation controlLocation) {
-		super(control, controlLocation);
-		this.select = SelectWrapper.getVisibleSelectWebElement(control); 
+		super(control, SelectWrapper.getVisibleSelectWebElement(control), controlLocation);
+		//this.select = SelectWrapper.getVisibleSelectWebElement(control); 
 	}
 
 	// implements static factory
@@ -26,12 +23,13 @@ public class Select extends Component {
 
 	// implements getters
 
-	SelectWrapper getSelect() {
-		return select;
-	}
+//	SelectWrapper getSelect() {
+//		return select;
+//	}
 
 	// ISelect
 
+	/*
 	public List<ILabel> getAllOptions() {
 		List<ILabel> selectLabels = new ArrayList<ILabel>();
 		for (ControlWrapper controlWrapper : getSelect().getSelectWebElements()) {
@@ -59,13 +57,13 @@ public class Select extends Component {
 	}
 
 	public void selectByVisibleText(String text) {
-		System.out.println("selectByVisibleText START text="+text);
+		System.out.println("class SELECT selectByVisibleText START text="+text);
 		getSelect().selectByVisibleText(text);
-		System.out.println("selectByVisibleText done");
+		System.out.println("class SELECT selectByVisibleText done");
 	}
 
 	public void selectByPartialText(String partialText) {
 		getSelect().selectByPartialText(partialText);
 	}
-
+	 */
 }

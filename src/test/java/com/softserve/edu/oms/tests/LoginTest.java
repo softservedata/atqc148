@@ -112,7 +112,7 @@ public class LoginTest {
 	}
 
 	@Test(dataProvider = "searchProvider")
-	public void checkSearchByLogin(IBrowser browser, String url, IUser searchUser) {
+	public void checkSearchByLogin(IBrowser browser, String url, IUser searchUser) throws InterruptedException {
 		// Preconditions
 		  AdministrationPageLogic administrationPageLogic = StartApplication.load(browser, url)
 				  .successAdminLogin(UserRepository.getAdminUser())
@@ -121,6 +121,7 @@ public class LoginTest {
 		  administrationPageLogic.searchByLoginName(AdministrationPageFields.LOGIN_NAME,
 				  AdministrationPageConditions.STARTS_WITH, searchUser);
 		  // Check
+		  Thread.sleep(2000);
 		  Assert.assertEquals(searchUser.getFirstName(),
 				  administrationPageLogic.getAdministrationPage().getFirstName().getText());
 		  // Return to previous state

@@ -1,13 +1,16 @@
 package com.softserve.edu.atqc.controls;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.softserve.edu.atqc.tools.ContextVisible;
 import com.softserve.edu.atqc.tools.ControlLocation;
 import com.softserve.edu.atqc.tools.ControlWrapper;
+import com.softserve.edu.atqc.tools.SelectWrapper;
 
 public class Component implements IControlWrapper {
 	private ControlWrapper control;
+	private SelectWrapper select;
 	private ControlLocation controlLocation;
 
 	// implements constructor
@@ -15,6 +18,14 @@ public class Component implements IControlWrapper {
 	Component(ControlWrapper control, ControlLocation controlLocation) {
 		this.control = control;
 		this.controlLocation = controlLocation;
+		//this.select = SelectWrapper.getVisibleSelectWebElement(control);
+	}
+
+	Component(ControlWrapper control, SelectWrapper select, ControlLocation controlLocation) {
+		this.control = control;
+		this.controlLocation = controlLocation;
+		//this.select = SelectWrapper.getVisibleSelectWebElement(control);
+		this.select = select;
 	}
 
 	// implements static factory
@@ -55,6 +66,15 @@ public class Component implements IControlWrapper {
 
 	ControlWrapper getControl() {
 		return control;
+	}
+
+	SelectWrapper getSelect() {
+		//System.out.println("\t +++++COMPONENT getSelect() TAG:"+select.getFirstSelectedOption().getTagName());
+		if (select == null) {
+			System.out.println("\t +++++COMPONENT Select is NULL");
+			System.exit(0);
+		}
+		return select;
 	}
 
 	ControlLocation getControlLocation() {
@@ -128,23 +148,39 @@ public class Component implements IControlWrapper {
 	// ISelect
 
 	public List<ILabel> getAllOptions() {
-		return null;
+		List<ILabel> selectLabels = new ArrayList<ILabel>();
+		for (ControlWrapper controlWrapper : getSelect().getSelectWebElements()) {
+			selectLabels.add(Label.getByControl(
+					controlWrapper,
+					ControlLocation.getByXPath("//option[text()='"
+							+ controlWrapper.getText() + "']")));
+		}
+		return selectLabels;
 	}
 
 	public ILabel getFirstSelectedOption() {
-		return null;
+		return Label.getByControl(
+				getSelect().getFirstSelectedOption(),
+				ControlLocation.getByXPath("//option[text()='"
+						+ getSelect().getFirstSelectedOption() + "']"));
 	}
 
 	public void selectByIndex(int index) {
+		getSelect().selectByIndex(index);
 	}
 
 	public void selectByValue(String value) {
+		getSelect().selectByValue(value);
 	}
 
 	public void selectByVisibleText(String text) {
+		System.out.println("class SELECT selectByVisibleText START text="+text);
+		getSelect().selectByVisibleText(text);
+		System.out.println("class SELECT selectByVisibleText done");
 	}
 
 	public void selectByPartialText(String partialText) {
+		getSelect().selectByPartialText(partialText);
 	}
 
 }

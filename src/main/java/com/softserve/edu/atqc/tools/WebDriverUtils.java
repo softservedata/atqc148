@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public final class WebDriverUtils {
 	private static volatile WebDriverUtils instance = null;
-	private long implicitlyWaitTimeout = 20;
+	private long implicitlyWaitTimeout = 20L;
 	private IBrowser browser;
 	private WebDriver driver;
 
@@ -60,6 +60,11 @@ public final class WebDriverUtils {
 			}
 		}
 		return driver;
+	}
+
+	void setImplicitlyWaitTimeout(long implicitlyWaitTimeout) {
+		driver.manage().timeouts()
+				.implicitlyWait(implicitlyWaitTimeout, TimeUnit.SECONDS);
 	}
 
 	public long getImplicitlyWaitTimeout() {

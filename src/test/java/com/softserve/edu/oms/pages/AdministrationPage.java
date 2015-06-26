@@ -198,11 +198,9 @@ public class AdministrationPage {
 	}
 	
 	public void resetTable(String login) {
-		System.out.println("resetTable start, firstName = "+this.controlsAjax.firstName.getText());
 		if (this.controlsAjax.firstName.isStalenessOf()) {
 			controlsAjax = new AdministrationPageUIMapAjax(login);
 		}
-		System.out.println("resetTable done");
 	}
 
 	public void deleteClick() {

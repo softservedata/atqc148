@@ -121,7 +121,6 @@ public class LoginTest {
 		  administrationPageLogic.searchByLoginName(AdministrationPageFields.LOGIN_NAME,
 				  AdministrationPageConditions.STARTS_WITH, searchUser);
 		  // Check
-		  Thread.sleep(2000);
 		  Assert.assertEquals(searchUser.getFirstName(),
 				  administrationPageLogic.getAdministrationPage().getFirstName().getText());
 		  // Return to previous state

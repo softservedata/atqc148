@@ -18,7 +18,11 @@ public class Component implements IControlWrapper {
 	Component(ControlWrapper control, ControlLocation controlLocation) {
 		this.control = control;
 		this.controlLocation = controlLocation;
-		//this.select = SelectWrapper.getVisibleSelectWebElement(control);
+		try {
+			this.select = SelectWrapper.getVisibleSelectWebElement(control);
+		} catch (Exception e) {
+			select = null;
+		}
 	}
 
 	Component(ControlWrapper control, SelectWrapper select, ControlLocation controlLocation) {
@@ -69,11 +73,6 @@ public class Component implements IControlWrapper {
 	}
 
 	SelectWrapper getSelect() {
-		//System.out.println("\t +++++COMPONENT getSelect() TAG:"+select.getFirstSelectedOption().getTagName());
-		if (select == null) {
-			System.out.println("\t +++++COMPONENT Select is NULL");
-			System.exit(0);
-		}
 		return select;
 	}
 
@@ -174,9 +173,7 @@ public class Component implements IControlWrapper {
 	}
 
 	public void selectByVisibleText(String text) {
-		System.out.println("class SELECT selectByVisibleText START text="+text);
 		getSelect().selectByVisibleText(text);
-		System.out.println("class SELECT selectByVisibleText done");
 	}
 
 	public void selectByPartialText(String partialText) {

@@ -14,6 +14,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.seleniumhq.version>2.46.0</org.seleniumhq.version>
+		<testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
 	</properties>
 
 	<dependencies>
@@ -54,9 +55,15 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.18.1</version>
 				<configuration>
+					<systemPropertyVariables>
+						<surefire.reports.directory>
+							${testng.reports.directory}
+						</surefire.reports.directory>
+					</systemPropertyVariables>
 					<suiteXmlFiles>
 						<suiteXmlFile>testng1.xml</suiteXmlFile>
 					</suiteXmlFiles>
+					<reportsDirectory>${testng.reports.directory}</reportsDirectory>
 				</configuration>
 			</plugin>
 		</plugins>

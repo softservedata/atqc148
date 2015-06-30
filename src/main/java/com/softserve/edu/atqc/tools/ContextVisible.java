@@ -31,14 +31,30 @@ public final class ContextVisible {
 	 * page and visible.
 	 */
 	WebElement getVisibleWebElement(ControlLocation controlLocation) {
-		WebElement webElement = new WebDriverWait(
-				WebDriverUtils.get().getWebDriver(),
-				WebDriverUtils.get().getImplicitlyWaitTimeout())
-			.until(ExpectedConditions
-				.visibilityOfElementLocated(controlLocation.getBy()));
+//		WebElement webElement = new WebDriverWait(
+//				WebDriverUtils.get().getWebDriver(),
+//				WebDriverUtils.get().getImplicitlyWaitTimeout())
+//			.until(ExpectedConditions
+//				.visibilityOfElementLocated(controlLocation.getBy()));
+//		if (webElement == null) {
+//			// TODO Develop My Exception
+//			throw new RuntimeException(String.format(ERROR_NOT_FOUND,
+//					controlLocation.toString()));
+//		}
+//		return webElement;
+		WebElement webElement = null;
+		try {
+			webElement = new WebDriverWait(
+					WebDriverUtils.get().getWebDriver(),
+					WebDriverUtils.get().getImplicitlyWaitTimeout())
+				.until(ExpectedConditions
+					.visibilityOfElementLocated(controlLocation.getBy()));
+		} catch (Exception e) {
+			throw new ScreenCapturingCustomException(String.format(ERROR_NOT_FOUND,
+					controlLocation.toString()));
+		}
 		if (webElement == null) {
-			// TODO Develop My Exception
-			throw new RuntimeException(String.format(ERROR_NOT_FOUND,
+			throw new ScreenCapturingCustomException(String.format(ERROR_NOT_FOUND,
 					controlLocation.toString()));
 		}
 		return webElement;

@@ -5,6 +5,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.softserve.edu.atqc.span.AssertWrapper;
 import com.softserve.edu.atqc.tools.BrowserRepository;
 import com.softserve.edu.atqc.tools.IBrowser;
 import com.softserve.edu.atqc.tools.WebDriverUtils;
@@ -121,10 +122,19 @@ public class LoginTest {
 		  administrationPageLogic.searchByLoginName(AdministrationPageFields.LOGIN_NAME,
 				  AdministrationPageConditions.STARTS_WITH, searchUser);
 		  // Check
-		  Assert.assertEquals(searchUser.getFirstName(),
-				  administrationPageLogic.getAdministrationPage().getFirstName().getText());
+		  AssertWrapper.get()
+		  		.forElement(administrationPageLogic.getAdministrationPage().getFirstName())
+		  			.isVisible()
+		  			.valueMatch(searchUser.getFirstName())
+		  			.next()
+		  		.forElement(administrationPageLogic.getAdministrationPage().getLastName())
+		  			.valueMatch(searchUser.getLastName());
+//		  Assert.assertEquals(searchUser.getFirstName(),
+//				  administrationPageLogic.getAdministrationPage().getFirstName().getText());
 		  // Return to previous state
 		  administrationPageLogic.logout();
+		  // Assert
+		  AssertWrapper.get().check();
 	}
 
 	@AfterClass

@@ -7,10 +7,8 @@ public class LoggerWrapper {
 	private final String SLASH = "/";
 	private final String BR_ERROR = "<br>[ERROR] ";
 	private final String BR_INFO = "<br>[INFO] ";
-	//private final String BR_BEGIN_IMG = "<br><image width=\"50%\" src=\"";
-	private final String BR_BEGIN_IMG = "<br><div><image style=\"max-width:100%\" src=\"";
-	//private final String BR_END_IMG = "\"/>";
-	private final String BR_END_IMG = "\"/></div>";
+	//private final String BR_DIV_IMG = "<br><image width=\"50%\" src=\"%s\"/>";
+	private final String BR_DIV_IMG = "<br><div><image style=\"max-width:100%%\" src=\"%s\"/></div>";
 
 	private LoggerWrapper() {
 	}
@@ -35,9 +33,8 @@ public class LoggerWrapper {
 	}
 
 	public void infoLogInsertScreenShot(String fileNamePath) {
-		Reporter.log(BR_BEGIN_IMG
-				+ fileNamePath.substring(fileNamePath.lastIndexOf(SLASH) + 1)
-				+ BR_END_IMG);
+		Reporter.log(String.format(BR_DIV_IMG,
+				fileNamePath.substring(fileNamePath.lastIndexOf(SLASH) + 1)));
 	}
 
 }

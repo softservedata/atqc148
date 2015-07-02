@@ -9,6 +9,7 @@ import com.softserve.edu.atqc.tools.ControlWrapper;
 import com.softserve.edu.atqc.tools.SelectWrapper;
 
 public class Component implements IControlWrapper {
+	private final String SELECT_TAG = "select";
 	private ControlWrapper control;
 	private SelectWrapper select;
 	private ControlLocation controlLocation;
@@ -18,17 +19,16 @@ public class Component implements IControlWrapper {
 	Component(ControlWrapper control, ControlLocation controlLocation) {
 		this.control = control;
 		this.controlLocation = controlLocation;
-		try {
+		if (this.control.getTagName().toLowerCase().contains(SELECT_TAG)) {
 			this.select = SelectWrapper.getVisibleSelectWebElement(control);
-		} catch (Exception e) {
-			select = null;
 		}
 	}
 
-	Component(ControlWrapper control, SelectWrapper select, ControlLocation controlLocation) {
+	Component(ControlWrapper control, SelectWrapper select,
+			ControlLocation controlLocation) {
 		this.control = control;
 		this.controlLocation = controlLocation;
-		//this.select = SelectWrapper.getVisibleSelectWebElement(control);
+		// this.select = SelectWrapper.getVisibleSelectWebElement(control);
 		this.select = select;
 	}
 
@@ -122,8 +122,8 @@ public class Component implements IControlWrapper {
 		return getControl().isEnabled();
 	}
 
-//	public boolean isInvisible();
-	
+	// public boolean isInvisible();
+
 	public boolean isSelected() {
 		return getControl().isSelected();
 	}

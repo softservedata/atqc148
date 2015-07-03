@@ -112,7 +112,7 @@ public class LoginTest {
 		};
 	}
 
-	@Test(dataProvider = "searchProvider")
+	//@Test(dataProvider = "searchProvider")
 	public void checkSearchByLogin(IBrowser browser, String url, IUser searchUser) throws InterruptedException {
 		// Preconditions
 		  AdministrationPageLogic administrationPageLogic = StartApplication.load(browser, url)
@@ -137,6 +137,59 @@ public class LoginTest {
 		  AssertWrapper.get().check();
 	}
 
+	@DataProvider
+	public Object[][] propertiesProvider() {
+		return new Object[][] { {
+				BrowserRepository.getFirefoxByTemporaryProfile(),
+				Urls.SSU_HOST.toString(),
+				UserRepository.getUserFromProperties() },
+		// { BrowserRepository.getChromeByTemporaryProfile() }
+		};
+	}
+
+	@Test(dataProvider = "propertiesProvider")
+	public void checkUserProperties(IBrowser browser, String url, IUser user) {
+		// Preconditions
+		// Steps
+		AdminHomePageLogic adminHomePageLogic = StartApplication.load(browser, url)
+				.successAdminLogin(user);
+		// Check
+		  AssertWrapper.get()
+		  		.forElement(adminHomePageLogic.getFirstName())
+		  			.valueMatch(user.getFirstName());
+		// Return to previous state
+		adminHomePageLogic.logout();
+		AssertWrapper.get().check();
+	}
+
+	@DataProvider
+	public Object[][] CSVProvider() {
+		return new Object[][] { {
+				BrowserRepository.getFirefoxByTemporaryProfile(),
+				Urls.SSU_HOST.toString(),
+				UserRepository.getAllUserFromCSV().get(0) },
+		      { BrowserRepository.getFirefoxByTemporaryProfile(),
+				Urls.SSU_HOST.toString(),
+				UserRepository.getAllUserFromCSV().get(1) },
+		// { BrowserRepository.getChromeByTemporaryProfile() }
+		};
+	}
+
+	@Test(dataProvider = "CSVProvider")
+	public void checkUsersCSV(IBrowser browser, String url, IUser user) {
+		// Preconditions
+		// Steps
+		AdminHomePageLogic adminHomePageLogic = StartApplication.load(browser, url)
+				.successAdminLogin(user);
+		// Check
+		  AssertWrapper.get()
+		  		.forElement(adminHomePageLogic.getFirstName())
+		  			.valueMatch(user.getFirstName());
+		// Return to previous state
+		adminHomePageLogic.logout();
+		AssertWrapper.get().check();
+	}
+	
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		WebDriverUtils.get().stop();

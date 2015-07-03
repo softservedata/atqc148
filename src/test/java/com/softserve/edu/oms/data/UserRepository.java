@@ -1,5 +1,7 @@
 package com.softserve.edu.oms.data;
 
+import java.util.List;
+
 public class UserRepository {
 
 	public static IUser getSearchUser() {
@@ -62,6 +64,14 @@ public class UserRepository {
 				.setRegion("East")
 				.setRole("Customer")
 				.build();
+	}
+
+	public static IUser getUserFromProperties() {
+		return (new PropertiesUser()).getUser();
+	}
+
+	public static List<IUser> getAllUserFromCSV() {
+		return (new CSVUsers()).getAllUsers();
 	}
 
 }

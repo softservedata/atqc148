@@ -5,5 +5,7 @@ public class App3 {
 
 	public static void main(String[] args) {
 		System.out.println(String.format(BR_DIV_IMG, "+++"));
+		System.out.println("PATH: "
+				+ App3.class.getResource("/users.properties").getPath().substring(1));
 	}
 }

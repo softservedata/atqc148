@@ -7,12 +7,14 @@
 		<classes>
 			<class name="com.softserve.edu.oms.tests.LoginTest">
 				<methods>
-					<include name="checkInvalid" />
 					<!--
+					<include name="checkInvalid" />
 					<include name="checkAdmin" />
 					<include name="checkCustomer" />
 					<include name="checkSearchByLogin" />
+					<include name="checkUserProperties" />
 					 -->
+					<include name="checkUsersCSV" />
 				</methods>
 			</class>
 		</classes>

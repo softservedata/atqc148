@@ -51,11 +51,11 @@ public final class ContextVisible {
 					.visibilityOfElementLocated(controlLocation.getBy()));
 		} catch (Exception e) {
 			throw new ScreenCapturingCustomException(String.format(ERROR_NOT_FOUND,
-					controlLocation.toString()));
+					controlLocation.getValue()));
 		}
 		if (webElement == null) {
 			throw new ScreenCapturingCustomException(String.format(ERROR_NOT_FOUND,
-					controlLocation.toString()));
+					controlLocation.getValue()));
 		}
 		return webElement;
 	}

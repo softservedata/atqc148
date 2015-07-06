@@ -6,11 +6,11 @@ import java.util.List;
 import com.softserve.edu.atqc.tools.CSVUtils;
 
 public class CSVUsers {
-	private static final String USER_CSV_FILE_NAME = "/users.csv";
+	private static final String USERS_CSV_FILE_NAME = "/users.csv";
 
 	public List<IUser> getAllUsers() {
 		return getAllUsers(this.getClass()
-				.getResource(USER_CSV_FILE_NAME).getPath().substring(1));
+				.getResource(USERS_CSV_FILE_NAME).getPath().substring(1));
 	}
 
 	public List<IUser> getAllUsers(String absoluteFilePath) {

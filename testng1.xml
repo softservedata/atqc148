@@ -14,7 +14,7 @@
 					<include name="checkSearchByLogin" />
 					<include name="checkUserProperties" />
 					 -->
-					<include name="checkUsersCSV" />
+					<include name="checkUsers" />
 				</methods>
 			</class>
 		</classes>

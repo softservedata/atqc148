@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import com.softserve.edu.atqc.span.AssertWrapper;
 import com.softserve.edu.atqc.tools.BrowserRepository;
 import com.softserve.edu.atqc.tools.IBrowser;
+import com.softserve.edu.atqc.tools.ListUtils;
 import com.softserve.edu.atqc.tools.WebDriverUtils;
 import com.softserve.edu.oms.data.IUser;
 import com.softserve.edu.oms.data.UrlRepository.Urls;
@@ -147,7 +148,7 @@ public class LoginTest {
 		};
 	}
 
-	@Test(dataProvider = "propertiesProvider")
+	//@Test(dataProvider = "propertiesProvider")
 	public void checkUserProperties(IBrowser browser, String url, IUser user) {
 		// Preconditions
 		// Steps
@@ -162,21 +163,36 @@ public class LoginTest {
 		AssertWrapper.get().check();
 	}
 
+//	@DataProvider
+//	public Object[][] CSVProvider() {
+//		return new Object[][] { {
+//				BrowserRepository.getFirefoxByTemporaryProfile(),
+//				Urls.SSU_HOST.toString(),
+//				UserRepository.getAllUserFromCSV().get(0) },
+//		      { BrowserRepository.getFirefoxByTemporaryProfile(),
+//				Urls.SSU_HOST.toString(),
+//				UserRepository.getAllUserFromCSV().get(1) },
+//		// { BrowserRepository.getChromeByTemporaryProfile() }
+//		};
+//	}
+
 	@DataProvider
 	public Object[][] CSVProvider() {
-		return new Object[][] { {
+		return ListUtils.toMultiArray(UserRepository.getAllUserFromCSV(),
 				BrowserRepository.getFirefoxByTemporaryProfile(),
-				Urls.SSU_HOST.toString(),
-				UserRepository.getAllUserFromCSV().get(0) },
-		      { BrowserRepository.getFirefoxByTemporaryProfile(),
-				Urls.SSU_HOST.toString(),
-				UserRepository.getAllUserFromCSV().get(1) },
-		// { BrowserRepository.getChromeByTemporaryProfile() }
-		};
+				Urls.SSU_HOST.toString());
 	}
 
-	@Test(dataProvider = "CSVProvider")
-	public void checkUsersCSV(IBrowser browser, String url, IUser user) {
+	@DataProvider
+	public Object[][] ExcelProvider() {
+		return ListUtils.toMultiArray(UserRepository.getAllUserFromExcel(),
+				BrowserRepository.getFirefoxByTemporaryProfile(),
+				Urls.SSU_HOST.toString());
+	}
+
+	//@Test(dataProvider = "CSVProvider")
+	@Test(dataProvider = "ExcelProvider")
+	public void checkUsers(IBrowser browser, String url, IUser user) {
 		// Preconditions
 		// Steps
 		AdminHomePageLogic adminHomePageLogic = StartApplication.load(browser, url)

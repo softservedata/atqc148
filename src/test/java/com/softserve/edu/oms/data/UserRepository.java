@@ -74,4 +74,8 @@ public class UserRepository {
 		return (new CSVUsers()).getAllUsers();
 	}
 
+	public static List<IUser> getAllUserFromExcel() {
+		return (new ExcelUsers()).getAllUsers();
+	}
+
 }

@@ -1,16 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.softserveinc.edu.ita</groupId>
-  <artifactId>atqc148</artifactId>
-  <version>1.0</version>
+	<groupId>com.softserveinc.edu.ita</groupId>
+	<artifactId>atqc148</artifactId>
+	<version>1.0</version>
 
-  <packaging>jar</packaging>
+	<packaging>jar</packaging>
 
-  <name>atqc148</name>
-  <url>http://maven.apache.org</url>
-  
+	<name>atqc148</name>
+	<url>http://maven.apache.org</url>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.seleniumhq.version>2.46.0</org.seleniumhq.version>
@@ -23,10 +23,25 @@
 			<artifactId>testng</artifactId>
 			<version>6.8.13</version>
 		</dependency>
-	<dependency>
+		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
 			<version>${org.seleniumhq.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.10.0</version>
 		</dependency>
 	</dependencies>
 

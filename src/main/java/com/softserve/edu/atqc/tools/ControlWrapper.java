@@ -1,5 +1,8 @@
 package com.softserve.edu.atqc.tools;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 
 public final class ControlWrapper {
@@ -19,6 +22,16 @@ public final class ControlWrapper {
 			ControlLocation controlLocation) {
 		return new ControlWrapper(ContextVisible.get().getVisibleWebElement(
 				controlLocation));
+	}
+
+	public static List<ControlWrapper> getVisibleWebElements(
+			ControlLocation controlLocation) {
+		List<ControlWrapper> controlWrappers = new ArrayList<ControlWrapper>();
+		for (WebElement webElement : ContextVisible.get()
+				.getVisibleWebElements(controlLocation)) {
+			controlWrappers.add(new ControlWrapper(webElement));
+		}
+		return controlWrappers;
 	}
 
 	public static ControlWrapper getPresentWebElement(

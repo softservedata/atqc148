@@ -18,6 +18,7 @@ public class LoginPage {
         public LoginPageUIMap() {
             this.loginName = TextField.getByName("j_username");
             this.password = TextField.getByName("j_password");
+            // CheckBox without labelClickable component
             this.rememberMe = CheckBox
                     .getByName("_spring_security_remember_me");
             this.submit = Button.getByName("submit");

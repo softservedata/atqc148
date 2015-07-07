@@ -34,6 +34,13 @@ public class LoginPageLogic {
 		this.loginPage.submitClick();
 	}
 
+	public LoginPageLogic rememberMe() {
+		if (!this.loginPage.getRememberMe().isSelected()) {
+			this.loginPage.rememberMeClick();
+		}
+		return this;
+	}
+
 	public AdminHomePageLogic successAdminLogin(IUser adminUser) {
 		setLoginData(adminUser);
 		return new AdminHomePageLogic(new AdminHomePage());

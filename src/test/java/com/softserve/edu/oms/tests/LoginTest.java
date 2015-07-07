@@ -60,11 +60,12 @@ public class LoginTest {
 		};
 	}
 
-	//@Test(dataProvider = "adminProvider")
+	@Test(dataProvider = "adminProvider")
 	public void checkAdmin(IBrowser browser, String url, IUser adminUser) {
 		// Preconditions
 		// Steps
 		AdminHomePageLogic adminHomePageLogic = StartApplication.load(browser, url)
+				.rememberMe()
 				.successAdminLogin(adminUser);
 		// Check
 		Assert.assertEquals(adminUser.getFirstName(),
@@ -191,7 +192,7 @@ public class LoginTest {
 	}
 
 	//@Test(dataProvider = "CSVProvider")
-	@Test(dataProvider = "ExcelProvider")
+	//@Test(dataProvider = "ExcelProvider")
 	public void checkUsers(IBrowser browser, String url, IUser user) {
 		// Preconditions
 		// Steps

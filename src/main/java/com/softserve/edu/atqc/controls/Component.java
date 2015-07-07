@@ -6,13 +6,17 @@ import java.util.List;
 import com.softserve.edu.atqc.tools.ContextVisible;
 import com.softserve.edu.atqc.tools.ControlLocation;
 import com.softserve.edu.atqc.tools.ControlWrapper;
+import com.softserve.edu.atqc.tools.GeneralCustomException;
 import com.softserve.edu.atqc.tools.SelectWrapper;
 
 public class Component implements IControlWrapper {
+	private static final String CHECK_BOX_EXCEPTION = "LabelClickable field is not bonded with CheckBox component";
 	private final String SELECT_TAG = "select";
 	private ControlWrapper control;
 	private SelectWrapper select;
 	private ControlLocation controlLocation;
+	// for CheckBox
+	private ILabelClickable labelClickable;
 
 	// implements constructor
 
@@ -178,6 +182,19 @@ public class Component implements IControlWrapper {
 
 	public void selectByPartialText(String partialText) {
 		getSelect().selectByPartialText(partialText);
+	}
+
+	// ICheckBox
+	
+	public ILabelClickable getLabelClickable() {
+		if (labelClickable == null) {
+			throw new GeneralCustomException(CHECK_BOX_EXCEPTION);
+		}
+		return labelClickable;
+	}
+
+	public void setLabelClickable(ILabelClickable labelClickable) {
+		this.labelClickable = labelClickable;
 	}
 
 }

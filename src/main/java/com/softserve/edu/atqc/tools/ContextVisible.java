@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public final class ContextVisible {
-	private final String ERROR_NOT_FOUND = "WebElement was not found %s";
+	private final String ERROR_NOT_FOUND = "WebElement(s) was not found %s";
 	private final String ERROR_STILL_VISIBLE = "WebElement is Still Visible %s";
 	private static volatile ContextVisible instance = null;
 
@@ -65,15 +65,31 @@ public final class ContextVisible {
 	 * that match the locator are visible.
 	 */
 	List<WebElement> getVisibleWebElements(ControlLocation controlLocation) {
-		List<WebElement> webElements = new WebDriverWait(
+//		List<WebElement> webElements = new WebDriverWait(
+//				WebDriverUtils.get().getWebDriver(),
+//				WebDriverUtils.get().getImplicitlyWaitTimeout())
+//			.until(ExpectedConditions
+//				.visibilityOfAllElementsLocatedBy(controlLocation.getBy()));
+//		if (webElements.size() == 0) {
+//			// TODO Develop My Exception
+//			throw new RuntimeException(String.format(ERROR_NOT_FOUND,
+//					controlLocation.toString()));
+//		}
+//		return webElements;
+		List<WebElement> webElements = null;
+		try {
+		webElements = new WebDriverWait(
 				WebDriverUtils.get().getWebDriver(),
 				WebDriverUtils.get().getImplicitlyWaitTimeout())
 			.until(ExpectedConditions
 				.visibilityOfAllElementsLocatedBy(controlLocation.getBy()));
-		if (webElements.size() == 0) {
-			// TODO Develop My Exception
-			throw new RuntimeException(String.format(ERROR_NOT_FOUND,
-					controlLocation.toString()));
+		} catch (Exception e) {
+			throw new ScreenCapturingCustomException(String.format(ERROR_NOT_FOUND,
+					controlLocation.getValue()));
+		}
+		if ((webElements == null) || (webElements.size() == 0)) {
+			throw new ScreenCapturingCustomException(String.format(ERROR_NOT_FOUND,
+					controlLocation.getValue()));
 		}
 		return webElements;
 	}

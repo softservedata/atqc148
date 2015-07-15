@@ -7,9 +7,11 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.atqc.span.AssertWrapper;
 import com.softserve.edu.atqc.tools.BrowserRepository;
+import com.softserve.edu.atqc.tools.DataSource;
 import com.softserve.edu.atqc.tools.IBrowser;
 import com.softserve.edu.atqc.tools.ListUtils;
 import com.softserve.edu.atqc.tools.WebDriverUtils;
+import com.softserve.edu.oms.data.DataSourceRepository;
 import com.softserve.edu.oms.data.IUser;
 import com.softserve.edu.oms.data.UrlRepository.Urls;
 import com.softserve.edu.oms.data.UserRepository;
@@ -60,7 +62,7 @@ public class LoginTest {
 		};
 	}
 
-	@Test(dataProvider = "adminProvider")
+	//@Test(dataProvider = "adminProvider")
 	public void checkAdmin(IBrowser browser, String url, IUser adminUser) {
 		// Preconditions
 		// Steps
@@ -109,13 +111,15 @@ public class LoginTest {
 		return new Object[][] { {
 				BrowserRepository.getFirefoxByTemporaryProfile(),
 				Urls.SSU_HOST.toString(),
-				UserRepository.getSearchUser() },
+				UserRepository.getSearchUser(),
+				DataSourceRepository.getJtdsMsSqlCredentials() },
 		// { BrowserRepository.getChromeByTemporaryProfile() }
 		};
 	}
 
-	//@Test(dataProvider = "searchProvider")
-	public void checkSearchByLogin(IBrowser browser, String url, IUser searchUser) throws InterruptedException {
+	@Test(dataProvider = "searchProvider")
+	public void checkSearchByLogin(IBrowser browser, String url, IUser searchUser,
+								DataSource dataSource) throws InterruptedException {
 		// Preconditions
 		  AdministrationPageLogic administrationPageLogic = StartApplication.load(browser, url)
 				  .successAdminLogin(UserRepository.getAdminUser())
@@ -123,14 +127,17 @@ public class LoginTest {
 		  // Steps
 		  administrationPageLogic.searchByLoginName(AdministrationPageFields.LOGIN_NAME,
 				  AdministrationPageConditions.STARTS_WITH, searchUser);
+		  IUser searchUserFromDB = UserRepository.getUserFromDB(dataSource, searchUser.getLoginName());
 		  // Check
 		  AssertWrapper.get()
 		  		.forElement(administrationPageLogic.getAdministrationPage().getFirstName())
 		  			.isVisible()
 		  			.valueMatch(searchUser.getFirstName())
+		  			.valueMatch(searchUserFromDB.getFirstName())
 		  			.next()
 		  		.forElement(administrationPageLogic.getAdministrationPage().getLastName())
-		  			.valueMatch(searchUser.getLastName());
+		  			.valueMatch(searchUser.getLastName())
+		  			.valueMatch(searchUserFromDB.getLastName());
 //		  Assert.assertEquals(searchUser.getFirstName(),
 //				  administrationPageLogic.getAdministrationPage().getFirstName().getText());
 		  // Return to previous state

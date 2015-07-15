@@ -2,6 +2,10 @@ package com.softserve.edu.oms.data;
 
 import java.util.List;
 
+import com.softserve.edu.atqc.tools.DataSource;
+import com.softserve.edu.oms.entity.UserDB;
+import com.softserve.edu.oms.service.UserService;
+
 public class UserRepository {
 
 	public static IUser getSearchUser() {
@@ -76,6 +80,21 @@ public class UserRepository {
 
 	public static List<IUser> getAllUserFromExcel() {
 		return (new ExcelUsers()).getAllUsers();
+	}
+
+	public static IUser getUserFromDB(DataSource dataSource, String login) {
+		System.out.println("getUserFromDB: START");
+		UserDB userDB = UserService.get(dataSource).getUserByLogin(login);
+		System.out.println("getUserFromDB: userDB.getLogin()="+userDB.getLogin());
+		return User.get()
+				.setLoginName(userDB.getLogin())
+				.setFirstName(userDB.getFirstname())
+				.setLastName(userDB.getLastname())
+				.setPassword(userDB.getPassword())
+				.setEmail(userDB.getEmail())
+				.setRegion("East")
+				.setRole("Customer")
+				.build();
 	}
 
 }

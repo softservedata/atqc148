@@ -39,9 +39,12 @@ public final class UserDao {
         String query = String.format(
                 UserDBQueries.GET_USER_BY_LOGIN.toString(), login);
         try {
+        	System.out.println("getUserByLogin: START");
             statement = ConnectionUtils.get(dataSource).getConnection()
                     .createStatement();
+            System.out.println("getUserByLogin: statement");
             resultSet = statement.executeQuery(query);
+            System.out.println("getUserByLogin: resultSet");
             if (resultSet.next()) {
                 // TODO Use Builder
                 user = new UserDB(Long.parseLong(resultSet.getString(1)),
@@ -73,6 +76,7 @@ public final class UserDao {
                 }
             }
         }
+        System.out.println("user = "+user.getFirstname());
         return user;
     }
 

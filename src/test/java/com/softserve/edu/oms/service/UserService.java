@@ -23,18 +23,9 @@ public class UserService {
         return instance;
     }
 
-//    public IUser getUserByLogin(String login) {
-//        UserDB userDB=userDao.getUserByLogin(login);
-//        return User.get()
-//                .setLogin("iva")
-//        .setPassword("qwerty")
-//        .setFirstname("ivanka")
-//        .setLastname("horoshko")
-//        .setEmail("abcd@gmail.com")
-//        .setRegion("West")
-//        .setRole("Administrator")
-//        .build();
-//    }
+    public UserDB getUserByLogin(String login) {
+    	return userDao.getUserByLogin(login);
+    }
 
     public String getUserFirstnameByLogin(String login) {
         UserDB userDB=userDao.getUserByLogin(login);

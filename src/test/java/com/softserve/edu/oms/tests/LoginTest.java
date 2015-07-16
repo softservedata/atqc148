@@ -112,7 +112,7 @@ public class LoginTest {
 				BrowserRepository.getFirefoxByTemporaryProfile(),
 				Urls.SSU_HOST.toString(),
 				UserRepository.getSearchUser(),
-				DataSourceRepository.getJtdsMsSqlCredentials() },
+				DataSourceRepository.getJtdsMsSqlSsuOms() },
 		// { BrowserRepository.getChromeByTemporaryProfile() }
 		};
 	}

@@ -9,15 +9,24 @@ import com.softserve.edu.oms.service.UserService;
 public class UserRepository {
 
 	public static IUser getSearchUser() {
+//		return User.get()
+//			.setLoginName("aaaa")
+//			.setFirstName("aaaa")
+//			.setLastName("aaaa")
+//			.setPassword("qwerty")
+//			.setEmail("aaaa@gmail.com")
+//			.setRegion("East")
+//			.setRole("Customer")
+//			.build();
 		return User.get()
-			.setLoginName("aaai")
-			.setFirstName("Ira")
-			.setLastName("C")
-			.setPassword("qwerty")
-			.setEmail("aaaa@gmail.com")
-			.setRegion("East")
-			.setRole("Administrator")
-			.build();
+				.setLoginName("aaai")
+				.setFirstName("Ira")
+				.setLastName("C")
+				.setPassword("qwerty")
+				.setEmail("aaaa@gmail.com")
+				.setRegion("East")
+				.setRole("Administrator")
+				.build();
 	}
 
 	public static IUser getAdminUser() {

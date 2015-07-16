@@ -16,6 +16,11 @@ public final class DataSourceRepository {
 //              "db", "db");
     }
 
+    public static DataSource getJtdsMsSqlSsuOms() {
+        return new DataSource(new net.sourceforge.jtds.jdbc.Driver(),
+                "jdbc:jtds:sqlserver://ssu-sql12/ssu-oms;instance=tc;",
+                "ssu-oms", "ssu-oms");
+    }
     // TODO Read from properties
 
 }

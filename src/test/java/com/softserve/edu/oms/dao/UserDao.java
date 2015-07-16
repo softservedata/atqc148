@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.softserve.edu.atqc.tools.ConnectionUtils;
 import com.softserve.edu.atqc.tools.DataSource;
+import com.softserve.edu.atqc.tools.GeneralCustomException;
 import com.softserve.edu.oms.entity.UserDB;
 import com.softserve.edu.oms.entity.UserDB.UserDBQueries;
 
@@ -39,20 +40,19 @@ public final class UserDao {
         String query = String.format(
                 UserDBQueries.GET_USER_BY_LOGIN.toString(), login);
         try {
-        	System.out.println("getUserByLogin: START");
             statement = ConnectionUtils.get(dataSource).getConnection()
                     .createStatement();
-            System.out.println("getUserByLogin: statement");
             resultSet = statement.executeQuery(query);
-            System.out.println("getUserByLogin: resultSet");
             if (resultSet.next()) {
                 // TODO Use Builder
                 user = new UserDB(Long.parseLong(resultSet.getString(1)),
-                        resultSet.getString(2), resultSet.getString(3),
-                        resultSet.getString(4), resultSet.getString(5),
-                        resultSet.getString(6), Long.parseLong(resultSet
-                                .getString(7)), Long.parseLong(resultSet
-                                .getString(8)));
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getString(6),
+                        Long.parseLong(resultSet.getString(7)),
+                        Long.parseLong(resultSet.getString(8)));
             }
         } catch (SQLException e) {
             // e.printStackTrace();
@@ -76,7 +76,10 @@ public final class UserDao {
                 }
             }
         }
-        System.out.println("user = "+user.getFirstname());
+        if (user == null) {
+            // TODO Throw Custom Exception
+            throw new GeneralCustomException("DB Error. User not found.");
+        }
         return user;
     }
 
